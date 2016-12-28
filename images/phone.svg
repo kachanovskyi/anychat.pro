@@ -1,0 +1,18 @@
+<svg width="70" height="70" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>phone</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-3951 -401)" figma:type="canvas">
+<g id="phone" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="bg" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(3951 401)" fill="#0AD02C" style="mix-blend-mode:normal;"/>
+</g>
+<g id="icon" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path1_fill" transform="translate(3970.25 420.25)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 35 70C 54.33 70 70 54.33 70 35C 70 15.67 54.33 0 35 0C 15.67 0 0 15.67 0 35C 0 54.33 15.67 70 35 70Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 23.7995 20.4383C 25.0593 20.8342 31.057 24.6317 31.4552 26.0625C 31.8534 27.5023 29.5025 30.5349 28.0582 31.2773C 26.6094 32.0197 21.9615 30.7486 18.254 28.7127C 14.9964 26.9287 13.3564 25.6801 9.51843 21.8421C 5.67819 18.0064 4.56909 16.5058 2.77833 13.2437C 0.744604 9.53174 -0.528726 4.88836 0.213675 3.4418C 0.956075 1.9975 3.99317 -0.35344 5.42848 0.0447569C 6.86153 0.442954 10.659 6.4384 11.0527 7.70048C 11.4509 8.96031 8.35309 11.5835 8.65679 12.8928C 8.92226 14.0334 12.2788 17.3472 13.1562 18.2066C 13.1562 18.2066 17.4689 22.5777 18.605 22.841C 19.9098 23.1492 22.5329 20.0513 23.795 20.445L 23.7995 20.4383Z"/>
+</defs>
+</svg>

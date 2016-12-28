@@ -1,0 +1,317 @@
+.shopchat-brand,
+.shopchat-chat-icon,
+.shopchat-button,
+.shopchat-label {
+    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', Lato, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+#shopchat-container {
+    position: fixed;
+    z-index: 10000;
+    right: 0;
+    bottom: 0;
+}
+
+#shopchat-container.left {
+    right: auto;
+    left: 0;
+}
+
+#shopchat-container.left {
+    right: auto;
+    left: 0;
+}
+
+#shopchat-container.left .shopchat-launcher,
+#shopchat-container.left .shopchat-chat-icon {
+    right: auto;
+    left: 14px;
+}
+
+.shopchat-launcher,
+.shopchat-chat-icon {
+    float: left;
+    cursor: pointer;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 14px;
+    bottom: 20px;
+    border-radius: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05), 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+}
+
+.shopchat-chat-icon {
+    display: none;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.shopchat-button {
+    color: white;
+    border: 2px solid white;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    display: block;
+    padding: 3px 6px;
+    padding: 0.2rem 0.4rem;
+    text-align: center;
+}
+
+.shopchat-chat-icon img {
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+}
+
+.shopchat-chat-icon.shopchat-panel {
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    right: 50% !important;
+    top: 50% !important;
+    margin-right: -140px;
+    margin-top: -140px;
+    z-index: 11;
+}
+
+#shopchat-container.left .shopchat-chat-icon.shopchat-panel {
+    left: auto;
+}
+
+.shopchat-chat-icon:not(.shopchat-panel):hover {
+    /*width: 150px;*/
+    z-index: 12;
+}
+
+.shopchat-qr {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    margin: 40px;
+    border-radius: 5px;
+    visibility: visible;
+    background-size: contain;
+    -webkit-transition: visibility 0s linear 0.2s, opacity 0.2s linear 0.2s;
+    transition: visibility 0s linear 0.2s, opacity 0.2s linear 0.2s;
+}
+
+.shopchat-chat-icon:not(.shopchat-panel) .shopchat-qr {
+    visibility: hidden;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.shopchat-launcher.shopchat-launcher-active .shopchat-brand {
+    visibility: visible;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.shopchat-brand {
+    text-decoration: none;
+    position: absolute;
+    visibility: hidden;
+    font-weight: 500;
+    font-size: 11px;
+    bottom: -24px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    border: 0;
+    right: 0px;
+    width: 90px;
+    text-align: right;
+    -webkit-transition: visibility 0s, opacity 0.5s linear 3s;
+    transition: visibility 0s, opacity 0.5s linear 3s;
+}
+
+.shopchat-label {
+    width: 96px;
+    text-align: right;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    margin-top: 10px;
+    left: -100px;
+    line-height: 32px;
+    font-size: 20px;
+    font-weight: 400;
+    position: absolute;
+    display: inline-block;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+}
+
+.shopchat-chat-icon:hover > .shopchat-label {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.shopchat-chat-icon.shopchat-panel > .shopchat-label {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    margin-left: 144px;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+#shopchat-overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+#shopchat-overlay .overlay-body {
+    position: absolute;
+    width: 600px;
+    height: 480px;
+    max-width: 100%;
+    max-height: 100%;
+    right: 50% !important;
+    top: 50% !important;
+    margin-right: -300px;
+    margin-top: -240px;
+    z-index: 11;
+    background-color: rgba(0, 0, 0, 0.65);
+    border-radius: 16px;
+    padding-top: 20px;
+}
+
+#shopchat-overlay .shopchat-qr {
+    display: none;
+}
+
+#shopchat-overlay .shopchat-qr.active {
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.shopchat-overlay-chat-icon {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 24px;
+    border-radius: 16px;
+}
+
+
+/* Media Query */
+
+
+/* Click Effects */
+
+.shopchat-launcher {
+    transition: color 0.7s;
+    -webkit-transition: color 0.7s;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    background-size: contain;
+}
+
+.shopchat-effect:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -50px 0 0 -50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    content: '';
+    opacity: 0;
+    filter: alpha(opacity=0);
+    pointer-events: none;
+}
+
+.shopchat-effect:before,
+.shopchat-effect:after {
+    box-shadow: 0 0 0 2px rgba(111, 148, 182, 0.6);
+}
+
+.shopchat-effect.shopchat-show-effect:before {
+    -webkit-animation: shopchat-effect-1 0.5s forwards;
+    animation: shopchat-effect-1 0.5s forwards;
+}
+
+.shopchat-effect.shopchat-show-effect:after {
+    -webkit-animation: shopchat-effect-2 0.5s forwards;
+    animation: shopchat-effect-2 0.5s forwards;
+}
+
+@-webkit-keyframes shopchat-effect-1 {
+    0% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: scale3d(0.5, 0.5, 1);
+        transform: scale3d(0.5, 0.5, 1);
+    }
+    100% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: scale3d(1.1, 1.1, 1);
+        transform: scale3d(1.1, 1.1, 1);
+    }
+}
+
+@keyframes shopchat-effect-1 {
+    0% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: scale3d(0.5, 0.5, 1);
+        transform: scale3d(0.5, 0.5, 1);
+    }
+    100% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: scale3d(1.1, 1.1, 1);
+        transform: scale3d(1.1, 1.1, 1);
+    }
+}
+
+@-webkit-keyframes shopchat-effect-2 {
+    0% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: scale3d(0.5, 0.5, 1);
+        transform: scale3d(0.5, 0.5, 1);
+    }
+    50%,
+    100% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: scale3d(1.2, 1.2, 1);
+        transform: scale3d(1.2, 1.2, 1);
+    }
+}
+
+@keyframes shopchat-effect-2 {
+    0% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: scale3d(0.5, 0.5, 1);
+        transform: scale3d(0.5, 0.5, 1);
+    }
+    50%,
+    100% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: scale3d(1.2, 1.2, 1);
+        transform: scale3d(1.2, 1.2, 1);
+    }
+}

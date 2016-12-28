@@ -1,0 +1,24 @@
+<svg width="70" height="71" viewBox="0 0 70 71" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>e-mail</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-3951 -581)" figma:type="canvas">
+<g id="e-mail" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="bg" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(3951 581.01)" fill="#2D70E7" style="mix-blend-mode:normal;"/>
+</g>
+<g id="icon" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path1_fill" transform="translate(3970.25 604.887)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+<use xlink:href="#path2_fill" transform="translate(3970.25 604.887)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+<use xlink:href="#path3_fill" transform="translate(3970.25 604.887)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+<use xlink:href="#path4_fill" transform="translate(3970.25 604.887)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 35 70C 54.33 70 70 54.33 70 35C 70 15.67 54.33 0 35 0C 15.67 0 0 15.67 0 35C 0 54.33 15.67 70 35 70Z"/>
+<path id="path1_fill" d="M 30.0823 0.151586C 29.8303 0.0537328 29.556 0 29.2689 0L 2.23115 0C 1.98023 0 1.73885 0.0410422 1.51372 0.116808L 15.7548 12.1142L 30.0823 0.151586Z"/>
+<path id="path2_fill" d="M 0.189595 1.31816C 0.067604 1.59141 0 1.89372 0 2.21174L 0 20.5383C 0 20.915 0.0949056 21.2698 0.262616 21.5803L 0.38699 21.457L 11.1861 10.7477L 11.2764 10.6582L 0.189595 1.31816Z"/>
+<path id="path3_fill" d="M 1.67103 22.6797C 1.85001 22.7256 2.03765 22.75 2.23115 22.75L 29.2689 22.75C 29.6333 22.75 29.9774 22.6634 30.2812 22.5097L 19.0804 12.0198L 18.8691 11.8221L 16.322 13.9488L 15.7496 14.4267L 15.1793 13.9462L 12.6372 11.8046L 12.4378 12.0023L 1.67103 22.6797Z"/>
+<path id="path4_fill" d="M 31.4153 21.144C 31.4705 20.9515 31.5 20.7483 31.5 20.5383L 31.5 2.21174C 31.5 1.92677 31.4456 1.65438 31.3466 1.40418L 20.2398 10.6777L 20.2957 10.7302L 31.4153 21.144Z"/>
+</defs>
+</svg>

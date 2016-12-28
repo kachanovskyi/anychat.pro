@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>ShopChat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/iosCheckbox.css">
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+</head>
+
+<body>
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+        <!-- Wrapper -->
+        <section id="wrapper">
+            <canvas style="position:absolute; left: 0; bottom: 0; top:0; z-index:-1;" width="707" height="633"></canvas>
+            <div class="container-inner">
+                <b style="color:#DA3337;">shopchat.pro</b>
+                <h2 style="margin-top: 3.8em;">ShopChat Live Widget</h2>
+                <p style="background:white;">
+                    Add mobile-friendly chat support to your website in less than 5 minutes!
+                </p>
+                <p style="background:white;">
+                    Connect with your site visitors using popular messaging apps. With one tap, your visitors can open a direct line to you using their favorite chat application.
+                </p>
+                <p style="background:white;">
+                    Goodbye old-fashioned contact forms and expensive live chat plans.
+                </p>
+
+                <div style="margin-top: 3em;">
+                    <a id="get-it" class="button special">Get it now!</a>
+                </div>
+                    <style>
+                    .input-block {
+                        cursor: move;
+                        position: relative;
+                        height: 140px;
+                        padding: 18px 30px;
+                        margin: 20px 0;
+                        border: 1px solid #E0E0E0;
+                        border-radius: 4px;
+                        background: #FFFFFF;
+                    }
+
+                    .input-block img.app-icon {
+                        height: 44px;
+                        width: 44px;
+                    }
+
+                    .input-block .app-label {
+                        font-weight: 500;
+                        font-size: 20px;
+                        margin: -48px 0 0 48px;
+                    }
+
+                    .input-block input {
+                        background: none;
+                        border-width: 0 0 1px 0;
+                        border-radius: 0;
+                        height: 46px;
+                        padding-left: 0;
+                        font-size: 20px;
+                        margin-top: 24px;
+                    }
+
+                    .input-block.inactive .app-label {
+                        color: #999999 !important;
+                    }
+
+                    .input-block.inactive img {
+                        -webkit-filter: grayscale(100%);
+                    }
+
+                    .input-block.inverse .app-label {
+                        color: #3B1E1D;
+                    }
+
+                    .input-block.inverse input {
+                        border-color: #3B1E1D;
+                        color: #3B1E1D;
+                    }
+
+                    .input-block.inverse input:focus {
+                        border-color: #3B1E1D;
+                    }
+
+                    .input-block input:focus {
+                        border-color: #e6e8eb;
+                    }
+
+                    .input-block a.hint {
+                        color: white;
+                        float: right;
+                        font-size: 14px;
+                        position: absolute;
+                        bottom: 6px;
+                        right: 30px;
+                        font-weight: normal;
+                    }
+
+                    .input-block.inverse a.hint {
+                        color: black;
+                    }
+
+                    #embed {
+                        word-break: break-all;
+                    }
+
+                    .sortable-placeholder {
+                        position: relative;
+                        height: 120px;
+                        padding: 16px 30px;
+                        margin: 50px 30px;
+                        border-radius: 4px;
+                        border-style: dashed;
+                        border-width: 2px;
+                    }
+
+                    .checkbox-container {
+                        position: absolute;
+                        right: 30px;
+                        top: 24px;
+                        width: 60px;
+                        height: 36px;
+                        z-index: 999;
+                    }
+
+                    .ios-ui-select {
+                        height: 16px;
+                        width: 43px;
+                        background: #F2F2F2;
+                    }
+                    .ios-ui-select.checked {
+                        box-shadow: none ;
+                        background: #F2F2F2;
+                    }
+
+                    .ios-ui-select .inner {
+                        left: 0;
+                        margin-top: -5px;
+                        height: 20px;
+                        width: 20px;
+                        border: 1px solid #E5E5E5;
+                        box-shadow: none;
+                    }
+                    .ios-ui-select.checked .inner {
+                        left: 23px;
+                        border: none;
+                        background: #0AD02C;
+                    }
+                    </style>
+                    <div class="input-block-container ui-sortable" style="margin-top: 3em; display: none;">
+                        <b style="color:#DA3337;"><span style="color:#828282">Step 1: </span>Choose the apps you want to use on  your website and fill them</b>
+                        <div class="input-block ui-sortable-handle">
+                            <img class="app-icon" src="./images/email.svg" alt="email">
+                            <div class="app-label" style="color:#2D70E7;">
+                                Email
+                                <div class="checkbox-container">
+                                    <input type="checkbox" checked="" class="ios toggle">
+                                    <label for="toggle"></label>
+                                </div>
+                            </div>
+                            <input name="email" type="text" placeholder="contact@company.com">
+                        </div>
+                        <div class="input-block inactive ui-sortable-handle">
+                            <img class="app-icon" src="./images/sms.svg" alt="sms">
+                            <div class="app-label" style="color:#2F80ED;">
+                                SMS
+                                <div class="checkbox-container">
+                                    <input type="checkbox" class="ios toggle">
+                                    <label for="toggle"></label>
+                                </div>
+                            </div>
+                            <input name="sms" type="text" placeholder="Phone number">
+                        </div>
+                        <div class="input-block inactive ui-sortable-handle">
+                            <img class="app-icon" src="./images/phone.svg" alt="phone">
+                            <div class="app-label" style="color:#0AD02C;">
+                                Phone
+                                <div class="checkbox-container">
+                                    <input type="checkbox" class="ios toggle">
+                                    <label for="toggle"></label>
+                                </div>
+                            </div>
+                            <input name="phone" type="text" placeholder="Phone number">
+                        </div>
+                        <div class="input-block inactive ui-sortable-handle">
+                            <img class="app-icon" src="./images/facebook.svg" alt="phone">
+                            <div class="app-label" style="color:#0084FF;">
+                                Messenger
+                                <div class="checkbox-container">
+                                    <input type="checkbox" class="ios toggle">
+                                    <label for="toggle"></label>
+                                </div>
+                            </div>
+                            <input name="facebook" type="text" placeholder="Facebook ID">
+                        </div>
+
+                        <div class="input-block inactive ui-sortable-handle">
+                            <img class="app-icon" src="./images/kik.svg" alt="kik">
+                            <div class="app-label" style="color:#82BC23;">
+                                Kik
+                                <div class="checkbox-container">
+                                    <input type="checkbox" class="ios toggle">
+                                    <label for="toggle"></label>
+                                </div>
+                            </div>
+                            <input name="kik" type="text" placeholder="Username">
+                        </div>
+                        <div class="input-block inactive ui-sortable-handle">
+                            <img class="app-icon" src="./images/viber.svg" alt="viber">
+                            <div class="app-label"  style="color:#675CA8;">
+                                Viber
+                                <div class="checkbox-container">
+                                    <input type="checkbox" class="ios toggle">
+                                    <label for="toggle"></label>
+                                </div>
+                            </div>
+                            <input name="viber" type="text" placeholder="Phone number">
+                        </div>
+
+                        <div class="input-block inactive ui-sortable-handle">
+                            <img class="app-icon" src="./images/whatsapp.svg" alt="whatsapp">
+                            <div class="app-label" style="color:#30BE2D;">
+                                Whatsapp
+                                <div class="checkbox-container">
+                                    <input type="checkbox" class="ios toggle">
+                                    <label for="toggle"></label>
+                                </div>
+                            </div>
+                            <input name="whatsapp" type="text" placeholder="Phone number">
+                        </div>
+                        <div class="actions-block">
+                            <b style="color:#DA3337;"><span style="color:#828282">Step 2: </span>Pick a color for the chat icon</b>
+                            <style>
+                            #icon-color-picker > div {
+                                cursor: pointer;
+                                position: relative;
+                                display: inline-block;
+                                height: 52px;
+                                width: 52px;
+                                border-radius: 27px;
+                                padding: 0;
+                                border-style: dashed;
+                                border-width: 1px;
+                                border-color: white;
+                            }
+                            </style>
+                            <div id="icon-color-picker" style="text-align:left; margin-top: 20px;">
+                                <div data-color="#DA3337">
+                                    <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <ellipse fill="#DA3337" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div data-color="#F2994A">
+                                    <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <ellipse fill="#F2994A" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div data-color="#F2C94C">
+                                    <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <ellipse fill="#F2C94C" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div data-color="#6FCF97">
+                                    <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <ellipse fill="#6FCF97" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div data-color="#2F80ED">
+                                    <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <ellipse fill="#2F80ED" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div data-color="#56CCF2">
+                                    <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <ellipse fill="#56CCF2" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <br>
+                                <span style="font-size:21px;line-height:100%;color:#828282;margin-top: 15px;">
+                                    You can use any #hex code for your widget icon. Change the value of data-color="" attribute in the generated embed code
+                                </span>
+                            </div>
+                            <br>
+                            <a href="javascript:generate();" class="button special icon fa-magic" style="margin-bottom:40px;">Generate embed code</a>
+                            <textarea id="embed" onclick="this.focus();this.select();" cols="30" rows="3" spellcheck="false" style="color: #333333;resize:none;"></textarea>
+                            <br>
+                            <p style="color: #333333">
+                                Copy the above code and insert it near the end of your website's HTML source code (right before <b>&lt;/body&gt;</b> would be good).
+                            </p>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal" style="display:none; width: 500px; height: 300px;">
+            </div>
+        </section>
+    </div>
+    <!-- Scripts -->
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="./js/jquery-2.1.4.min.js"></script>
+    <script src="./js/jquery-ui.min.js"></script>
+    <script defer>
+        /**
+         * iosCheckbox.js
+         * Version: 1.0.0
+         * Author: Ron Masas
+         * Added some changes
+         */
+        (function($) {
+            $.fn.extend({
+                iosCheckbox: function() {
+                    this.destroy = function(){
+                        $(this).each(function() {
+                            $(this).next('.ios-ui-select').remove();
+                        });
+                    };
+                    if ($(this).attr('data-ios-checkbox') === 'true') {
+                        return;
+                    }
+                    $(this).attr('data-ios-checkbox', 'true');
+                    $(this).each(function() {
+                        /**
+                         * Original checkbox element
+                         */
+                        var org_checkbox = $(this);
+                        /**
+                         * iOS checkbox div
+                         */
+                        var ios_checkbox = jQuery("<div>", {
+                            class: 'ios-ui-select'
+                        }).append(jQuery("<div>", {
+                            class: 'inner'
+                        }));
+
+                        // If the original checkbox is checked, add checked class to the ios checkbox.
+                        if (org_checkbox.is(":checked")) {
+                            ios_checkbox.addClass("checked");
+                        }
+                        // Hide the original checkbox and print the new one.
+                        org_checkbox.hide().after(ios_checkbox);
+                        // Add click event listener to the ios checkbox
+                        ios_checkbox.click(function() {
+                            var block = $(this).parent().parent().parent();
+                            // Toggle the check state
+                            ios_checkbox.toggleClass("checked");
+                            // Check if the ios checkbox is checked
+                            if (ios_checkbox.hasClass("checked")) {
+                                // Update state
+                                org_checkbox.prop('checked', true);
+                                block.removeClass('inactive');
+                                block.find('input[type="text"], input[type="email"]').get(0).focus();
+
+                            } else {
+                                // Update state
+                                org_checkbox.prop('checked', false);
+                                block.addClass('inactive');
+                                block.find('input[type="text"], input[type="email"]').get(0).blur();
+                            }
+                        });
+                    });
+                    return this;
+                }
+            });
+        })(jQuery);
+    </script>
+
+    <script>
+    function generate() {
+        var color, apps = {};
+
+        color = $('#icon-color-picker > div.selected').data('color') || '#E4392B';
+
+        $($('.input-block:not(.inactive)').find('input[type=text]').get().reverse()).each(function(index, input) {
+            console.log(input, 'input');
+            if (input.value) {
+                apps[input.name] = input.value;
+            }
+        });
+
+        var payload = btoa(encodeURI(JSON.stringify(apps)));
+        console.log(apps);
+        var embed = document.getElementById("embed");
+
+        console.log(payload, 'payload');
+
+        embed.value = '<script data-align="right" data-overlay="false" id="shopchat-script" src="./js/widget.js" data-color="' + color + '" data-apps="' + payload + '"><\/script>';
+
+        $('#shopchat-script').data('apps', payload).data('color', color);
+        $('#shopchat-container').remove();
+        console.log(apps);
+
+        window.initializeShopchat();
+
+        $('.shopchat-launcher').click();
+    }
+
+    $(function() {
+        $(".input-block-container").sortable({
+            axis: 'y',
+            cursor: 'move',
+            items: '.input-block',
+            delay: 100,
+            opacity: 0.8,
+            placeholder: 'sortable-placeholder',
+            stop: function() {
+                generate();
+            }
+        });
+
+        $("#get-it").click(function() {
+            $(".input-block-container").show();
+            $(".ios").iosCheckbox();
+
+            $('html, body').animate({
+                scrollTop: $(".input-block-container").offset().top
+            }, 500);
+        });
+
+        $('input[type=checkbox]').click(function(event) {
+            var block = $(event.target).parent().parent().parent();
+
+            if ($(event.target).is(':checked')) {
+                block.removeClass("inactive");
+                block.find('input').focus(function () {
+                    console.log('input focused!');
+                });
+            } else if (!$(event.target).is(':checked') && !block.hasClass('inactive')) {
+                block.addClass("inactive");
+            }
+        });
+
+        $('input[type=text]').blur(function() {
+            generate();
+        });
+
+        $('input[type=text]').focus(function(event) {
+            var block = $(event.target).parent();
+            if (block.is('.inactive')) {
+                block.find('.ios-ui-select').click();
+            }
+        });
+
+        $('#icon-color-picker > div').click(function(event) {
+            $(event.currentTarget).addClass('selected');
+            $(event.currentTarget).siblings().removeClass('selected');
+            generate();
+        });
+    });
+    </script>
+    <script id="shopchat-script" src="./js/widget.js" data-color="#DA3337" data-apps="eyJlbWFpbCI6Im1heEBib3RzY3Jldy5jb20iLCJzbXMiOiIrMzgwNTA1MDUwMDUwIiwicGhvbmUiOiIrMzgwNTA1MDUwMDUwIiwiZmFjZWJvb2siOiIxMjM1MDc1NDEzMTg1NjIxIiwia2lrIjoibWF4Z2xhZHlzaCIsInZpYmVyIjoiKzM4MDUwNTA1MDA1MCIsIndoYXRzYXBwIjoiKzM4MDUwNTA1MDA1MCJ9"></script>
+</body>
+</html>

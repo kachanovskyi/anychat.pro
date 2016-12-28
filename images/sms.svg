@@ -1,0 +1,18 @@
+<svg width="70" height="70" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>btn</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-3951 -491)" figma:type="canvas">
+<g id="btn" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="bg" style="mix-blend-mode:normal;" figma:type="ellipse">
+<use xlink:href="#path0_fill" transform="translate(3951 491)" fill="#2F80ED" style="mix-blend-mode:normal;"/>
+</g>
+<g id="icon" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path1_fill" transform="translate(3972.88 515.5)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 70 35C 70 54.33 54.33 70 35 70C 15.67 70 0 54.33 0 35C 0 15.67 15.67 0 35 0C 54.33 0 70 15.67 70 35Z"/>
+<path id="path1_fill" d="M 26.25 0.909347C 26.25 0.407129 25.8582 0 25.375 0L 7.875 0L 0.875 0C 0.391751 0 0 0.407129 0 0.909347L 0 20.4603L 0 25.3389C 0 26.1099 0.86525 26.5311 1.43516 26.0375L 7.875 20.125L 25.375 20.125C 25.8582 20.125 26.25 19.7179 26.25 19.2157L 26.25 0.909347Z"/>
+</defs>
+</svg>
