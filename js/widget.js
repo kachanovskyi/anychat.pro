@@ -5,7 +5,7 @@
         stylesheet = document.createElement('link');
     stylesheet.type = 'text/css';
     stylesheet.rel = 'stylesheet';
-    stylesheet.href = './css/widget.css';
+    stylesheet.href = root + 'css/widget.css';
     head.appendChild(stylesheet);
 
     setTimeout(function() {
