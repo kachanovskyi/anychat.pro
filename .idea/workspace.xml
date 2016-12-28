@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88662c8b-05b4-4b2a-87d1-574d68695635" name="Default" comment="" />
+    <list default="true" id="88662c8b-05b4-4b2a-87d1-574d68695635" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+    </list>
     <ignored path="shopchat.pro.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +26,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="412" column="18" selection-start-line="412" selection-start-column="18" selection-end-line="412" selection-end-column="18" />
+            <state relative-caret-position="31">
+              <caret line="391" column="1" selection-start-line="391" selection-start-column="1" selection-end-line="391" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -34,8 +36,8 @@
       <file leaf-file-name="widget.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/widget.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4032">
-              <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+            <state relative-caret-position="185">
+              <caret line="92" column="35" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -157,7 +159,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ReBotsCrew2.0" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
@@ -171,12 +173,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1482933654675</updated>
-      <workItem from="1482933656808" duration="5885000" />
+      <workItem from="1482933656808" duration="6506000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5885000" />
+    <option name="totallyTimeSpent" value="6506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -226,16 +228,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/widget.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4032">
-          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        <state relative-caret-position="185">
+          <caret line="92" column="35" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="412" column="18" selection-start-line="412" selection-start-column="18" selection-end-line="412" selection-end-column="18" />
+        <state relative-caret-position="31">
+          <caret line="391" column="1" selection-start-line="391" selection-start-column="1" selection-end-line="391" selection-end-column="1" />
           <folding />
         </state>
       </provider>
