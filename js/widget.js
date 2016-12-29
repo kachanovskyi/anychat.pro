@@ -345,7 +345,7 @@
 
                 case 'kik':
                     if (Mobile || iOS) {
-                        link = "kikapi://user/" + settings.apps.kik;
+                        link = "kik://user/" + settings.apps.kik;
                     }
                     // else if (Android) {
                     //     link = "fb-messenger://user/" + settings.apps.facebook;
