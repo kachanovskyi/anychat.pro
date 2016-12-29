@@ -1019,6 +1019,12 @@
 
 		}
 
+		@media screen and (max-width: 800px) {
+			#wrapper .container-inner {
+				text-align: left !important;
+			}
+		}
+
 		@media screen and (max-width: 736px) {
 
 			#wrapper {
@@ -1028,10 +1034,6 @@
 				-ms-justify-content: -ms-flex-start;
 				justify-content: flex-start;
 			}
-
-				#wrapper footer ul {
-					margin: 0 0 2em 0;
-				}
 
 			#chatCanvas {
 				width: 100%;
@@ -1329,10 +1331,14 @@
 			opacity: 1;
 		}
 
-/* Footer */
+		@media screen and (max-height: 555px) {
+			#widget-heading {
+				margin-top: 1.5em !important;
+			}
+		}
 
-	#footer {
-		position: fixed;
-		bottom: 0;
-		right: 0;
-	}
+		@media screen and (max-height: 488px) {
+			#widget-heading {
+				margin-top: .8em !important;
+			}
+		}
