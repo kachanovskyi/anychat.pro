@@ -887,6 +887,14 @@
 			opacity: 0.25;
 		}
 
+		@media screen and (max-width: 640px) {
+
+			#wrapper .container-inner {
+				margin-left: 1em !important;
+			}
+
+		}
+
 		@media screen and (max-width: 480px) {
 
 			input[type="submit"],
@@ -895,6 +903,10 @@
 			button,
 			.button {
 				padding: 0;
+			}
+
+			#wrapper .container-inner {
+				margin-left: 1em !important;
 			}
 
 		}

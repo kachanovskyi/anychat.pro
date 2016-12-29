@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88662c8b-05b4-4b2a-87d1-574d68695635" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/widget.js" afterPath="$PROJECT_DIR$/js/widget.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
     </list>
     <ignored path="shopchat.pro.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,7 +37,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="widget.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="widget.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/widget.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
@@ -59,14 +59,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="858" column="28" selection-start-line="858" selection-start-column="28" selection-end-line="858" selection-end-column="28" />
+            <state relative-caret-position="133">
+              <caret line="889" column="41" selection-start-line="889" selection-start-column="41" selection-end-line="889" selection-end-column="41" />
               <folding>
-                <element signature="e#20613#20848#2" expanded="true" />
-                <element signature="e#20950#21249#2" expanded="true" />
+                <element signature="e#20800#21035#2" expanded="true" />
+                <element signature="e#21137#21436#2" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -82,8 +82,8 @@
       <list>
         <option value="$PROJECT_DIR$/css/widget.css" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/css/main.css" />
         <option value="$PROJECT_DIR$/js/widget.js" />
+        <option value="$PROJECT_DIR$/css/main.css" />
       </list>
     </option>
   </component>
@@ -198,7 +198,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18006000" />
+    <option name="totallyTimeSpent" value="19309000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -295,8 +295,8 @@
         <state relative-caret-position="17">
           <caret line="1053" column="0" selection-start-line="1053" selection-start-column="0" selection-end-line="1053" selection-end-column="0" />
           <folding>
-            <element signature="e#20613#20848#2" expanded="true" />
-            <element signature="e#20950#21249#2" expanded="true" />
+            <element signature="e#20800#21035#2" expanded="true" />
+            <element signature="e#21137#21436#2" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -351,23 +351,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="858" column="28" selection-start-line="858" selection-start-column="28" selection-end-line="858" selection-end-column="28" />
-          <folding>
-            <element signature="e#20613#20848#2" expanded="true" />
-            <element signature="e#20950#21249#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/widget.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="353" column="50" selection-start-line="353" selection-start-column="50" selection-end-line="353" selection-end-column="50" />
           <folding>
             <marker date="1483014931326" expanded="true" signature="15791:15826" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="889" column="41" selection-start-line="889" selection-start-column="41" selection-end-line="889" selection-end-column="41" />
+          <folding>
+            <element signature="e#20800#21035#2" expanded="true" />
+            <element signature="e#21137#21436#2" expanded="true" />
           </folding>
         </state>
       </provider>
