@@ -320,7 +320,7 @@
 
                     container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("1: Add to Contacts");
 
-                    if (true || Android) {
+                    if (Android) {
                         $('<a target="_blank" class="shopchat-button">').attr('href', "viber://tel:" + settings.apps.viber).text(settings.apps.viber).appendTo(container);
                     } else if (iOS) {
                         $('<a target="_blank" class="shopchat-button">').attr('href', "viber://calls").text(settings.apps.viber).appendTo(container);
@@ -355,7 +355,7 @@
                     $('<br><span>').text('2: Start chat').appendTo(container);
 
                     if (Mobile) {
-                        $('<br><a class="shopchat-button">Open Kik</a>').attr('href', 'kik://users/' + settings.apps.kik + '/profile').appendTo(container);
+                        $('<br><a class="shopchat-button">Open Kik</a>').attr('href', 'kik://findpeople/findbyusername/' + settings.apps.kik).appendTo(container);
                     } else {
                         $('<br><a class="shopchat-button" target="_blank" href="https://www.kik.com">Kik Website</a>').appendTo(container);
                     }
