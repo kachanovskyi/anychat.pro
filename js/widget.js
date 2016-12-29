@@ -355,7 +355,7 @@
                     $('<br><span>').text('2: Start chat').appendTo(container);
 
                     if (Mobile) {
-                        $('<br><a class="shopchat-button">Open Kik</a>').attr('href', 'kik://user/' + settings.apps.kik).appendTo(container);
+                        $('<br><a class="shopchat-button">Open Kik</a>').attr('href', 'kik://users/' + settings.apps.kik + '/profile').appendTo(container);
                     } else {
                         $('<br><a class="shopchat-button" target="_blank" href="https://www.kik.com">Kik Website</a>').appendTo(container);
                     }
