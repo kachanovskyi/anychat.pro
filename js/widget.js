@@ -71,7 +71,7 @@
             }
         }
 
-        var maxIconCount = Math.floor((window.innerHeight - 130) / 52);
+        var maxIconCount = Math.floor((window.innerHeight - 130) / 72);
 
         var anchor = $('<div>')
             .attr('id', 'shopchat-container')
@@ -330,13 +330,9 @@
 
                     $('<br><span>').text('2: Start chat').appendTo(container);
 
-                    if (Mobile || Android) {
+                    if (Mobile) {
                         $('<br><a class="shopchat-button" href="viber://forward?text=Hello">Open Viber</a>').appendTo(container);
-                    }
-                    // else if (iOS) {
-                    //     $('<br><a class="shopchat-button" href="viber://chats">Open Viber</a>').appendTo(container);
-                    // }
-                    else {
+                    } else {
                         $('<br><a class="shopchat-button" target="_blank" href="https://viber.com">Viber Website</a>').appendTo(container);
                     }
 
