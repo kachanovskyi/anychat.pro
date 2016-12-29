@@ -901,14 +901,14 @@
 /* Page Wrapper */
 
 	#page-wrapper {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-moz-flex-direction: row;
-		-webkit-flex-direction: row;
-		-ms-flex-direction: row;
-		flex-direction: row;
+		/*display: -moz-flex;*/
+		/*display: -webkit-flex;*/
+		/*display: -ms-flex;*/
+		/*display: flex;*/
+		/*-moz-flex-direction: row;*/
+		/*-webkit-flex-direction: row;*/
+		/*-ms-flex-direction: row;*/
+		/*flex-direction: row;*/
 		-moz-align-items: stretch;
 		-webkit-align-items: stretch;
 		-ms-align-items: stretch;
@@ -945,14 +945,14 @@
 
 	#wrapper {
 		padding: .5em 4.5em 2em 4.5em ;
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-moz-flex-direction: column;
-		-webkit-flex-direction: column;
-		-ms-flex-direction: column;
-		flex-direction: column;
+		/*display: -moz-flex;*/
+		/*display: -webkit-flex;*/
+		/*display: -ms-flex;*/
+		/*display: flex;*/
+		/*-moz-flex-direction: column;*/
+		/*-webkit-flex-direction: column;*/
+		/*-ms-flex-direction: column;*/
+		/*flex-direction: column;*/
 		-moz-justify-content: space-between;
 		-webkit-justify-content: space-between;
 		-ms-justify-content: space-between;
@@ -1033,6 +1033,9 @@
 					margin: 0 0 2em 0;
 				}
 
+			#chatCanvas {
+				width: 100%;
+			}
 		}
 
 		@media screen and (max-width: 575px) {
