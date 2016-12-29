@@ -856,6 +856,7 @@
 			background-color: #DA3337;
 			box-shadow: none;
 			color: #ffffff !important;
+			padding: 0 1.1em;
 		}
 
 			input[type="submit"].special:hover,

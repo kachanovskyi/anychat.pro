@@ -158,6 +158,7 @@
             //Add a more icon
             var more = $('<div>')
                 .css('background-color', '#888888')
+                .css('transform', 'scale(-2,2)')
                 .addClass('shopchat-chat-icon')
                 .attr('data-type', 'more')
                 .append(
@@ -165,7 +166,7 @@
                     .attr('src', root + 'images/' + 'more' + '.svg')
                     .attr('alt', 'more')
                 )
-                .append($('<div class="shopchat-label">').text('More').css('color', 'white'))
+                // .append($('<div class="shopchat-label">').text('More').css('color', 'white'))
                 .hide()
                 .click(function() {
                     anchor.find('.shopchat-chat-icon').each(function(index, img) {
