@@ -71,7 +71,7 @@
             }
         }
 
-        var maxIconCount = Math.floor((window.innerHeight - 130) / 72);
+        var maxIconCount = Math.floor((window.innerHeight - 130) / 66);
 
         var anchor = $('<div>')
             .attr('id', 'shopchat-container')
