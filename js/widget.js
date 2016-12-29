@@ -291,7 +291,7 @@
 
                     container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("1: Add to Contacts")
 
-                    if (Android) {
+                    if (true || Android) {
                         $('<a target="_blank" class="shopchat-button">').attr('href', "tel:" + settings.apps.whatsapp).text(settings.apps.whatsapp).appendTo(container);
                     } else  {
                         $('<a target="_blank" class="shopchat-button">').attr('rel', 'external').attr('download', name + ".vcf").attr('href', "data:text/directory;base64," + btoa(card)).text(settings.apps.whatsapp).appendTo(container);
@@ -320,7 +320,7 @@
 
                     container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("1: Add to Contacts");
 
-                    if (Android) {
+                    if (true || Android) {
                         $('<a target="_blank" class="shopchat-button">').attr('href', "viber://tel:" + settings.apps.viber).text(settings.apps.viber).appendTo(container);
                     } else if (iOS) {
                         $('<a target="_blank" class="shopchat-button">').attr('href', "viber://calls").text(settings.apps.viber).appendTo(container);
