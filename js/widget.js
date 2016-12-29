@@ -202,7 +202,7 @@
             }
 
             $(window).resize(function() {
-                maxIconCount = Math.floor((window.innerHeight - 130) / 52);
+                maxIconCount = Math.floor((window.innerHeight - 130) / 72);
                 if (numberOfApps > maxIconCount) {
                     more.appendTo(anchor);
                 } else {
@@ -289,9 +289,9 @@
                         "\nTEL;TYPE=WORK,VOICE:" + settings.apps.whatsapp +
                         "\nEND:VCARD";
 
-                    container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("1: Add to Contacts")
+                    container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("1: Add to Contacts");
 
-                    if (true || Android) {
+                    if (Android) {
                         $('<a target="_blank" class="shopchat-button">').attr('href', "tel:" + settings.apps.whatsapp).text(settings.apps.whatsapp).appendTo(container);
                     } else  {
                         $('<a target="_blank" class="shopchat-button">').attr('rel', 'external').attr('download', name + ".vcf").attr('href', "data:text/directory;base64," + btoa(card)).text(settings.apps.whatsapp).appendTo(container);
@@ -344,16 +344,29 @@
                     break;
 
                 case 'kik':
-                    if (Mobile || iOS) {
-                        link = "kik://user/" + settings.apps.kik;
+                    var name = site.split('.')[0];
+                    var card = "BEGIN:VCARD" +
+                        "\nVERSION:3.0" +
+                        "\nN:" + name +
+                        "\nFN:" + name +
+                        "\nORG:" + site +
+                        "\nTEL;TYPE=WORK,VOICE:" + settings.apps.viber +
+                        "\nEND:VCARD";
+
+                    container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("1: Add User to Contacts");
+
+                    $('<a class="shopchat-button">').text(settings.apps.kik).appendTo(container);
+                    $('<br><span>').text('2: Start chat').appendTo(container);
+
+                    if (Mobile) {
+                        $('<br><a class="shopchat-button">Open Kik</a>').attr('href', 'kik://user/' + settings.apps.kik).appendTo(container);
+                    } else {
+                        $('<br><a class="shopchat-button" target="_blank" href="https://www.kik.com">Kik Website</a>').appendTo(container);
                     }
-                    // else if (Android) {
-                    //     link = "fb-messenger://user/" + settings.apps.facebook;
-                    // }
-                    else if (!Mobile) {
-                        link = "https://www.kik.com/";
-                    }
+
+                    qr = true;
                     break;
+
                 default:
                     break;
             }
