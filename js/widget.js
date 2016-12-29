@@ -159,6 +159,8 @@
             var more = $('<div>')
                 .css('background-color', '#888888')
                 .css('transform', 'scale(-2,2)')
+                .css('height', '50px')
+                .css('width', '50px')
                 .addClass('shopchat-chat-icon')
                 .attr('data-type', 'more')
                 .append(
