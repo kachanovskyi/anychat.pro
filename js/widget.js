@@ -351,7 +351,7 @@
 
                     container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("1: Add User to Contacts");
 
-                    $('<a class="shopchat-button">').text(settings.apps.kik).appendTo(container);
+                    $('<a class="shopchat-button" style="border-color: rgba(255,255,255,0.3)">').text(settings.apps.kik).appendTo(container);
                     $('<br><span>').text('2: Start chat').appendTo(container);
 
                     if (Mobile) {

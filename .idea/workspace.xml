@@ -40,9 +40,11 @@
       <file leaf-file-name="widget.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/widget.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="73" column="69" selection-start-line="73" selection-start-column="69" selection-end-line="73" selection-end-column="69" />
-              <folding />
+            <state relative-caret-position="270">
+              <caret line="353" column="50" selection-start-line="353" selection-start-column="50" selection-end-line="353" selection-end-column="50" />
+              <folding>
+                <marker date="1483014931326" expanded="true" signature="15791:15826" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -196,7 +198,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17838000" />
+    <option name="totallyTimeSpent" value="18006000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -244,7 +246,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1564">
           <caret line="92" column="35" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="35" />
-          <folding />
+          <folding>
+            <marker date="1483014931326" expanded="true" signature="15791:15826" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -268,7 +272,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1564">
           <caret line="92" column="35" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="35" />
-          <folding />
+          <folding>
+            <marker date="1483014931326" expanded="true" signature="15791:15826" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -311,7 +317,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1564">
           <caret line="92" column="35" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="35" />
-          <folding />
+          <folding>
+            <marker date="1483014931326" expanded="true" signature="15791:15826" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -356,9 +364,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/widget.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="73" column="69" selection-start-line="73" selection-start-column="69" selection-end-line="73" selection-end-column="69" />
-          <folding />
+        <state relative-caret-position="270">
+          <caret line="353" column="50" selection-start-line="353" selection-start-column="50" selection-end-line="353" selection-end-column="50" />
+          <folding>
+            <marker date="1483014931326" expanded="true" signature="15791:15826" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
