@@ -1,6 +1,7 @@
 (function() {
     //Load Stylesheet
     var root = 'https://rawgit.com/kachanovskyi/shopchat.pro/master/';
+    // var root = './'
     var head = document.getElementsByTagName('head')[0],
         stylesheet = document.createElement('link');
     stylesheet.type = 'text/css';
@@ -67,7 +68,6 @@
         if (!Mobile) {
             if (settings.apps.sms) {
                 numberOfApps--;
-                console.log('not Mobile if-case (numberOfApps-- for sms)');
             }
         }
 
@@ -101,10 +101,7 @@
 
 
         //Add overlay
-
-        console.log(settings, 'settings out if');
         if (settings.overlay && !Mobile) {
-            console.log(settings.overlay, 'settings.overlay');
             var overlayMask = $('<div id="shopchat-overlay">').appendTo($('body')).click(function() {
                 overlayMask.hide();
             }).hide();
@@ -114,9 +111,6 @@
             });
 
             $.each(settings.apps, function(key, value) {
-                console.log(settings, 'settings');
-                console.log(settings.apps, 'apps');
-                console.log(key, 'key');
                 $('<div>')
                     .addClass('shopchat-overlay-chat-icon')
                     .attr('data-type', key)
@@ -133,7 +127,6 @@
 
             launcher.click(function() {
                 overlayMask.fadeIn();
-                console.log('launcher click');
             });
 
         } else {
@@ -199,14 +192,23 @@
 
             if (numberOfApps > maxIconCount) {
                 more.appendTo(anchor);
+                $(".shopchat-label").each(function () {
+                    $(this).css('display', 'none');
+                })
             }
 
             $(window).resize(function() {
                 maxIconCount = Math.floor((window.innerHeight - 130) / 72);
                 if (numberOfApps > maxIconCount) {
                     more.appendTo(anchor);
+                    $(".shopchat-label").each(function () {
+                        $(this).css('display', 'none');
+                    })
                 } else {
                     more.detach();
+                    $(".shopchat-label").each(function () {
+                        $(this).css('display', 'inline-block');
+                    })
                 }
             });
 
@@ -265,6 +267,7 @@
                         link = "tel:" + settings.apps.phone;
                     } else {
                         container.css('color', 'white').css('padding', '8px').css('padding-top', '32px');
+                        // $('<a class="shopchat-close-button"><img src="./images/close.png"/></a>').appendTo(container);
                         $('<a target="_blank" class="shopchat-button">').attr('href', "tel://" + settings.apps.phone).text(settings.apps.phone).appendTo(container);
                         qr = true;
                         break;
@@ -371,14 +374,36 @@
                 app.append(container);
             }
 
-            app.click(function(event) {
-                event.stopPropagation();
-
+            function qrClose() {
                 if (qr) {
                     if (app.is('.shopchat-panel')) {
                         app.removeClass('shopchat-panel');
                         app.find('.shopchat-qr').removeClass('active');
-                    } else {
+                    }
+                }
+            }
+
+            $(window).click(function () {
+                qrClose();
+            });
+
+            // $('.shopchat-close-button').click(function () {
+            //     console.log($(this).parent().parent().find('.shopchat-qr.active').removeClass('active'));
+            //     if (qr) {
+            //         if (app.is('.shopchat-panel')) {
+            //             console.log('qr closed');
+            //             $(this).parent().parent().removeClass('shopchat-panel');
+            //             $(this).parent().parent().find('.shopchat-qr').removeClass('active');
+            //         }
+            //     }
+            //     // $(document).find('.shopchat-qr').removeClass('active');
+            // });
+
+            app.click(function(event) {
+                event.stopPropagation();
+
+                if (qr) {
+                    if (app.not('.shopchat-panel')) {
                         app.siblings().removeClass('shopchat-panel');
                         app.addClass('shopchat-panel');
                         app.find('.shopchat-qr').addClass('active');

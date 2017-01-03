@@ -83,6 +83,20 @@
     z-index: 11;
 }
 
+.shopchat-close-button.shopchat-panel {
+    position: fixed;
+    right: 50% !important;
+    top: 50% !important;
+    /*margin-right: px;*/
+    margin-top: -140px;
+    z-index: 11;
+}
+
+.shopchat-chat-icon.shopchat-panel:hover
+{
+    cursor: default;
+}
+
 #shopchat-container.left .shopchat-chat-icon.shopchat-panel {
     left: auto;
 }
@@ -107,6 +121,16 @@
     -webkit-transition: visibility 0s linear 0.2s, opacity 0.2s linear 0.2s;
     transition: visibility 0s linear 0.2s, opacity 0.2s linear 0.2s;
 }
+    .shopchat-qr .shopchat-close-button {
+        position: absolute;
+        top: -58px;
+        right: -58px;
+        text-decoration: none;
+        border: none;
+    }
+    .shopchat-qr .shopchat-close-button:hover {
+        cursor: pointer;
+    }
 
 .shopchat-chat-icon:not(.shopchat-panel) .shopchat-qr {
     visibility: hidden;
