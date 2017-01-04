@@ -365,12 +365,14 @@
                                 org_checkbox.prop('checked', true);
                                 block.removeClass('inactive');
                                 block.find('input[type="text"], input[type="email"]').get(0).focus();
+                                generate();
 
                             } else {
                                 // Update state
                                 org_checkbox.prop('checked', false);
                                 block.addClass('inactive');
                                 block.find('input[type="text"], input[type="email"]').get(0).blur();
+                                generate();
                             }
                         });
                     });
@@ -463,6 +465,6 @@
         });
     });
     </script>
-    <script id="shopchat-script" src="./js/widget.js" data-color="#DA3337" data-apps="eyJlbWFpbCI6Im1heEBib3RzY3Jldy5jb20iLCJzbXMiOiIrMzgwNTA1MDUwMDUwIiwicGhvbmUiOiIrMzgwNTA1MDUwMDUwIiwiZmFjZWJvb2siOiIxMjM1MDc1NDEzMTg1NjIxIiwia2lrIjoibWF4Z2xhZHlzaCIsInZpYmVyIjoiKzM4MDUwNTA1MDA1MCIsIndoYXRzYXBwIjoiKzM4MDUwNTA1MDA1MCJ9"></script>
+    <script id="shopchat-script" src="./js/widget.js" data-color="#DA3337" data-apps="eyJlbWFpbCI6IiBpbmZvQGNoYXRib3RzdHVkaW9zLmNvIiwic21zIjoiKzE5NDkyMjg5NDc1IiwicGhvbmUiOiIrMTk0OTIyODk0NzUiLCJmYWNlYm9vayI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>
 </body>
 </html>

@@ -101,11 +101,6 @@
     left: auto;
 }
 
-.shopchat-chat-icon:not(.shopchat-panel):hover {
-    /*width: 150px;*/
-    z-index: 12;
-}
-
 .shopchat-qr {
     height: 200px;
     width: 200px;
