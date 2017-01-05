@@ -149,7 +149,7 @@
     opacity: 0;
     filter: alpha(opacity=0);
     border: 0;
-    right: 0px;
+    right: 0;
     width: 90px;
     text-align: right;
     -webkit-transition: visibility 0s, opacity 0.5s linear 3s;
@@ -186,9 +186,12 @@
 .shopchat-chat-icon.shopchat-panel > .shopchat-label {
     opacity: 1;
     filter: alpha(opacity=100);
-    margin-left: 144px;
+    margin-left: 148px;
     color: #FFFFFF;
     text-align: left;
+}
+.shopchat-chat-icon.echo.shopchat-panel > .shopchat-label {
+    color: #2F80ED;
 }
 
 #shopchat-overlay {

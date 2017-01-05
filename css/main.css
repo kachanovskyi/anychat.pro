@@ -125,7 +125,7 @@
 	}
 
 		a:hover {
-			border-bottom-color: #E4392B;
+			border-bottom-color: #E4392B !important;
 			color: #E4392B !important;
 		}
 
