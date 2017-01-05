@@ -46,13 +46,16 @@
             align = script.data('align'),
             whitelabel = script.data('whitelabel'),
             colors = {
+                anychat: '#ffffff',
                 email: '#2D70E7',
                 sms: '#2F80ED',
                 phone: '#0AD02C',
                 facebook: '#0084FF',
                 viber: '#675CA8',
                 kik: '#82BC23',
-                whatsapp: '#30BE2D'
+                whatsapp: '#30BE2D',
+                echo: '#fcfcfc',
+                allo: '#f5b900'
             };
 
         settings.apps = JSON.parse(decodeURI(atob(cipher)));
@@ -71,7 +74,7 @@
             }
         }
 
-        var maxIconCount = Math.floor((window.innerHeight - 130) / 66);
+        var maxIconCount = Math.floor((window.innerHeight - 130) / 56);
 
         var anchor = $('<div>')
             .attr('id', 'shopchat-container')
@@ -111,18 +114,33 @@
             });
 
             $.each(settings.apps, function(key, value) {
-                $('<div>')
-                    .addClass('shopchat-overlay-chat-icon')
-                    .attr('data-type', key)
-                    .css('background-color', colors[key])
-                    .append(
-                        $('<img>')
-                        .attr('src', root + 'images/' + key + '.svg')
-                        .attr('alt', key)
-                    )
-                    .append($('<div class="shopchat-label">').text(key.charAt(0).toUpperCase() + key.slice(1)))
+                if(key != 'anychat' && key != 'echo' && key != 'allo') {
+                    $('<div>')
+                        .addClass('shopchat-overlay-chat-icon')
+                        .attr('data-type', key)
+                        .css('background-color', colors[key])
+                        .append(
+                            $('<img>')
+                                .attr('src', root + 'images/' + key + '.svg')
+                                .attr('alt', key)
+                        )
+                        .append($('<div class="shopchat-label">').text(key.charAt(0).toUpperCase() + key.slice(1)))
 
-                .appendTo(overlayBody);
+                        .appendTo(overlayBody);
+                } else {
+                    $('<div>')
+                        .addClass('shopchat-overlay-chat-icon')
+                        .attr('data-type', key)
+                        .css('background-color', colors[key])
+                        .append(
+                            $('<img>')
+                                .attr('src', root + 'images/' + key + '.png')
+                                .attr('alt', key)
+                        )
+                        .append($('<div class="shopchat-label">').text(key.charAt(0).toUpperCase() + key.slice(1)))
+
+                        .appendTo(overlayBody);
+                }
             });
 
             launcher.click(function() {
@@ -131,20 +149,36 @@
 
         } else {
             $.each(settings.apps, function(key, value) {
-                if (Mobile || (key != 'sms' && key != 'kakao')) {
-                    $('<div>')
-                        .addClass('shopchat-chat-icon')
-                        .attr('data-type', key)
-                        .css('background-color', colors[key])
-                        .append(
-                            $('<img>')
-                            .attr('src', root + 'images/' + key + '.svg')
-                            .attr('alt', key)
-                        )
-                        .append($('<div class="shopchat-label">').text(key.charAt(0).toUpperCase() + key.slice(1)))
-                        .css('color', colors[key])
-                        .hide()
-                        .appendTo(anchor);
+                if (Mobile || (key != 'sms')) {
+                    if(key != 'anychat' && key != 'echo' && key != 'allo') {
+                        $('<div>')
+                            .addClass('shopchat-chat-icon')
+                            .attr('data-type', key)
+                            .css('background-color', colors[key])
+                            .append(
+                                $('<img>')
+                                    .attr('src', root + 'images/' + key + '.svg')
+                                    .attr('alt', key)
+                            )
+                            .append($('<div class="shopchat-label">').text(key.charAt(0).toUpperCase() + key.slice(1)))
+                            .css('color', colors[key])
+                            .hide()
+                            .appendTo(anchor);
+                    } else {
+                        $('<div>')
+                            .addClass('shopchat-chat-icon')
+                            .attr('data-type', key)
+                            .css('background-color', colors[key])
+                            .append(
+                                $('<img>')
+                                    .attr('src', root + 'images/' + key + '.png')
+                                    .attr('alt', key)
+                            )
+                            .append($('<div class="shopchat-label">').text(key.charAt(0).toUpperCase() + key.slice(1)))
+                            .css('color', '#f5b900')
+                            .hide()
+                            .appendTo(anchor);
+                    }
                 }
             });
 

@@ -155,26 +155,37 @@
                     <div class="input-block-container ui-sortable" style="margin-top: 3em; display: none;">
                         <b style="color:#DA3337;"><span style="color:#828282">Step 1: </span>Choose the apps you want to use on  your website and fill them</b>
                         <div class="input-block ui-sortable-handle">
-                            <img class="app-icon" src="./images/email.svg" alt="email">
+                            <img class="app-icon" src="./images/anychat.png" alt="email">
                             <div class="app-label" style="color:#2D70E7;">
-                                Email
+                                AnyChat Bot
                                 <div class="checkbox-container">
                                     <input type="checkbox" checked="" class="ios toggle">
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="email" type="text" placeholder="contact@company.com">
+                            <input name="anychat" data-default="http://chatbotstudios.co/" type="text" placeholder="FAQ link">
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/sms.svg" alt="sms">
                             <div class="app-label" style="color:#2F80ED;">
-                                SMS
+                                SMS/TEXT
                                 <div class="checkbox-container">
                                     <input type="checkbox" class="ios toggle">
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="sms" type="text" placeholder="Phone number">
+                            <input name="sms" data-default="+19492289475" type="text" placeholder="Phone number">
+                        </div>
+                        <div class="input-block inactive ui-sortable-handle">
+                            <img class="app-icon" src="./images/email.svg" alt="email">
+                            <div class="app-label" style="color:#2D70E7;">
+                                Email
+                                <div class="checkbox-container">
+                                    <input type="checkbox" class="ios toggle">
+                                    <label for="toggle"></label>
+                                </div>
+                            </div>
+                            <input name="email" data-default="info@chatbotstudios.co" type="text" placeholder="contact@company.com">
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/phone.svg" alt="phone">
@@ -185,7 +196,29 @@
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="phone" type="text" placeholder="Phone number">
+                            <input name="phone" data-default="+19492289475" type="text" placeholder="Phone number">
+                        </div>
+                        <div class="input-block inactive ui-sortable-handle">
+                            <img class="app-icon" src="./images/echo.png" alt="phone">
+                            <div class="app-label" style="color:#0084FF;">
+                                Amazon Echo
+                                <div class="checkbox-container">
+                                    <input type="checkbox" class="ios toggle">
+                                    <label for="toggle"></label>
+                                </div>
+                            </div>
+                            <input name="echo" data-default="226332827803600" type="text" placeholder="Alexa skill ID">
+                        </div>
+                        <div class="input-block inactive ui-sortable-handle">
+                            <img class="app-icon" src="./images/allo.png" alt="phone">
+                            <div class="app-label" style="color:#0084FF;">
+                                Google Home/Allo
+                                <div class="checkbox-container">
+                                    <input type="checkbox" class="ios toggle">
+                                    <label for="toggle"></label>
+                                </div>
+                            </div>
+                            <input name="allo" data-default="Chatbot Studios" type="text" placeholder="Username">
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/facebook.svg" alt="phone">
@@ -196,7 +229,7 @@
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="facebook" type="text" placeholder="Facebook ID">
+                            <input name="facebook" data-default="226332827803600" type="text" placeholder="Facebook ID">
                         </div>
 
                         <div class="input-block inactive ui-sortable-handle">
@@ -208,7 +241,7 @@
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="kik" type="text" placeholder="Username">
+                            <input name="kik" data-default="Chatbot Studios" type="text" placeholder="Username">
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/viber.svg" alt="viber">
@@ -219,7 +252,7 @@
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="viber" type="text" placeholder="Phone number">
+                            <input name="viber" data-default="+19492289475" type="text" placeholder="Phone number">
                         </div>
 
                         <div class="input-block inactive ui-sortable-handle">
@@ -231,7 +264,7 @@
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="whatsapp" type="text" placeholder="Phone number">
+                            <input name="whatsapp" data-default="+19492289475" type="text" placeholder="Phone number">
                         </div>
                         <div class="actions-block">
                             <b style="color:#DA3337;"><span style="color:#828282">Step 2: </span>Pick a color for the chat icon</b>
@@ -389,9 +422,13 @@
         color = $('#icon-color-picker > div.selected').data('color') || '#E4392B';
 
         $($('.input-block:not(.inactive)').find('input[type=text]').get().reverse()).each(function(index, input) {
-            console.log(input, 'input');
+            console.log(input.name, 'input');
+//            console.log()
             if (input.value) {
                 apps[input.name] = input.value;
+            } else {
+                apps[input.name] = $(input).attr('data-default');
+                console.log($(input).attr('data-default'))
             }
         });
 
@@ -465,6 +502,6 @@
         });
     });
     </script>
-    <script id="shopchat-script" src="./js/widget.js" data-color="#DA3337" data-apps="eyJlbWFpbCI6IiBpbmZvQGNoYXRib3RzdHVkaW9zLmNvIiwic21zIjoiKzE5NDkyMjg5NDc1IiwicGhvbmUiOiIrMTk0OTIyODk0NzUiLCJmYWNlYm9vayI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>
+    <script id="shopchat-script" src="./js/widget.js" data-color="#DA3337" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImVjaG8iOiIyMjYzMzI4Mjc4MDM2MDAiLCJhbGxvIjoiQ2hhdGJvdCBTdHVkaW9zIiwiZmFjZWJvb2siOiIyMjYzMzI4Mjc4MDM2MDAiLCJraWsiOiJDaGF0Ym90IFN0dWRpb3MiLCJ2aWJlciI6IisxOTQ5MjI4OTQ3NSIsIndoYXRzYXBwIjoiKzE5NDkyMjg5NDc1In0="></script>
 </body>
 </html>
