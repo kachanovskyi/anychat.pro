@@ -18,16 +18,20 @@
         <section id="wrapper">
             <canvas id="chatCanvas" style="position:absolute; left: 0; bottom: 0; top:0; z-index:-1;" width="707" height="633"></canvas>
             <div class="container-inner">
-                <b style="color:#DA3337;">shopchat.pro</b>
-                <h2 id="widget-heading" style="margin-top: 3.8em;">ShopChat Live Widget</h2>
+                <b style="color:#783bd2;">anychat.pro</b>
+                <h2 id="widget-heading" style="margin-top: .8em;">Right now, a monumental shift in consumer behavior is happening!</h2>
                 <p style="background:white;">
-                    Add mobile-friendly chat support to your website in less than 5 minutes!
+                    That’s right. Consumers	are	tired of downloading apps, scrolling through search	results,
+                    reading	reviews, surfing the web when all they want	are simple answers.
                 </p>
                 <p style="background:white;">
-                    Connect with your site visitors using popular messaging apps. With one tap, your visitors can open a direct line to you using their favorite chat application.
+                    But	they love to text.
                 </p>
                 <p style="background:white;">
-                    Goodbye old-fashioned contact forms and expensive live chat plans.
+                    So make it easy. Be	there. Right where they live… in their messaging apps!
+                </p>
+                <p style="background:white;">
+                    AnyCHAT is a mobile-friendly aiWidget™	that makes it super	simple for consumers to connect	with you on	their favorite	messaging channels – anytime,     anywhere,	any	channel.
                 </p>
 
                 <div style="margin-top: 3em;">
@@ -153,7 +157,7 @@
                     }
                     </style>
                     <div class="input-block-container ui-sortable" style="margin-top: 3em; display: none;">
-                        <b style="color:#DA3337;"><span style="color:#828282">Step 1: </span>Choose the apps you want to use on  your website and fill them</b>
+                        <b style="color:#783bd2;"><span style="color:#828282; display: inline-block; vertical-align: top;">Step 1: </span><div style="display: inline-block"> Fill in the details for the channels you want to activate.<br>Drag to re-arrange the order</div></b>
                         <div class="input-block ui-sortable-handle">
                             <img class="app-icon" src="./images/anychat.png" alt="email">
                             <div class="app-label" style="color:#2D70E7;">
@@ -163,7 +167,7 @@
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="anychat" data-default="http://chatbotstudios.co/" type="text" placeholder="FAQ link">
+                            <input name="anychat" data-default="http://chatbotstudios.co/" type="text" placeholder="Upgrade to activate. Request invite in next step.">
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/sms.svg" alt="sms">
@@ -267,7 +271,7 @@
                             <input name="whatsapp" data-default="+19492289475" type="text" placeholder="Phone number">
                         </div>
                         <div class="actions-block">
-                            <b style="color:#DA3337;"><span style="color:#828282">Step 2: </span>Pick a color for the chat icon</b>
+                            <b style="color:#783bd2;"><span style="color:#828282">Step 2: </span>Pick a color for your chat icon</b>
                             <style>
                             #icon-color-picker > div {
                                 cursor: pointer;
@@ -327,18 +331,37 @@
                                 </div>
                                 <br>
                                 <span style="font-size:21px;line-height:100%;color:#828282;margin-top: 15px;">
-                                    You can use any #hex code for your widget icon. Change the value of data-color="" attribute in the generated embed code
+                                    You can easily customize the color further by generating the code and changing the 6-digit Hex Code
                                 </span>
                             </div>
                             <br>
-                            <a href="javascript:generate();" class="button special icon fa-magic" style="margin-bottom:40px;">Generate embed code</a>
-                            <textarea id="embed" onclick="this.focus();this.select();" cols="30" rows="3" spellcheck="false" style="color: #333333;resize:none;"></textarea>
-                            <br>
-                            <p style="color: #333333">
-                                Copy the above code and insert it near the end of your website's HTML source code (right before <b>&lt;/body&gt;</b> would be good).
-                            </p>
+                            <a id="next" class="button special icon fa-magic" style="margin-bottom:40px;">Next</a>
+                            <div class="generate-code-container" style="display: none;">
+                                <b style="color:#783bd2;"><span style="color:#828282">Step 3: </span>Generate your custom code</b>
+                                <p style="color: #333333">
+                                    TERMS OF USE: FREE to use for 30 days for Non-Members.<br/>
+                                    To learn more, send a request to jedi@chatbotstudios.co
+                                </p>
+                                <a href="javascript:generate();" class="button special icon fa-magic" style="margin-bottom:40px;">Generate embed code</a>
+                                <textarea id="embed" onclick="this.focus();this.select();" cols="30" rows="3" spellcheck="false" style="color: #333333;resize:none;"></textarea>
+                                <br>
+                                <p style="color: #333333">
+                                    Copy and insert code near the end of your website's HTML source code.<br/>
+                                    Make sure to insert on every page you want the aiWidget™ to appear
+                                </p>
+                            </div>
                         </div>
                     </div>
+                <div class="footer">
+                    <p style="color: #783bd2; font-size: 16px;">
+                        AnyCHAT is an aiWidget™ designed, developed and managed by Chatbot Studios.
+                        At Chatbot Studios, we build smart chatbots, voicebots and iotbots for business.<br/>
+                        Reach out!
+                    </p>
+                </div>
+            </div>
+            <div class="preview" style="position: fixed; bottom: 35px; right: 75px; display: none;">
+                <img src="./images/testitout.png" alt="">
             </div>
             <div class="modal" style="display:none; width: 500px; height: 300px;">
             </div>
@@ -471,6 +494,14 @@
             }, 500);
         });
 
+        $("#next").click(function() {
+            $(".generate-code-container").show();
+
+            $('html, body').animate({
+                scrollTop: $(".generate-code-container").offset().top
+            }, 300);
+        });
+
         $('input[type=checkbox]').click(function(event) {
             var block = $(event.target).parent().parent().parent();
 
@@ -502,6 +533,6 @@
         });
     });
     </script>
-    <script id="shopchat-script" src="./js/widget.js" data-color="#DA3337" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImVjaG8iOiIyMjYzMzI4Mjc4MDM2MDAiLCJhbGxvIjoiQ2hhdGJvdCBTdHVkaW9zIiwiZmFjZWJvb2siOiIyMjYzMzI4Mjc4MDM2MDAiLCJraWsiOiJDaGF0Ym90IFN0dWRpb3MiLCJ2aWJlciI6IisxOTQ5MjI4OTQ3NSIsIndoYXRzYXBwIjoiKzE5NDkyMjg5NDc1In0="></script>
+    <script id="shopchat-script" src="./js/widget.js" data-color="#783bd2" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImFsZXhhIjoiMjI2MzMyODI3ODAzNjAwIiwiYWxsbyI6IkNoYXRib3QgU3R1ZGlvcyIsIm1lc3NlbmdlciI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>
 </body>
 </html>

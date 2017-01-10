@@ -1,7 +1,7 @@
 (function() {
     //Load Stylesheet
-    var root = 'https://rawgit.com/kachanovskyi/shopchat.pro/master/';
-    // var root = './'
+//    var root = 'https://rawgit.com/kachanovskyi/shopchat.pro/master/';
+    var root = './'
     var head = document.getElementsByTagName('head')[0],
         stylesheet = document.createElement('link');
     stylesheet.type = 'text/css';
@@ -50,11 +50,11 @@
                 email: '#2D70E7',
                 sms: '#2F80ED',
                 phone: '#0AD02C',
-                facebook: '#0084FF',
+                messenger: '#0084FF',
                 viber: '#675CA8',
                 kik: '#82BC23',
                 whatsapp: '#30BE2D',
-                echo: '#fcfcfc',
+                alexa: '#fcfcfc',
                 allo: '#f5b900'
             };
 
@@ -115,10 +115,15 @@
 
             $.each(settings.apps, function(key, value) {
                 var imgType;
-                if(key === 'anychat' || key === 'echo' || key === 'allo') {
+                var labelText = key.charAt(0).toUpperCase() + key.slice(1);
+                if(key === 'anychat' || key === 'alexa' || key === 'allo') {
                     imgType = '.png';
                 } else {
                     imgType = '.svg';
+                }
+
+                if(key === 'allo') {
+                    labelText = 'Allo/Home';
                 }
 
                 $('<div>')
@@ -127,10 +132,11 @@
                     .css('background-color', colors[key])
                     .append(
                         $('<img>')
+//                            .attr('srcset', root + 'images/' + key + imgType + '1000w, ' + root + 'images/allo.png')
                             .attr('src', root + 'images/' + key + imgType)
                             .attr('alt', key)
                     )
-                    .append($('<div class="shopchat-label">').text(key.charAt(0).toUpperCase() + key.slice(1)))
+                    .append($('<div class="shopchat-label">').text(labelText))
 
                     .appendTo(overlayBody);
             });
@@ -142,9 +148,8 @@
         } else {
             $.each(settings.apps, function(key, value) {
                 if (Mobile || (key != 'sms')) {
-                    var color;
-                    var imgType;
-                    if(key === 'anychat' || key === 'echo') {
+                    var color, imgType, labelText = key.charAt(0).toUpperCase() + key.slice(1);
+                    if(key === 'anychat' || key === 'alexa') {
                         color = '#2F80ED';
                         imgType = '.png';
                     } else {
@@ -154,6 +159,7 @@
 
                     if(key === 'allo') {
                         imgType = '.png';
+                        labelText = 'Allo/Home';
                     }
 
                     $('<div>')
@@ -162,10 +168,11 @@
                         .css('background-color', colors[key])
                         .append(
                             $('<img>')
+//                                .attr('srcset', root + 'images/' + key + imgType + '1000w, ' + root + 'images/allo.png 2000w')
                                 .attr('src', root + 'images/' + key + imgType)
                                 .attr('alt', key)
                         )
-                        .append($('<div class="shopchat-label">').text(key.charAt(0).toUpperCase() + key.slice(1)))
+                        .append($('<div class="shopchat-label">').text(labelText))
                         .css('color', color)
                         .hide()
                         .appendTo(anchor);
@@ -234,6 +241,14 @@
                         $(this).css('display', 'inline-block');
                     })
                 }
+
+                console.log($(window).width());
+                if($(window).width() < 980) {
+                    console.log('less');
+                    $('.preview').css('display', 'none');
+                } else {
+                    $('.preview').css('display', 'block');
+                }
             });
 
 
@@ -300,13 +315,13 @@
                         break;
                     }
                     break;
-                case 'facebook':
+                case 'messenger':
                     if (iOS) {
-                        link = "fb-messenger://user-thread/" + settings.apps.facebook;
+                        link = "fb-messenger://user-thread/" + settings.apps.messenger;
                     } else if (Android) {
-                        link = "fb-messenger://user/" + settings.apps.facebook;
+                        link = "fb-messenger://user/" + settings.apps.messenger;
                     } else if (!Mobile) {
-                        link = "https://m.me/" + settings.apps.facebook;
+                        link = "https://m.me/" + settings.apps.messenger;
                     }
                     break;
                 case 'whatsapp':
@@ -393,11 +408,11 @@
                     qr = true;
                     break;
 
-                case 'echo':
+                case 'alexa':
                     container.css('color', 'white').css('padding', '8px').css('padding-top', '32px');
                     container.css('color', '#2F80ED').css('padding', '8px').css('padding-top', '32px').text("Alexa skill ID:");
                     // $('<a class="shopchat-close-button"><img src="./images/close.png"/></a>').appendTo(container);
-                    $('<a target="_blank" class="shopchat-button" style="color:#2F80ED; border-color:#2F80ED;">').attr('href', "https://www.alexaskillstore.com/" + settings.apps.echo).text(settings.apps.echo).appendTo(container);
+                    $('<a target="_blank" class="shopchat-button" style="color:#2F80ED; border-color:#2F80ED;">').attr('href', "https://www.alexaskillstore.com/" + settings.apps.alexa).text(settings.apps.alexa).appendTo(container);
                     qr = true;
                     break;
 
@@ -483,13 +498,16 @@
             });
 
             $('.shopchat-chat-icon').each(function () {
-                if($(this).attr('data-type') === 'echo') {
-                    $(this).addClass('echo');
+                if($(this).attr('data-type') === 'alexa') {
+                    $(this).addClass('alexa');
                 }
             })
 
         });
 
+        if( $(window).width() > 980) {
+            $('.preview').css('display', 'block');
+        }
         window.initializeShopchat = init;
         return true;
     }
