@@ -1,0 +1,18 @@
+<svg width="70" height="70" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>allo-yellow</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-920 148)" figma:type="canvas">
+<g id="allo-yellow" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Ellipse 3" style="mix-blend-mode:normal;" figma:type="ellipse">
+<use xlink:href="#path0_fill" transform="translate(920 -148)" fill="#F5B900" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Union" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path1_fill" transform="translate(941 -127)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 70 35C 70 54.33 54.33 70 35 70C 15.67 70 0 54.33 0 35C 0 15.67 15.67 0 35 0C 54.33 0 70 15.67 70 35Z"/>
+<path id="path1_fill" d="M 28 14C 28 6.26801 21.732 0 14 0C 6.26801 0 0 6.26801 0 14C 0 21.732 6.26801 28 14 28C 17.6813 28 21.0308 26.5791 23.5299 24.2559L 26.5284 27.7101C 27.0327 28.291 28 27.9404 28 27.1767L 28 14Z"/>
+</defs>
+</svg>

@@ -1,0 +1,18 @@
+<svg width="70" height="70" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>alexa-blue</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-910 35)" figma:type="canvas">
+<g id="alexa-blue" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Ellipse 3" style="mix-blend-mode:normal;" figma:type="ellipse">
+<use xlink:href="#path0_fill" transform="translate(910 -35)" fill="#54ABD8" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Union" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path1_fill" transform="translate(930 -18)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 70 35C 70 54.33 54.33 70 35 70C 15.67 70 0 54.33 0 35C 0 15.67 15.67 0 35 0C 54.33 0 70 15.67 70 35Z"/>
+<path id="path1_fill" d="M 7.05574 27.2288C 3.71556 25.1814 1.19494 21.841 0.322148 17.7419C -1.37191 9.78561 3.78339 1.98381 11.8368 0.316064C 19.8903 -1.35168 27.7921 3.74618 29.4862 11.7024C 30.929 18.4787 27.4035 25.143 21.3506 28.001L 22.8709 35.1412C 22.9958 35.7281 22.6155 36.3037 22.0214 36.4267C 21.6541 36.5028 21.291 36.388 21.0378 36.1506L 7.05574 27.2288Z"/>
+</defs>
+</svg>

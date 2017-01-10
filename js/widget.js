@@ -1,7 +1,7 @@
 (function() {
     //Load Stylesheet
-   var root = 'https://rawgit.com/kachanovskyi/shopchat.pro/master/';
-   //  var root = './'
+   // var root = 'https://rawgit.com/kachanovskyi/shopchat.pro/master/';
+    var root = './';
     var head = document.getElementsByTagName('head')[0],
         stylesheet = document.createElement('link');
     stylesheet.type = 'text/css';
@@ -46,7 +46,7 @@
             align = script.data('align'),
             whitelabel = script.data('whitelabel'),
             colors = {
-                anychat: '#ffffff',
+                anychat: 'transparent',
                 email: '#2D70E7',
                 sms: '#2F80ED',
                 phone: '#0AD02C',
@@ -54,7 +54,7 @@
                 viber: '#675CA8',
                 kik: '#82BC23',
                 whatsapp: '#30BE2D',
-                alexa: '#fcfcfc',
+                alexa: '#2F80ED',
                 allo: '#f5b900'
             };
 
@@ -116,7 +116,7 @@
             $.each(settings.apps, function(key, value) {
                 var imgType;
                 var labelText = key.charAt(0).toUpperCase() + key.slice(1);
-                if(key === 'anychat' || key === 'alexa' || key === 'allo') {
+                if(key === 'anychat') {
                     imgType = '.png';
                 } else {
                     imgType = '.svg';
@@ -149,7 +149,7 @@
             $.each(settings.apps, function(key, value) {
                 if (Mobile || (key != 'sms')) {
                     var color, imgType, labelText = key.charAt(0).toUpperCase() + key.slice(1);
-                    if(key === 'anychat' || key === 'alexa') {
+                    if(key === 'anychat') {
                         color = '#2F80ED';
                         imgType = '.png';
                     } else {
@@ -158,7 +158,6 @@
                     }
 
                     if(key === 'allo') {
-                        imgType = '.png';
                         labelText = 'Allo/Home';
                     }
 
