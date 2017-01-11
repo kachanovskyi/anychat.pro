@@ -121,6 +121,7 @@
                 var labelText = key.charAt(0).toUpperCase() + key.slice(1);
                 if(key === 'anychat') {
                     imgType = '.png';
+                    labelText = 'AnyCHAT';
                 } else {
                     imgType = '.svg';
                 }
@@ -155,6 +156,7 @@
                     if(key === 'anychat') {
                         color = '#2F80ED';
                         imgType = '.png';
+                        labelText = 'AnyCHAT';
                     } else {
                         color = colors[key];
                         imgType = '.svg';
