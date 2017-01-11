@@ -1,36 +1,36 @@
-.shopchat-brand,
-.shopchat-chat-icon,
-.shopchat-button,
-.shopchat-block,
-.shopchat-label {
+.anychat-brand,
+.anychat-chat-icon,
+.anychat-button,
+.anychat-block,
+.anychat-label {
     font-family: 'Avenir Next', Avenir, 'Helvetica Neue', Lato, 'Segoe UI', Helvetica, Arial, sans-serif;
 }
 
-#shopchat-container {
+#anychat-container {
     position: fixed;
     z-index: 10000;
     right: 0;
     bottom: 0;
 }
 
-#shopchat-container.left {
+#anychat-container.left {
     right: auto;
     left: 0;
 }
 
-#shopchat-container.left {
+#anychat-container.left {
     right: auto;
     left: 0;
 }
 
-#shopchat-container.left .shopchat-launcher,
-#shopchat-container.left .shopchat-chat-icon {
+#anychat-container.left .anychat-launcher,
+#anychat-container.left .anychat-chat-icon {
     right: auto;
     left: 14px;
 }
 
-.shopchat-launcher,
-.shopchat-chat-icon {
+.anychat-launcher,
+.anychat-chat-icon {
     float: left;
     cursor: pointer;
     position: absolute;
@@ -42,14 +42,14 @@
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05), 0 15px 30px -10px rgba(0, 0, 0, 0.3);
 }
 
-.shopchat-chat-icon {
+.anychat-chat-icon {
     display: none;
     opacity: 0;
     filter: alpha(opacity=0);
 }
 
-.shopchat-button,
-.shopchat-block {
+.anychat-button,
+.anychat-block {
     color: white;
     border: 2px solid white;
     text-decoration: none;
@@ -61,18 +61,18 @@
     text-align: center;
 }
 
-.shopchat-block:hover {
+.anychat-block:hover {
     color: white !important;
     cursor: default;
 }
 
-.shopchat-chat-icon img {
+.anychat-chat-icon img {
     height: 50px;
     width: 50px;
     display: inline-block;
 }
 
-.shopchat-chat-icon.shopchat-panel {
+.anychat-chat-icon.anychat-panel {
     position: fixed;
     width: 280px;
     height: 280px;
@@ -83,7 +83,7 @@
     z-index: 11;
 }
 
-.shopchat-close-button.shopchat-panel {
+.anychat-close-button.anychat-panel {
     position: fixed;
     right: 50% !important;
     top: 50% !important;
@@ -92,16 +92,16 @@
     z-index: 11;
 }
 
-.shopchat-chat-icon.shopchat-panel:hover
+.anychat-chat-icon.anychat-panel:hover
 {
     cursor: default;
 }
 
-#shopchat-container.left .shopchat-chat-icon.shopchat-panel {
+#anychat-container.left .anychat-chat-icon.anychat-panel {
     left: auto;
 }
 
-.shopchat-qr {
+.anychat-qr {
     height: 200px;
     width: 200px;
     position: absolute;
@@ -116,30 +116,30 @@
     -webkit-transition: visibility 0s linear 0.2s, opacity 0.2s linear 0.2s;
     transition: visibility 0s linear 0.2s, opacity 0.2s linear 0.2s;
 }
-    .shopchat-qr .shopchat-close-button {
+    .anychat-qr .anychat-close-button {
         position: absolute;
         top: -58px;
         right: -58px;
         text-decoration: none;
         border: none;
     }
-    .shopchat-qr .shopchat-close-button:hover {
+    .anychat-qr .anychat-close-button:hover {
         cursor: pointer;
     }
 
-.shopchat-chat-icon:not(.shopchat-panel) .shopchat-qr {
+.anychat-chat-icon:not(.anychat-panel) .anychat-qr {
     visibility: hidden;
     opacity: 0;
     filter: alpha(opacity=0);
 }
 
-.shopchat-launcher.shopchat-launcher-active .shopchat-brand {
+.anychat-launcher.anychat-launcher-active .anychat-brand {
     visibility: visible;
     opacity: 1;
     filter: alpha(opacity=100);
 }
 
-.shopchat-brand {
+.anychat-brand {
     text-decoration: none;
     position: absolute;
     visibility: hidden;
@@ -156,7 +156,7 @@
     transition: visibility 0s, opacity 0.5s linear 3s;
 }
 
-.shopchat-label {
+.anychat-label {
     width: 96px;
     text-align: right;
     opacity: 0;
@@ -178,23 +178,23 @@
     transition: opacity 0.2s;
 }
 
-.shopchat-chat-icon:hover > .shopchat-label {
+.anychat-chat-icon:hover > .anychat-label {
     opacity: 1;
     filter: alpha(opacity=100);
 }
 
-.shopchat-chat-icon.shopchat-panel > .shopchat-label {
+.anychat-chat-icon.anychat-panel > .anychat-label {
     opacity: 1;
     filter: alpha(opacity=100);
     margin-left: 148px;
     color: #FFFFFF;
     text-align: left;
 }
-.shopchat-chat-icon.echo.shopchat-panel > .shopchat-label {
+.anychat-chat-icon.echo.anychat-panel > .anychat-label {
     color: #2F80ED;
 }
 
-#shopchat-overlay {
+#anychat-overlay {
     height: 100%;
     width: 100%;
     position: fixed;
@@ -203,7 +203,7 @@
     background-color: rgba(0, 0, 0, 0.35);
 }
 
-#shopchat-overlay .overlay-body {
+#anychat-overlay .overlay-body {
     position: absolute;
     width: 600px;
     height: 480px;
@@ -219,11 +219,11 @@
     padding-top: 20px;
 }
 
-#shopchat-overlay .shopchat-qr {
+#anychat-overlay .anychat-qr {
     display: none;
 }
 
-#shopchat-overlay .shopchat-qr.active {
+#anychat-overlay .anychat-qr.active {
     display: block;
     margin: auto;
     width: 100%;
@@ -233,7 +233,7 @@
     background-repeat: no-repeat;
 }
 
-.shopchat-overlay-chat-icon {
+.anychat-overlay-chat-icon {
     display: inline-block;
     width: 100px;
     height: 100px;
@@ -247,14 +247,14 @@
 
 /* Click Effects */
 
-.shopchat-launcher {
+.anychat-launcher {
     transition: color 0.7s;
     -webkit-transition: color 0.7s;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     background-size: contain;
 }
 
-.shopchat-effect:before {
+.anychat-effect:before {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -268,22 +268,22 @@
     pointer-events: none;
 }
 
-.shopchat-effect:before,
-.shopchat-effect:after {
+.anychat-effect:before,
+.anychat-effect:after {
     box-shadow: 0 0 0 2px rgba(111, 148, 182, 0.6);
 }
 
-.shopchat-effect.shopchat-show-effect:before {
-    -webkit-animation: shopchat-effect-1 0.5s forwards;
-    animation: shopchat-effect-1 0.5s forwards;
+.anychat-effect.anychat-show-effect:before {
+    -webkit-animation: anychat-effect-1 0.5s forwards;
+    animation: anychat-effect-1 0.5s forwards;
 }
 
-.shopchat-effect.shopchat-show-effect:after {
-    -webkit-animation: shopchat-effect-2 0.5s forwards;
-    animation: shopchat-effect-2 0.5s forwards;
+.anychat-effect.anychat-show-effect:after {
+    -webkit-animation: anychat-effect-2 0.5s forwards;
+    animation: anychat-effect-2 0.5s forwards;
 }
 
-@-webkit-keyframes shopchat-effect-1 {
+@-webkit-keyframes anychat-effect-1 {
     0% {
         opacity: 1;
         filter: alpha(opacity=100);
@@ -298,7 +298,7 @@
     }
 }
 
-@keyframes shopchat-effect-1 {
+@keyframes anychat-effect-1 {
     0% {
         opacity: 1;
         filter: alpha(opacity=100);
@@ -313,7 +313,7 @@
     }
 }
 
-@-webkit-keyframes shopchat-effect-2 {
+@-webkit-keyframes anychat-effect-2 {
     0% {
         opacity: 1;
         filter: alpha(opacity=100);
@@ -329,7 +329,7 @@
     }
 }
 
-@keyframes shopchat-effect-2 {
+@keyframes anychat-effect-2 {
     0% {
         opacity: 1;
         filter: alpha(opacity=100);

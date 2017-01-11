@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>ShopChat</title>
+    <title>AnyCHAT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     <link rel="stylesheet" href="./css/main.css">
@@ -18,7 +18,7 @@
         <section id="wrapper">
             <canvas id="chatCanvas" style="position:absolute; left: 0; bottom: 0; top:0; z-index:-1;" width="707" height="633"></canvas>
             <div class="container-inner">
-                <b style="color:#783bd2;">anychat.pro</b>
+                <b style="color:#783bd2;">AnyCHAT.pro</b>
                 <h2 id="widget-heading" style="margin-top: .8em;">Right now, a monumental shift in consumer behavior is happening!</h2>
                 <p style="background:white;">
                     That’s right. Consumers	are	tired of downloading apps, scrolling through search	results,
@@ -161,7 +161,7 @@
                         <div class="input-block ui-sortable-handle">
                             <img class="app-icon" src="./images/anychat.png" alt="email">
                             <div class="app-label" style="color:#2D70E7;">
-                                AnyChat Bot
+                                AnyCHAT Bot
                                 <div class="checkbox-container">
                                     <input type="checkbox" checked="" class="ios toggle">
                                     <label for="toggle"></label>
@@ -330,7 +330,7 @@
                                     </svg>
                                 </div>
                                 <br>
-                                <span style="font-size:21px;line-height:100%;color:#828282;margin-top: 15px;">
+                                <span style="font-size:13pt;line-height:100%;color:#828282;margin-top: 15px;">
                                     You can easily customize the color further by generating the code and changing the 6-digit Hex Code
                                 </span>
                             </div>
@@ -338,11 +338,11 @@
                             <a id="next" class="button special icon fa-magic" style="margin-bottom:33px;">Next</a>
                             <div class="generate-code-container" style="display: none;">
                                 <b style="color:#783bd2;"><span style="color:#828282">Step 3: </span>Generate your custom code</b>
-                                <p style="color: #333333">
-                                    TERMS OF USE: FREE to use for 30 days for Non-Members.<br/>
-                                    To learn more, send a request to jedi@chatbotstudios.co
+                                <p style="color: #333333; font-size: 13pt;">
+                                    TERMS OF USE: FREE to use for 30 days for Non-Members
+                                    (For additional time and to learn more, send a request to jedi@chatbotstudios.co)
                                 </p>
-                                <a href="javascript:generate();" class="button special icon fa-magic" style="margin-bottom:40px;">Generate embed code</a>
+                                <a href="javascript:generate();" class="button special icon fa-magic" style="margin-bottom:40px;">Generate code</a>
                                 <textarea id="embed" onclick="this.focus();this.select();" cols="30" rows="3" spellcheck="false" style="color: #333333;resize:none;"></textarea>
                                 <br>
                                 <p style="color: #333333">
@@ -355,7 +355,7 @@
                 <div class="footer">
                     <p style="color: #783bd2; font-size: 16px;">
                         AnyCHAT is an aiWidget™ designed, developed and managed by Chatbot Studios.
-                        At Chatbot Studios, we build smart chatbots, voicebots and iotbots for business.<br/>
+                        At Chatbot Studios, we build smart chatbots, voicebots and iotbots for business.
                         Reach out!
                     </p>
                 </div>
@@ -461,15 +461,15 @@
 
         console.log(payload, 'payload');
 
-        embed.value = '<script data-align="right" data-overlay="false" id="shopchat-script" src="https://rawgit.com/kachanovskyi/shopchat.pro/master/js/widget.js" data-color="' + color + '" data-apps="' + payload + '"><\/script>';
+        embed.value = '<script data-align="right" data-overlay="false" id="anychat-script" src="https://rawgit.com/kachanovskyi/anychat.pro/master/js/widget.js" data-color="' + color + '" data-apps="' + payload + '"><\/script>';
 
-        $('#shopchat-script').data('apps', payload).data('color', color);
-        $('#shopchat-container').remove();
+        $('#anychat-script').data('apps', payload).data('color', color);
+        $('#anychat-container').remove();
         console.log(apps);
 
         window.initializeShopchat();
 
-        $('.shopchat-launcher').click();
+        $('.anychat-launcher').click();
     }
 
     $(function() {
@@ -533,6 +533,6 @@
         });
     });
     </script>
-    <script id="shopchat-script" src="./js/widget.js" data-color="#783bd2" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImFsZXhhIjoiMjI2MzMyODI3ODAzNjAwIiwiYWxsbyI6IkNoYXRib3QgU3R1ZGlvcyIsIm1lc3NlbmdlciI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>
+    <script id="anychat-script" src="./js/widget.js" data-color="#783bd2" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImFsZXhhIjoiMjI2MzMyODI3ODAzNjAwIiwiYWxsbyI6IkNoYXRib3QgU3R1ZGlvcyIsIm1lc3NlbmdlciI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>
 </body>
 </html>
