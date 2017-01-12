@@ -1,7 +1,7 @@
 (function() {
     //Load Stylesheet
-   var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
-    // var root = './';
+   // var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
+    var root = './';
     var head = document.getElementsByTagName('head')[0],
         stylesheet = document.createElement('link');
     stylesheet.type = 'text/css';
@@ -51,13 +51,11 @@
                 email: '#783bd2',
                 sms: '#2F80ED',
                 phone: '#0AD02C',
-                // messenger: '#0084FF',
-                messenger: '#783bd2',
+                messenger: '#0084FF',
                 viber: '#675CA8',
                 kik: '#82BC23',
                 whatsapp: '#30BE2D',
-                // alexa: '#2F80ED',
-                alexa: '#783bd2',
+                alexa: '#2F80ED',
                 allo: '#f5b900'
             };
 
@@ -130,6 +128,10 @@
                     labelText = 'Allo/Home';
                 }
 
+                if(key === 'sms') {
+                    labelText = 'SMS/Text';
+                }
+
                 $('<div>')
                     .addClass('anychat-overlay-chat-icon')
                     .attr('data-type', key)
@@ -154,7 +156,7 @@
                 if (Mobile || (key != 'sms')) {
                     var color, imgType, labelText = key.charAt(0).toUpperCase() + key.slice(1);
                     if(key === 'anychat') {
-                        color = '#2F80ED';
+                        color = '#783bd2';
                         imgType = '.png';
                         labelText = 'AnyCHAT';
                     } else {
