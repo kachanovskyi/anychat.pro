@@ -871,14 +871,6 @@
 				background-color: #9968e2;
 			}
 
-			input[type="submit"].special:active,
-			input[type="reset"].special:active,
-			input[type="button"].special:active,
-			button.special:active,
-			.button.special:active {
-				background-color: #db5f8b;
-			}
-
 		input[type="submit"].disabled, input[type="submit"]:disabled,
 		input[type="reset"].disabled,
 		input[type="reset"]:disabled,
@@ -1019,6 +1011,12 @@
 
 		}
 
+		@media (max-width: 918px) {
+			.next-to-btn-text {
+				margin-left: 0;
+			}
+		}
+
 		@media screen and (max-width: 800px) {
 			#wrapper .container-inner {
 				text-align: left !important;
@@ -1110,6 +1108,24 @@
 			}
 
 		}
+
+	.next-to-btn-text {
+		display: inline-block;
+		width: 75%;
+		margin-left: 10px;
+	}
+		.next-to-btn-text > p {
+			margin-bottom: 0;
+		}
+	#get-it,
+	#next {
+		display: inline-block;
+		vertical-align: bottom;
+		margin-bottom: .8em;
+	}
+	#next {
+		margin-bottom: .8em;
+	}
 
 	.footer {
 		margin-top: 1em;
