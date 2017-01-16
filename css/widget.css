@@ -46,6 +46,9 @@
     display: none;
     opacity: 0;
     filter: alpha(opacity=0);
+	background-size: 80%;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .anychat-button,
@@ -70,6 +73,11 @@
     height: 50px;
     width: 50px;
     display: inline-block;
+	
+}
+
+.anychat-chat-icon{
+	box-shadow: none !important;
 }
 
 .anychat-chat-icon.anychat-panel {
