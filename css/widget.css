@@ -168,6 +168,9 @@
     font-weight: 400;
     position: absolute;
     display: inline-block;
+	background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -251,7 +254,10 @@
     transition: color 0.7s;
     -webkit-transition: color 0.7s;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background-size: contain;
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+	
 }
 
 .anychat-effect:before {
