@@ -1,7 +1,7 @@
 (function() {
     //Load Stylesheet
-   var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
-   //  var root = './';
+   // var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
+    var root = './';
     var head = document.getElementsByTagName('head')[0],
         stylesheet = document.createElement('link');
     stylesheet.type = 'text/css';
@@ -92,9 +92,6 @@
             .addClass('anychat-effect')
             .css( 'background-image', 'url(data:image/svg+xml,' + escape(btnBg) + ')')
             .css('background-color', settings.color)
-            .css('background-size', '44px')
-            .css('background-position', 'center')
-            .css('background-repeat',' no-repeat')
             .appendTo(anchor);
 
         var ua = navigator.userAgent;
@@ -140,6 +137,9 @@
                         .addClass('anychat-overlay-chat-icon')
                         .attr('data-type', key)
                         .css('background-color', colors[key])
+                        .css('background-size', '80%')
+                        .css('background-position', 'center')
+                        .css('background-repeat', 'no-repeat')
                         .append(
                             $('<a>').attr('href', 'chatbotstudios.co').attr('target', '_blank').append(
                                 $('<img>')
@@ -201,6 +201,9 @@
                                     $('<img>')
                                         .attr('src', root + 'images/' + key + imgType)
                                         .attr('alt', key)
+                                        .css('width', '90%')
+                                        .css('display', 'block')
+                                        .css('margin-left', '2px')
                                 )
                             )
                             .append($('<div class="anychat-label">').text(labelText))
