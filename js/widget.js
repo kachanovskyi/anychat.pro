@@ -1,7 +1,7 @@
 (function() {
     //Load Stylesheet
     var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
-//    var root = './';
+   // var root = './';
     var head = document.getElementsByTagName('head')[0],
         stylesheet = document.createElement('link');
     stylesheet.type = 'text/css';
@@ -174,22 +174,35 @@
             $.each(settings.apps, function(key, value) {
                 if (Mobile || (key != 'sms')) {
                     var color,
+                        href,
+                        img,
                         anychat = false,
+                        alexa = false,
                         imgType  = '.svg',
                         labelText = key.charAt(0).toUpperCase() + key.slice(1);
                     if(key === 'anychat') {
                         color = '#783bd2';
                         labelText = 'AnyCHAT';
                         anychat = true;
+                        img = $('<img>')
+                            .attr('src', root + 'images/' + key + imgType)
+                            .attr('alt', key)
+                            .css('width', '80%')
+                            .css('margin-left', '10%');
                     } else {
                         color = colors[key];
                     }
 
                     if(key === 'allo') {
                         labelText = 'Allo/Home';
+                    } else if(key === 'alexa') {
+                        alexa = true;
+                        img = $('<img>')
+                            .attr('src', root + 'images/' + key + imgType)
+                            .attr('alt', key);
                     }
 
-                    if(anychat) {
+                    if(anychat || alexa) {
                         $('<div>')
                             .addClass('anychat-chat-icon')
                             .attr('data-type', key)
@@ -197,14 +210,7 @@
                             .append(
                                 $('<a>').attr('href', 'http://www.chatbotstudios.co/').attr('target', '_blank')
                                     .css('border', 'none')
-                                    .append(
-                                    $('<img>')
-                                        .attr('src', root + 'images/' + key + imgType)
-                                        .attr('alt', key)
-                                        .css('width', '90%')
-                                        .css('display', 'block')
-                                        .css('margin-left', '2px')
-                                )
+                                    .append(img)
                             )
                             .append($('<div class="anychat-label">').text(labelText))
                             .css('color', color)
@@ -458,11 +464,11 @@
                     break;
 
                 case 'alexa':
-                    container.css('color', 'white').css('padding', '8px').css('padding-top', '32px');
-                    container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("Alexa skill ID:");
-                    // $('<a class="anychat-close-button"><img src="./images/close.png"/></a>').appendTo(container);
-                    $('<a target="_blank" class="anychat-button" style="color:white; border-color:#2F80ED;">').attr('href', "http://www.chatbotstudios.co/").text(settings.apps.alexa).appendTo(container);
-                    qr = true;
+                    // container.css('color', 'white').css('padding', '8px').css('padding-top', '32px');
+                    // container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("Alexa skill ID:");
+                    // // $('<a class="anychat-close-button"><img src="./images/close.png"/></a>').appendTo(container);
+                    // $('<a target="_blank" class="anychat-button" style="color:white; border-color:#2F80ED;">').attr('href', "http://www.chatbotstudios.co/").text(settings.apps.alexa).appendTo(container);
+                    // qr = true;
                     break;
 
                 case 'allo':
