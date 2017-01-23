@@ -132,7 +132,7 @@
                 }
 
                 if(anychat) {
-                    console.log('AAAAAA');
+                    // console.log('AAAAAA');
                     $('<div>')
                         .addClass('anychat-overlay-chat-icon')
                         .attr('data-type', key)
@@ -141,7 +141,7 @@
                         .css('background-position', 'center')
                         .css('background-repeat', 'no-repeat')
                         .append(
-                            $('<a>').attr('href', 'chatbotstudios.co').attr('target', '_blank').append(
+                            $('<a>').attr('href', 'anychat.pro').attr('target', '_blank').append(
                                 $('<img>')
                                     .attr('src', root + 'images/' + key + imgType)
                                     .attr('alt', key)
@@ -208,7 +208,7 @@
                             .attr('data-type', key)
                             .css('background-color', colors[key])
                             .append(
-                                $('<a>').attr('href', 'http://www.chatbotstudios.co/').attr('target', '_blank')
+                                $('<a>').attr('href', 'http://www.anychat.pro/').attr('target', '_blank')
                                     .css('border', 'none')
                                     .append(img)
                             )
