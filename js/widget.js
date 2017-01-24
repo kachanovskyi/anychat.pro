@@ -1,6 +1,6 @@
 (function() {
     //Load Stylesheet
-    var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
+    var root = 'https://rawgit.com/ChatbotStudios/anychat.pro/master/';
    // var root = './';
     var head = document.getElementsByTagName('head')[0],
         stylesheet = document.createElement('link');
