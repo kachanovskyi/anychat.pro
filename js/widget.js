@@ -1,6 +1,6 @@
 (function() {
     //Load Stylesheet
-    var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
+    var root = 'https://rawgit.com/ChatbotStudios/anychat.pro/master/';
    // var root = './';
     var head = document.getElementsByTagName('head')[0],
         stylesheet = document.createElement('link');
@@ -515,18 +515,6 @@
             $(window).click(function () {
                 qrClose();
             });
-
-            // $('.anychat-close-button').click(function () {
-            //     console.log($(this).parent().parent().find('.anychat-qr.active').removeClass('active'));
-            //     if (qr) {
-            //         if (app.is('.anychat-panel')) {
-            //             console.log('qr closed');
-            //             $(this).parent().parent().removeClass('anychat-panel');
-            //             $(this).parent().parent().find('.anychat-qr').removeClass('active');
-            //         }
-            //     }
-            //     // $(document).find('.anychat-qr').removeClass('active');
-            // });
 
             app.click(function(event) {
                 event.stopPropagation();
