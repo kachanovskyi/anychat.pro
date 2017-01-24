@@ -516,18 +516,6 @@
                 qrClose();
             });
 
-            // $('.anychat-close-button').click(function () {
-            //     console.log($(this).parent().parent().find('.anychat-qr.active').removeClass('active'));
-            //     if (qr) {
-            //         if (app.is('.anychat-panel')) {
-            //             console.log('qr closed');
-            //             $(this).parent().parent().removeClass('anychat-panel');
-            //             $(this).parent().parent().find('.anychat-qr').removeClass('active');
-            //         }
-            //     }
-            //     // $(document).find('.anychat-qr').removeClass('active');
-            // });
-
             app.click(function(event) {
                 event.stopPropagation();
 
