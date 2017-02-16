@@ -29,17 +29,29 @@
     left: 14px;
 }
 
+.anychat-messengers {
+    background-color: red;
+    width: 250px;
+    min-height: 100px;
+}
+
 .anychat-launcher,
 .anychat-chat-icon {
     float: left;
     cursor: pointer;
     position: absolute;
-    width: 50px;
-    height: 50px;
-    right: 14px;
-    bottom: 20px;
+    width: 33px;
+    height: 33px;
+    right: 37px;
+    bottom: 14px;
     border-radius: 25px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05), 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+}
+.anychat-chat-icon {
+    border-radius: 0;
+    height: 60px;
+    right: 18px;
+    /*width: ;*/
 }
 
 .anychat-chat-icon {
@@ -70,15 +82,28 @@
 }
 
 .anychat-chat-icon img {
-    height: 50px;
-    width: 50px;
+    height: 33px;
+    width: 33px;
     display: inline-block;
-	
+
 }
 
 .anychat-chat-icon{
 	box-shadow: none !important;
+    min-width: 250px;
+    background: #FFFFFF;
+    border: solid rgba(0, 0, 0, .1);
+    border-width: 0 2px;
+    /*border-radius: ;*/
+    padding: 16px 20px 0;
 }
+.anychat-chat-icon:hover {
+    background: #f7fcf2;
+}
+    .anychat-chat-icon > img,
+    .anychat-chat-icon > a {
+        float: right;
+    }
 
 .anychat-chat-icon.anychat-panel {
     position: fixed;
@@ -167,16 +192,41 @@
 .anychat-label {
     width: 96px;
     text-align: right;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    margin-top: 10px;
-    left: -100px;
+    /*opacity: 0;*/
+    /*filter: alpha(opacity=0);*/
+    margin-top: -5px;
+    right: 60px;
     line-height: 32px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     position: absolute;
     display: inline-block;
 	background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+}
+.anychat-description {
+    position: absolute;
+    width: 66px;
+    text-align: right;
+    /*opacity: 0;*/
+    /*filter: alpha(opacity=0);*/
+    margin-top: -5px;
+    right: 74px;
+    line-height: 12px;
+    font-size: 12px;
+    font-weight: 400;
+    position: absolute;
+    display: inline-block;
+    background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
     -webkit-touch-callout: none;
@@ -265,7 +315,7 @@
     background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
-	
+
 }
 
 .anychat-effect:before {

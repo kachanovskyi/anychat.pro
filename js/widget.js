@@ -1,7 +1,7 @@
 (function() {
     //Load Stylesheet
-    var root = 'https://rawgit.com/ChatbotStudios/anychat.pro/master/';
-   // var root = './';
+    // var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
+   var root = './';
     var head = document.getElementsByTagName('head')[0],
         stylesheet = document.createElement('link');
     stylesheet.type = 'text/css';
@@ -57,6 +57,32 @@
                 whatsapp: '#30BE2D',
                 alexa: '#54ABD8',
                 allo: '#F5B900'
+            },
+            groups = {
+                anychat: 'chatbot',
+                // email: '#2D70E7',
+                email: 'classic',
+                sms: 'classic',
+                phone: 'classic',
+                messenger: 'messaging',
+                viber: 'messaging',
+                kik: 'messaging',
+                whatsapp: 'messaging',
+                alexa: 'voice',
+                allo: 'voice'
+            },
+            descriptions = {
+                anychat: 'about us, hours, locations',
+                // email: '#2D70E7',
+                email: 'just email us',
+                sms: 'just text us',
+                phone: 'just call us',
+                messenger: 'chat with us on fb messenger',
+                viber: 'messaging',
+                kik: 'chat with us on kik',
+                whatsapp: 'chat with us on whatsapp',
+                alexa: 'enable our skill',
+                allo: 'add our action'
             };
 
         settings.apps = JSON.parse(decodeURI(atob(cipher)));
@@ -81,6 +107,23 @@
             .attr('id', 'anychat-container')
             .appendTo($('body'));
 
+        var classic = $('<div>')
+            .addClass('classic')
+            .appendTo(anchor);
+        var voice = $('<div>')
+            .addClass('voice')
+            .appendTo(anchor);
+        var messaging = $('<div>')
+            .addClass('messaging')
+            .appendTo(anchor);
+        var chatbot = $('<div>')
+            .addClass('chatbot')
+            .appendTo(anchor);
+
+        anchor.children().each(function () {
+            console.log($(this));
+        });
+
         if (align == 'left') {
             anchor.addClass('left');
         }
@@ -101,7 +144,6 @@
         var Mac = !!ua.match(/Macintosh/i);
 
         $.get(settings.tags.page);
-
 
 
         //Add overlay
@@ -137,7 +179,7 @@
                         .addClass('anychat-overlay-chat-icon')
                         .attr('data-type', key)
                         .css('background-color', colors[key])
-                        .css('background-size', '80%')
+                        // .css('background-size', '80%')
                         .css('background-position', 'center')
                         .css('background-repeat', 'no-repeat')
                         .append(
@@ -148,6 +190,7 @@
                             )
                         )
                         .append($('<div class="anychat-label">').text(labelText))
+                        // .append($('<div class="anychat-description">')).text(descriptions[key])
 
                         .appendTo(overlayBody);
                 } else {
@@ -161,6 +204,7 @@
                                 .attr('alt', key)
                         )
                         .append($('<div class="anychat-label">').text(labelText))
+                        // .append($('<div class="anychat-description">')).text(descriptions[key])
 
                         .appendTo(overlayBody);
                 }
@@ -187,8 +231,8 @@
                         img = $('<img>')
                             .attr('src', root + 'images/' + key + imgType)
                             .attr('alt', key)
-                            .css('width', '80%')
-                            .css('margin-left', '10%');
+                            .css('width', '40px')
+                            .css('height', '40px')
                     } else {
                         color = colors[key];
                     }
@@ -203,36 +247,56 @@
                     }
 
                     if(anychat || alexa) {
-                        $('<div>')
+                        var chatIcon = $('<div>')
                             .addClass('anychat-chat-icon')
                             .attr('data-type', key)
-                            .css('background-color', colors[key])
+                            // .css('background-color', colors[key])
                             .append(
                                 $('<a>').attr('href', 'http://www.anychat.pro/').attr('target', '_blank')
                                     .css('border', 'none')
                                     .append(img)
                             )
                             .append($('<div class="anychat-label">').text(labelText))
+                            // .append($('<div class="anychat-description">')).text(descriptions[key])
                             .css('color', color)
-                            .hide()
-                            .appendTo(anchor);
+                            .hide();
+                        var container = anchor.find('.' + groups[key]);
+                        chatIcon.appendTo(container);
                     } else {
-                        $('<div>')
+                        chatIcon = $('<div>')
                             .addClass('anychat-chat-icon')
                             .attr('data-type', key)
-                            .css('background-color', colors[key])
+                            // .css('background-color', colors[key])
                             .append(
                                 $('<img>')
                                     .attr('src', root + 'images/' + key + imgType)
                                     .attr('alt', key)
                             )
                             .append($('<div class="anychat-label">').text(labelText))
-                            .css('color', color)
-                            .hide()
-                            .appendTo(anchor);
+                            // .append($('<div class="anychat-description">')).text(descriptions[key])
+                            // .css('color', color)
+                            .hide();
+                        container = anchor.find('.' + groups[key]);
+                        chatIcon.appendTo(container);
                     }
                 }
             });
+
+            anchor.children().each(function () {
+                $($(this).children()[0]).css('border-bottom', '2px solid rgba(0, 0, 0, .1)');
+            });
+
+            $(messaging.children()[messaging.children().length - 1]).css('padding-top', '24px').prepend(
+               $('<p>messaging channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
+            );
+            $(classic.children()[classic.children().length - 1]).css('padding-top', '24px').prepend(
+                $('<p>classic channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
+            );
+            $(voice.children()[voice.children().length - 1]).css('padding-top', '24px').prepend(
+                $('<p>voice channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
+            );
+            $(chatbot.children()[0]).css('border-top', '2px solid rgba(0, 0, 0, .1)');
+            console.log(chatbot.children()[0]);
 
             //Add a more icon
             var more = $('<div>')
@@ -308,7 +372,7 @@
 
 
             launcher.click(function() {
-                $('#anychat-container > .anychat-chat-icon').each(function(index, img) {
+                $('#anychat-container .anychat-chat-icon').each(function(index, img) {
                     img = $(img);
                     if (launcher.is('.anychat-launcher-active')) {
                         img.animate({
@@ -332,9 +396,36 @@
                         } else {
                             img.show().animate({
                                 'opacity': 1,
-                                'bottom': 80 + index * 62
+                                'bottom': 60 + index * 60
                             }, 'fast');
+                            // anchor.children().each(function () {
+                            //     if($($(this).children()[0]).data('type') === img.data('type')) {
+                            //         console.log($($(this).children()[0]).data('type'));
+                            //         var prev = $(this).prev().children();
+                            //         $(prev[prev.length - 1]).animate({
+                            //             'bottom': '+=10px'
+                            //         });
+                            //         console.log($(this).prev().children());
+                            //         console.log($(this).next().children());
+                            //         console.log(prev[prev.length - 1]);
+                            //         img.animate({
+                            //             // 'bottom': '+=10px',
+                            //             'height': '+=10px',
+                            //             'padding-top': '+=10px'
+                            //         })
+                            //     }
+                            // });
+                            // if(img.data('type') === $($(anchor.children()[0]).children()[0]).data('type')
+                            // || img.data('type') === $($(anchor.children()[1]).children()[0]).data('type')
+                            // || img.data('type') === $($(anchor.children()[2]).children()[0]).data('type')
+                            // || img.data('type') === $($(anchor.children()[3]).children()[0]).data('type')) {
+                            //     console.log($($(anchor.children()[0]).children()[0]).data('type'));
+                            // }
+                            console.log(chatbot.find('.anychat-chat-icon').css('bottom'));
                         }
+                        // anchor.children().each(function () {
+                        //     console.log($(this));
+                        // });
                     }
                 });
 
@@ -349,9 +440,24 @@
         $('.anychat-chat-icon, .anychat-overlay-chat-icon').each(function(index, icon) {
             var link, qr, app = $(icon);
             var container = $('<div>').addClass('anychat-qr');
+
+            var chatHeight = 0;
+            messaging.children().each(function () {
+                // console.log($(this).css('height'));
+                chatHeight += parseInt($(this).css('height'), 10);
+            });
+            voice.children().each(function () {
+                // console.log($(this).css('height'));
+                chatHeight += parseInt($(this).css('height'), 10);
+            });
+            classic.children().each(function () {
+                // console.log($(this).css('height'));
+                chatHeight += parseInt($(this).css('height'), 10);
+            });
+            console.log(chatHeight);
             switch (app.data('type')) {
                 case 'anychat':
-                    console.log('anychat in development');
+
                     break;
                 case 'email':
                     link = "mailto:" + settings.apps.email;
@@ -508,6 +614,8 @@
                     if (app.is('.anychat-panel')) {
                         app.removeClass('anychat-panel');
                         app.find('.anychat-qr').removeClass('active');
+                        app.css('background-color', '#FFFFFF');
+                        app.find('img').css('width', '33px').css('height', '33px');
                     }
                 }
             }
@@ -523,7 +631,9 @@
                     if (app.not('.anychat-panel')) {
                         app.siblings().removeClass('anychat-panel');
                         app.addClass('anychat-panel');
+                        app.css('background-color', colors[app.data('type')]);
                         app.find('.anychat-qr').addClass('active');
+                        app.find('img').css('width', '50px').css('height', '50px');
                     }
                 }
 
@@ -549,7 +659,7 @@
         });
 
         if( $(window).width() > 980) {
-            $('.preview').css('display', 'block');
+            $('.preview').css('display', 'none');
         }
         window.initializeShopchat = init;
         return true;
