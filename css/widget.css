@@ -189,6 +189,13 @@
     transition: visibility 0s, opacity 0.5s linear 3s;
 }
 
+.chat-window {
+    width: 250px;
+    position: absolute;
+    right: 18px;
+    background: red;
+}
+
 .anychat-label {
     width: 96px;
     text-align: right;

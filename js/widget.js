@@ -183,11 +183,11 @@
                         .css('background-position', 'center')
                         .css('background-repeat', 'no-repeat')
                         .append(
-                            $('<a>').attr('href', 'anychat.pro').attr('target', '_blank').append(
+                            // $('<a>').attr('href', 'anychat.pro').attr('target', '_blank').append(
                                 $('<img>')
                                     .attr('src', root + 'images/' + key + imgType)
                                     .attr('alt', key)
-                            )
+                            // )
                         )
                         .append($('<div class="anychat-label">').text(labelText))
                         // .append($('<div class="anychat-description">')).text(descriptions[key])
@@ -257,6 +257,15 @@
                                     .append(img)
                             )
                             .append($('<div class="anychat-label">').text(labelText))
+                            .append(
+                                $('<a>').append(
+                                    $('<img>')
+                                        .attr('src', 'images/more.svg')
+                                        .css('transform', 'scaleX(-1)')
+                                )
+                                    .css('float', 'left')
+                                    .css('border-bottom', 'none')
+                            )
                             // .append($('<div class="anychat-description">')).text(descriptions[key])
                             .css('color', color)
                             .hide();
@@ -371,9 +380,14 @@
             });
 
 
+            var chatTop = 0,
+                chatBottom = 60;
             launcher.click(function() {
                 $('#anychat-container .anychat-chat-icon').each(function(index, img) {
                     img = $(img);
+                    if(60 + index * 60 > chatTop) {
+                        chatTop = 60 + index * 60;
+                    }
                     if (launcher.is('.anychat-launcher-active')) {
                         img.animate({
                             'bottom': 20,
@@ -394,6 +408,31 @@
                                 }, 'fast');
                             }
                         } else {
+                            // console.log(launcher.find('.launcher-container'));
+                            if(launcher.find('.launcher-container').length === 0) {
+                                console.log('launcher background appended');
+                                launcher.append(
+                                    $('<div class="launcher-container">')
+                                        .css('position', 'absolute')
+                                        .css('bottom', '-12px')
+                                        .css('height', '60px')
+                                        .css('width', '250px')
+                                        .css('background', '#FFFFFF')
+                                        .css('right', '-19px')
+                                        .css('z-index', '-1')
+                                        .css('border', 'solid rgba(0, 0, 0, .1)')
+                                        .css('border-width', '0 2px 2px')
+                                        .append(
+                                            $('<input type="text" placeholder="type message">')
+                                                .css('background', '#E5E5E5')
+                                                .css('height', '30px')
+                                                .css('width', '160px')
+                                                .css('margin-top', '15px')
+                                                .css('margin-left', '15px')
+                                                .css('font-size', '16px')
+                                        )
+                                )
+                            }
                             img.show().animate({
                                 'opacity': 1,
                                 'bottom': 60 + index * 60
@@ -428,6 +467,20 @@
                         // });
                     }
                 });
+                var chatHeight = chatTop - 60;
+                // console.log(chatHeight);
+                var chatWindow = $('<div class="chat-window">')
+                    .css('border', '2px solid rgba(0, 0, 0, .1)')
+                    .css('height', chatHeight)
+                    .css('top', '-' +  ((chatBottom + chatHeight) + 'px'))
+                    .css('width', '250px')
+                    .css('background', 'red')
+                    .css('position', 'absolute')
+                    .css('right', '18px')
+                    .css('display', 'none')
+                    .appendTo(chatbot);
+
+
 
                 if (!launcher.is('.anychat-launcher-active')) {
                     $.get(settings.tags.event);
@@ -441,23 +494,34 @@
             var link, qr, app = $(icon);
             var container = $('<div>').addClass('anychat-qr');
 
-            var chatHeight = 0;
-            messaging.children().each(function () {
-                // console.log($(this).css('height'));
-                chatHeight += parseInt($(this).css('height'), 10);
-            });
-            voice.children().each(function () {
-                // console.log($(this).css('height'));
-                chatHeight += parseInt($(this).css('height'), 10);
-            });
-            classic.children().each(function () {
-                // console.log($(this).css('height'));
-                chatHeight += parseInt($(this).css('height'), 10);
-            });
-            console.log(chatHeight);
+            // var chatHeight = 0;
+            // messaging.children().each(function () {
+            //     // console.log($(this).css('height'));
+            //     chatHeight += parseInt($(this).css('height'), 10);
+            // });
+            // voice.children().each(function () {
+            //     // console.log($(this).css('height'));
+            //     chatHeight += parseInt($(this).css('height'), 10);
+            // });
+            // classic.children().each(function () {
+            //     // console.log($(this).css('height'));
+            //     chatHeight += parseInt($(this).css('height'), 10);
+            // });
+            // console.log(chatHeight);
             switch (app.data('type')) {
                 case 'anychat':
+                    // console.log($('.chat-window'));
+                    $(chatbot.children()[0]).click(function () {
+                        var chatWindow = $('.chat-window');
+                        if(chatWindow.hasClass('expanded')) {
+                            chatWindow.slideUp("fast").removeClass('expanded');
+                        } else {
+                            chatWindow.slideDown("fast").addClass('expanded');
+                            $('.launcher-container').append(
 
+                            );
+                        }
+                    });
                     break;
                 case 'email':
                     link = "mailto:" + settings.apps.email;
