@@ -1,7 +1,10 @@
 (function() {
     //Load Stylesheet
     // var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
-   var root = './';
+    var accessToken = "9472ad1c4be04103ba876116c501eef3";
+    var baseUrl = "https://api.api.ai/v1/";
+
+    var root = './';
     var head = document.getElementsByTagName('head')[0],
         stylesheet = document.createElement('link');
     stylesheet.type = 'text/css';
@@ -256,19 +259,20 @@
                                     .css('border', 'none')
                                     .append(img)
                             )
-                            .append($('<div class="anychat-label">').text(labelText))
-                            .append(
-                                $('<a>').append(
+                            .append($('<div class="anychat-label">').text(labelText));
+                        if(anychat) {
+                            chatIcon.append(
+                                $('<a class="chat-close">').append(
                                     $('<img>')
                                         .attr('src', 'images/more.svg')
                                         .css('transform', 'scaleX(-1)')
-                                )
+                                    )
                                     .css('float', 'left')
                                     .css('border-bottom', 'none')
                             )
+                        }
                             // .append($('<div class="anychat-description">')).text(descriptions[key])
-                            .css('color', color)
-                            .hide();
+                            chatIcon.css('color', color).hide();
                         var container = anchor.find('.' + groups[key]);
                         chatIcon.appendTo(container);
                     } else {
@@ -383,12 +387,15 @@
             var chatTop = 0,
                 chatBottom = 60;
             launcher.click(function() {
+                console.log('launcher clicked');
                 $('#anychat-container .anychat-chat-icon').each(function(index, img) {
                     img = $(img);
                     if(60 + index * 60 > chatTop) {
                         chatTop = 60 + index * 60;
                     }
                     if (launcher.is('.anychat-launcher-active')) {
+                        chatClose();
+
                         img.animate({
                             'bottom': 20,
                             'right': 16,
@@ -398,6 +405,8 @@
                                 .css('bottom', '')
                                 .hide();
                         });
+
+                        $('.launcher-container').fadeOut("fast");
 
                     } else {
                         if (numberOfApps > maxIconCount) {
@@ -409,29 +418,22 @@
                             }
                         } else {
                             // console.log(launcher.find('.launcher-container'));
-                            if(launcher.find('.launcher-container').length === 0) {
+                            if(anchor.find('.launcher-container').length === 0) {
                                 console.log('launcher background appended');
-                                launcher.append(
+                                anchor.append(
                                     $('<div class="launcher-container">')
                                         .css('position', 'absolute')
-                                        .css('bottom', '-12px')
+                                        .css('bottom', '0')
                                         .css('height', '60px')
                                         .css('width', '250px')
                                         .css('background', '#FFFFFF')
-                                        .css('right', '-19px')
+                                        .css('right', '18px')
                                         .css('z-index', '-1')
                                         .css('border', 'solid rgba(0, 0, 0, .1)')
                                         .css('border-width', '0 2px 2px')
-                                        .append(
-                                            $('<input type="text" placeholder="type message">')
-                                                .css('background', '#E5E5E5')
-                                                .css('height', '30px')
-                                                .css('width', '160px')
-                                                .css('margin-top', '15px')
-                                                .css('margin-left', '15px')
-                                                .css('font-size', '16px')
-                                        )
                                 )
+                            } else {
+                                $('.launcher-container').fadeIn("fast");
                             }
                             img.show().animate({
                                 'opacity': 1,
@@ -467,17 +469,106 @@
                         // });
                     }
                 });
-                var chatHeight = chatTop - 60;
+
+                function quickScroll(param) {
+                    var quickContainerLeft = parseInt(quickContainer.css('margin-left'),10);
+                    if(param === "next"){
+                        $('.quick-reply-container').animate({
+                            'margin-left': '-=100px'
+                        }, 200)
+                    } else {
+
+                    }
+                }
+
+                var chatHeight = chatTop;
                 // console.log(chatHeight);
+                var quickContainer = $('<div class="quick-reply-container">');
+                var quickInner = $('<div class="inner">').appendTo(quickContainer);
+                var quickBackground = $('<div class="background">').appendTo(quickContainer);
+
+                $('<a class="btn prev">')
+                    .append(
+                        $('<img>')
+                            .attr('src', 'images/quick-next.png')
+                            .css('transform', 'scaleX(-1)')
+                    )
+                    .on("click", function () {
+                        console.log('click worked');
+                        $('.quick-reply-container').animate({
+                            'margin-left': '+=100px'
+                        }, 200)
+                    })
+                    .appendTo(quickBackground);
+                $('<a class="btn next">')
+                    .append(
+                        $('<img>')
+                            .attr('src', 'images/quick-next.png')
+                    )
+                    .on("click", function () {
+                        console.log('click worked');
+                        $('.quick-reply-container').animate({
+                            'margin-left': '-=100px'
+                        }, 200)
+                    })
+                    .appendTo(quickBackground);
+                var messageContainer = $('<div class="message-container">')
+                    .css('width', '107%')
+                    .css('height', ((chatHeight - 60) + 'px'));
+                messageContainer.append(quickContainer);
+
+
+                for(var i = 0; i < 8; i++) {
+                    var quickReply = $('<div class="quick-reply">').text('reply ' + i);
+                    if(i === 0) {
+                        quickReply.css('margin-left', '33px');
+                    }
+                    quickReply.appendTo(quickInner);
+                }
+
                 var chatWindow = $('<div class="chat-window">')
-                    .css('border', '2px solid rgba(0, 0, 0, .1)')
+                    .css('border', '2px solid rgba(0, 0, 0, .001)')
                     .css('height', chatHeight)
-                    .css('top', '-' +  ((chatBottom + chatHeight) + 'px'))
+                    .css('top', '-' +  ((chatBottom - 58 + chatHeight) + 'px'))
                     .css('width', '250px')
-                    .css('background', 'red')
                     .css('position', 'absolute')
                     .css('right', '18px')
                     .css('display', 'none')
+                    .css('z-index', '10001')
+                    .append(messageContainer)
+                    .append(
+                        $('<div class="bottom">')
+                            .css('border', '2px solid rgba(0, 0, 0, .1)')
+                            .css('position', 'absolute')
+                            .css('bottom', '-2px')
+                            .css('right', '-2px')
+                            .css('width', '250px')
+                            .css('height', '60px')
+                            .css('background-color', '#FFFFFF')
+                            .append(
+                                $('<input type="text" placeholder="type message">')
+                                    .attr('id', 'chatInput')
+                                    .css('background', '#E5E5E5')
+                                    .css('height', '30px')
+                                    .css('width', '160px')
+                                    .css('font-size', '16px')
+                                    .keypress(function(event) {
+                                        if (event.which == 13) {
+                                            event.preventDefault();
+                                            send();
+                                        }
+                                    })
+                            )
+                            .append(
+                                $('<a class="send-message">').append(
+                                    $('<img>')
+                                        .attr('src', 'images/more.svg')
+                                    )
+                                    .css('float', 'right')
+                                    .css('border-bottom', 'none')
+                                    .click(send)
+                            )
+                    )
                     .appendTo(chatbot);
 
 
@@ -489,6 +580,73 @@
                 launcher.toggleClass('anychat-launcher-active');
             });
         }
+
+        function chatOpen() {
+            $('.chat-window').slideDown("fast").addClass('expanded');
+            // $('#chatInput').fadeIn("fast");
+            $('.chat-close').show();
+            $('.launcher-container').append(
+
+            );
+        }
+        function chatClose() {
+            $('.chat-window').slideUp("fast").removeClass('expanded');
+            // $('#chatInput').fadeOut("fast");
+            $('.chat-close').hide();
+        }
+
+        function setResponse(val) {
+            var response = JSON.parse(val);
+            var message = $('<div class="chat-message bot">');
+
+            if(response.result.action === "BusinessName" || response.result.action === "Address") {
+                message.text(response.result.action).appendTo($('.chat-window').find('.message-container'));
+            } else if(response.result.fulfillment.speech !== "") {
+                message.text(response.result.fulfillment.speech).appendTo($('.chat-window').find('.message-container'));
+            } else {
+                message.text("I'm sorry, but I can't really understand you.").appendTo($('.chat-window').find('.message-container'));
+            }
+            chatScrollBottom();
+            console.log(val);
+        }
+
+        function send() {
+            var text = $("#chatInput").val();
+            $("#chatInput").val('');
+            $.ajax({
+                type: "POST",
+                url: baseUrl + "query?v=20150910",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                headers: {
+                    "Authorization": "Bearer " + accessToken
+                },
+                data: JSON.stringify({ query: text, lang: "en", sessionId: "somerandomthing" }),
+
+                success: function(data) {
+                    setResponse(JSON.stringify(data, undefined, 2));
+                },
+                error: function() {
+                    setResponse("Internal Server Error");
+                }
+            });
+            // setResponse("Loading...");
+
+            var message = $('<div class="chat-message user">');
+            message.text(text).appendTo($('.chat-window').find('.message-container'));
+
+            chatScrollBottom();
+        }
+
+        function chatScrollBottom() {
+            $(".message-container").animate({ scrollTop: $('.message-container').prop("scrollHeight")}, 150);
+        }
+
+        $('.chat-close').on("click", function (e) {
+            console.log($('.send-message'));
+            chatClose();
+            e.stopImmediatePropagation();
+        });
 
         $('.anychat-chat-icon, .anychat-overlay-chat-icon').each(function(index, icon) {
             var link, qr, app = $(icon);
@@ -512,15 +670,8 @@
                 case 'anychat':
                     // console.log($('.chat-window'));
                     $(chatbot.children()[0]).click(function () {
-                        var chatWindow = $('.chat-window');
-                        if(chatWindow.hasClass('expanded')) {
-                            chatWindow.slideUp("fast").removeClass('expanded');
-                        } else {
-                            chatWindow.slideDown("fast").addClass('expanded');
-                            $('.launcher-container').append(
-
-                            );
-                        }
+                        console.log(chatbot.children()[0]);
+                        chatOpen();
                     });
                     break;
                 case 'email':

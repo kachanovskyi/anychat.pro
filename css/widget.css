@@ -62,6 +62,9 @@
 	background-position: center;
 	background-repeat: no-repeat;
 }
+.anychat-chat-icon .chat-close {
+    display: none;
+}
 
 .anychat-button,
 .anychat-block {
@@ -193,8 +196,119 @@
     width: 250px;
     position: absolute;
     right: 18px;
-    background: red;
+    /*background: ;*/
+    overflow: hidden;
 }
+
+    .chat-window .message-container {
+        position: absolute;
+        top: -2px;
+        background: #ffffff;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        font-size: 16px;
+        /*border: 2px solid rgba(0, 0, 0, .1);*/
+    }
+        .chat-window .message-container .chat-message {
+            padding: 5px 12px;
+            margin: 5px;
+            border-radius: 12px;
+            display: inline;
+            clear: both;
+            max-width: 88%;
+            word-wrap: break-word;
+            line-height: 100%;
+        }
+        .chat-window .message-container .chat-message.bot {
+            background-color: #E0E0E0;
+            float: left;
+        }
+        .chat-window .message-container .chat-message.user {
+            background-color: rgba(47, 128, 237, .55);
+            float: right;
+        }
+
+        .chat-window .message-container .quick-reply-container {
+            /*width: 400px;*/
+            height: 30px;
+            white-space: nowrap;
+        }
+            .chat-window .message-container .quick-reply-container .inner {
+                background: red;
+                height: 100%;
+
+            }
+            .chat-window .quick-reply-container .quick-reply {
+                width: 100px;
+                height: 30px;
+                background: rgba(47, 128, 237, .55);
+                display: inline-block;
+                border: 1px solid red;
+                margin: 0 1px;
+                padding-left: 6px;
+                border-radius: 16px;
+            }
+            .chat-window .quick-reply-container .btn{
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                top: 0;
+                cursor: pointer;
+                z-index: 1;
+            }
+                .chat-window .quick-reply-container .btn > img {
+                    max-width: 100%;
+                }
+            .chat-window .quick-reply-container .btn.next {
+                right: 0;
+            }
+            .chat-window .quick-reply-container .btn.prev {
+                left: 0;
+            }
+
+
+    .chat-window .bottom {
+        padding: 15px 15px 0;
+    }
+        .chat-window .bottom .send-message {
+            display: inline-block;
+            cursor: pointer;
+        }
+            .chat-window .bottom .send-message img {
+                height: 33px;
+                width: 33px;
+            }
+
+#chatInput {
+    display: inline-block;
+    border: 2px solid #dadada;
+    /*border-radius: 7px;*/
+}
+#chatInput:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+/*.chat-window .inner {*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*top: 38px;*/
+    /*margin: 0 1%;*/
+    /*height: 296px;*/
+    /*width: 98%;*/
+    /*background: #fff;*/
+    /*overflow-x: hidden;*/
+/*}*/
+
+/*.chat-widget .inner .message-container {*/
+    /*background-color: #FFFFFF;*/
+    /*height: inherit;*/
+    /*margin-top: -40px;*/
+    /*overflow-y: scroll;*/
+    /*width: 311px;*/
+    /*padding-top: 40px;*/
+/*}*/
 
 .anychat-label {
     width: 96px;
