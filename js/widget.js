@@ -55,7 +55,7 @@
                 sms: '#2F80ED',
                 phone: '#0AD02C',
                 messenger: '#0084FF',
-                viber: '#675CA8',
+                // viber: '#675CA8',
                 kik: '#82BC23',
                 whatsapp: '#30BE2D',
                 alexa: '#54ABD8',
@@ -68,7 +68,7 @@
                 sms: 'classic',
                 phone: 'classic',
                 messenger: 'messaging',
-                viber: 'messaging',
+                // viber: 'messaging',
                 kik: 'messaging',
                 whatsapp: 'messaging',
                 alexa: 'voice',
@@ -81,7 +81,7 @@
                 sms: 'just text us',
                 phone: 'just call us',
                 messenger: 'chat with us on fb messenger',
-                viber: 'messaging',
+                // viber: 'messaging',
                 kik: 'chat with us on kik',
                 whatsapp: 'chat with us on whatsapp',
                 alexa: 'enable our skill',
@@ -164,16 +164,16 @@
                 var imgType = '.svg';
                 var labelText = key.charAt(0).toUpperCase() + key.slice(1);
                 if(key === 'anychat') {
-                    labelText = 'AnyCHAT';
+                    labelText = 'ask our chatbot';
                     anychat = true;
                 }
 
                 if(key === 'allo') {
-                    labelText = 'Allo/Home';
+                    labelText = 'google home';
                 }
 
                 if(key === 'sms') {
-                    labelText = 'SMS/Text';
+                    labelText = 'sms/text';
                 }
 
                 if(anychat) {
@@ -192,7 +192,11 @@
                                     .attr('alt', key)
                             // )
                         )
-                        .append($('<div class="anychat-label">').text(labelText))
+                        .append(
+                            $('<div class="anychat-label">')
+                                .append($('<p class="heading">').text(labelText))
+                                .append($('<p class="subheading">').text(labelText))
+                        )
                         // .append($('<div class="anychat-description">')).text(descriptions[key])
 
                         .appendTo(overlayBody);
@@ -206,7 +210,11 @@
                                 .attr('src', root + 'images/' + key + imgType)
                                 .attr('alt', key)
                         )
-                        .append($('<div class="anychat-label">').text(labelText))
+                        .append(
+                            $('<div class="anychat-label">')
+                                .append($('<p class="heading">').text(labelText))
+                                .append($('<p class="subheading">').text(labelText))
+                        )
                         // .append($('<div class="anychat-description">')).text(descriptions[key])
 
                         .appendTo(overlayBody);
@@ -229,7 +237,7 @@
                         labelText = key.charAt(0).toUpperCase() + key.slice(1);
                     if(key === 'anychat') {
                         color = '#783bd2';
-                        labelText = 'AnyCHAT';
+                        labelText = 'ask our chatbot';
                         anychat = true;
                         img = $('<img>')
                             .attr('src', root + 'images/' + key + imgType)
@@ -259,7 +267,11 @@
                                     .css('border', 'none')
                                     .append(img)
                             )
-                            .append($('<div class="anychat-label">').text(labelText));
+                            .append(
+                                $('<div class="anychat-label">')
+                                    .append($('<p class="heading">').text(labelText))
+                                    .append($('<p class="subheading">').text(labelText))
+                            );
                         if(anychat) {
                             chatIcon.append(
                                 $('<a class="chat-close">').append(
@@ -285,7 +297,11 @@
                                     .attr('src', root + 'images/' + key + imgType)
                                     .attr('alt', key)
                             )
-                            .append($('<div class="anychat-label">').text(labelText))
+                            .append(
+                                $('<div class="anychat-label">')
+                                    .append($('<p class="heading">').text(labelText))
+                                    .append($('<p class="subheading">').text(labelText))
+                            )
                             // .append($('<div class="anychat-description">')).text(descriptions[key])
                             // .css('color', color)
                             .hide();
@@ -296,7 +312,7 @@
             });
 
             anchor.children().each(function () {
-                $($(this).children()[0]).css('border-bottom', '2px solid rgba(0, 0, 0, .1)');
+                $($(this).children()[0]).css('border-bottom', '2px solid rgba(0, 0, 0, .6)');
             });
 
             $(messaging.children()[messaging.children().length - 1]).css('padding-top', '24px').prepend(
@@ -409,14 +425,14 @@
                         $('.launcher-container').fadeOut("fast");
 
                     } else {
-                        if (numberOfApps > maxIconCount) {
-                            if (index > numberOfApps - maxIconCount) {
-                                img.show().animate({
-                                    'opacity': 1,
-                                    'bottom': 72 + (maxIconCount - ((numberOfApps - index) % maxIconCount) - 1) * 52
-                                }, 'fast');
-                            }
-                        } else {
+                        // if (numberOfApps > maxIconCount) {
+                        //     if (index > numberOfApps - maxIconCount) {
+                        //         img.show().animate({
+                        //             'opacity': 1,
+                        //             'bottom': 72 + (maxIconCount - ((numberOfApps - index) % maxIconCount) - 1) * 52
+                        //         }, 'fast');
+                        //     }
+                        // } else {
                             // console.log(launcher.find('.launcher-container'));
                             if(anchor.find('.launcher-container').length === 0) {
                                 console.log('launcher background appended');
@@ -431,6 +447,9 @@
                                         .css('z-index', '-1')
                                         .css('border', 'solid rgba(0, 0, 0, .1)')
                                         .css('border-width', '0 2px 2px')
+                                        .append(
+                                            $('<a class="add-anychat-link">').text('add anychat to your website')
+                                        )
                                 )
                             } else {
                                 $('.launcher-container').fadeIn("fast");
@@ -462,8 +481,8 @@
                             // || img.data('type') === $($(anchor.children()[3]).children()[0]).data('type')) {
                             //     console.log($($(anchor.children()[0]).children()[0]).data('type'));
                             // }
-                            console.log(chatbot.find('.anychat-chat-icon').css('bottom'));
-                        }
+                        //     console.log(chatbot.find('.anychat-chat-icon').css('bottom'));
+                        // }
                         // anchor.children().each(function () {
                         //     console.log($(this));
                         // });
@@ -729,36 +748,36 @@
                     qr = true;
                     break;
 
-                case 'viber':
-                    var name = site.split('.')[0];
-                    var card = "BEGIN:VCARD" +
-                        "\nVERSION:3.0" +
-                        "\nN:" + name +
-                        "\nFN:" + name +
-                        "\nORG:" + site +
-                        "\nTEL;TYPE=WORK,VOICE:" + settings.apps.viber +
-                        "\nEND:VCARD";
-
-                    container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("1: Add to Contacts");
-
-                    if (Android) {
-                        $('<a target="_blank" class="anychat-button">').attr('href', "viber://tel:" + settings.apps.viber).text(settings.apps.viber).appendTo(container);
-                    } else if (iOS) {
-                        $('<a target="_blank" class="anychat-button">').attr('href', "viber://calls").text(settings.apps.viber).appendTo(container);
-                    } else {
-                        $('<a target="_blank" class="anychat-button">').attr('rel', 'external').attr('download', name + ".vcf").attr('href', "data:text/directory;base64," + btoa(card)).text(settings.apps.viber).appendTo(container);
-                    }
-
-                    $('<br><span>').text('2: Start chat').appendTo(container);
-
-                    if (Mobile) {
-                        $('<br><a class="anychat-button" href="viber://forward?text=Hello">Open Viber</a>').appendTo(container);
-                    } else {
-                        $('<br><a class="anychat-button" target="_blank" href="https://viber.com">Viber Website</a>').appendTo(container);
-                    }
-
-                    qr = true;
-                    break;
+                // case 'viber':
+                //     var name = site.split('.')[0];
+                //     var card = "BEGIN:VCARD" +
+                //         "\nVERSION:3.0" +
+                //         "\nN:" + name +
+                //         "\nFN:" + name +
+                //         "\nORG:" + site +
+                //         "\nTEL;TYPE=WORK,VOICE:" + settings.apps.viber +
+                //         "\nEND:VCARD";
+                //
+                //     container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("1: Add to Contacts");
+                //
+                //     if (Android) {
+                //         $('<a target="_blank" class="anychat-button">').attr('href', "viber://tel:" + settings.apps.viber).text(settings.apps.viber).appendTo(container);
+                //     } else if (iOS) {
+                //         $('<a target="_blank" class="anychat-button">').attr('href', "viber://calls").text(settings.apps.viber).appendTo(container);
+                //     } else {
+                //         $('<a target="_blank" class="anychat-button">').attr('rel', 'external').attr('download', name + ".vcf").attr('href', "data:text/directory;base64," + btoa(card)).text(settings.apps.viber).appendTo(container);
+                //     }
+                //
+                //     $('<br><span>').text('2: Start chat').appendTo(container);
+                //
+                //     if (Mobile) {
+                //         $('<br><a class="anychat-button" href="viber://forward?text=Hello">Open Viber</a>').appendTo(container);
+                //     } else {
+                //         $('<br><a class="anychat-button" target="_blank" href="https://viber.com">Viber Website</a>').appendTo(container);
+                //     }
+                //
+                //     qr = true;
+                //     break;
 
                 case 'kik':
                     var name = site.split('.')[0];
