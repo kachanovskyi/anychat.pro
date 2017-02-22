@@ -316,13 +316,19 @@
             });
 
             $(messaging.children()[messaging.children().length - 1]).css('padding-top', '24px').prepend(
-               $('<p>messaging channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
+                $('<div class="channels-group-heading">').append(
+                    $('<p>messaging channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
+                )
             );
             $(classic.children()[classic.children().length - 1]).css('padding-top', '24px').prepend(
-                $('<p>classic channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
+                $('<div class="channels-group-heading">').append(
+                    $('<p>classic channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
+                )
             );
             $(voice.children()[voice.children().length - 1]).css('padding-top', '24px').prepend(
-                $('<p>voice channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
+                $('<div class="channels-group-heading">').append(
+                    $('<p>voice channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
+                )
             );
             $(chatbot.children()[0]).css('border-top', '2px solid rgba(0, 0, 0, .1)');
             console.log(chatbot.children()[0]);
@@ -406,6 +412,7 @@
                 console.log('launcher clicked');
                 $('#anychat-container .anychat-chat-icon').each(function(index, img) {
                     img = $(img);
+                    console.log(img.parent());
                     if(60 + index * 60 > chatTop) {
                         chatTop = 60 + index * 60;
                     }
@@ -447,8 +454,10 @@
                                         .css('z-index', '-1')
                                         .css('border', 'solid rgba(0, 0, 0, .1)')
                                         .css('border-width', '0 2px 2px')
+                                        .css('padding-top', '6px')
                                         .append(
                                             $('<a class="add-anychat-link">').text('add anychat to your website')
+
                                         )
                                 )
                             } else {
@@ -537,12 +546,21 @@
                 messageContainer.append(quickContainer);
 
 
-                for(var i = 0; i < 8; i++) {
-                    var quickReply = $('<div class="quick-reply">').text('reply ' + i);
+                for(var i = 0; i < 3; i++) {
+                    var quickReply = $('<div class="quick-reply">');
                     if(i === 0) {
-                        quickReply.css('margin-left', '33px');
+                        quickReply.css('margin-left', '40px');
+                        quickReply.text("Hello");
+                    } else if (i === 1) {
+                        quickReply.text("Hi");
+                    } else {
+                        quickReply.text("Howdy");
                     }
-                    quickReply.appendTo(quickInner);
+                    quickReply
+                        .on("click", function () {
+                            send("quick", $(this));
+                        })
+                        .appendTo(quickInner);
                 }
 
                 var chatWindow = $('<div class="chat-window">')
@@ -629,8 +647,11 @@
             console.log(val);
         }
 
-        function send() {
+        function send(param, elem) {
             var text = $("#chatInput").val();
+            if(param === "quick") {
+                text = elem.text();
+            }
             $("#chatInput").val('');
             $.ajax({
                 type: "POST",
