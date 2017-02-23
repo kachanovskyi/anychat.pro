@@ -310,15 +310,24 @@
                     }
                 }
             });
-
-            anchor.children().each(function () {
-                $($(this).children()[0]).css('border-bottom', '2px solid rgba(0, 0, 0, .6)');
-            });
+            if(classic.children().length > 0) {
+                $('<div>')
+                    .addClass('anychat-chat-icon')
+                    .addClass('group-title')
+                    // .css('background-color', colors[key])
+                    .append(
+                        $('<p>messaging channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
+                    )
+                    // .append($('<div class="anychat-description">')).text(descriptions[key])
+                    // .css('color', color)
+                    .hide()
+                    .appendTo(anchor.find('.classic'));
+            }
 
             $(messaging.children()[messaging.children().length - 1]).css('padding-top', '24px').prepend(
-                $('<div class="channels-group-heading">').append(
-                    $('<p>messaging channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
-                )
+                // $('<div class="channels-group-heading">').append(
+                //     $('<p>messaging channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
+                // )
             );
             $(classic.children()[classic.children().length - 1]).css('padding-top', '24px').prepend(
                 $('<div class="channels-group-heading">').append(
@@ -332,6 +341,13 @@
             );
             $(chatbot.children()[0]).css('border-top', '2px solid rgba(0, 0, 0, .1)');
             console.log(chatbot.children()[0]);
+            console.log(classic);
+            console.log(voice);
+            console.log(messaging);
+
+            anchor.children().each(function () {
+                $($(this).children()[0]).css('border-bottom', '2px solid rgba(0, 0, 0, .6)');
+            });
 
             //Add a more icon
             var more = $('<div>')
@@ -407,7 +423,9 @@
 
 
             var chatTop = 0,
-                chatBottom = 60;
+                chatBottom = 60,
+                chatWidth = '250px';
+
             launcher.click(function() {
                 console.log('launcher clicked');
                 $('#anychat-container .anychat-chat-icon').each(function(index, img) {
@@ -441,31 +459,37 @@
                         //     }
                         // } else {
                             // console.log(launcher.find('.launcher-container'));
-                            if(anchor.find('.launcher-container').length === 0) {
-                                console.log('launcher background appended');
-                                anchor.append(
-                                    $('<div class="launcher-container">')
-                                        .css('position', 'absolute')
-                                        .css('bottom', '0')
-                                        .css('height', '60px')
-                                        .css('width', '250px')
-                                        .css('background', '#FFFFFF')
-                                        .css('right', '18px')
-                                        .css('z-index', '-1')
-                                        .css('border', 'solid rgba(0, 0, 0, .1)')
-                                        .css('border-width', '0 2px 2px')
-                                        .css('padding-top', '6px')
-                                        .append(
-                                            $('<a class="add-anychat-link">').text('add anychat to your website')
+                        if(anchor.find('.launcher-container').length === 0) {
+                            console.log('launcher background appended');
+                            anchor.append(
+                                $('<div class="launcher-container">')
+                                    .css('position', 'absolute')
+                                    .css('bottom', '0')
+                                    .css('height', '60px')
+                                    .css('width', '250px')
+                                    .css('background', '#FFFFFF')
+                                    .css('right', '18px')
+                                    .css('z-index', '-1')
+                                    .css('border', 'solid rgba(0, 0, 0, .1)')
+                                    .css('border-width', '0 2px 2px')
+                                    .css('padding-top', '6px')
+                                    .append(
+                                        $('<a class="add-anychat-link">').text('add anychat to your website')
 
-                                        )
-                                )
-                            } else {
-                                $('.launcher-container').fadeIn("fast");
-                            }
+                                    )
+                            )
+                        } else {
+                            $('.launcher-container').fadeIn("fast");
+                        }
+
+                        var diff = 0;
+                        if( img.parent().hasClass('voice') && (classic.children().length > 0) ) {
+                            diff = -30;
+                        }
+                        if()
                             img.show().animate({
                                 'opacity': 1,
-                                'bottom': 60 + index * 60
+                                'bottom': 60 + index * 60 + diff
                             }, 'fast');
                             // anchor.children().each(function () {
                             //     if($($(this).children()[0]).data('type') === img.data('type')) {
@@ -509,11 +533,36 @@
                     }
                 }
 
+                function getInnerWidth(element) {
+
+                    var wrapper = document.createElement('span'),
+                        result;
+
+                    while (element.firstChild) {
+                        wrapper.appendChild(element.firstChild);
+                    }
+
+                    element.appendChild(wrapper);
+
+                    result = wrapper.offsetWidth;
+
+                    element.removeChild(wrapper);
+
+                    while (wrapper.firstChild) {
+                        element.appendChild(wrapper.firstChild);
+                    }
+
+                    return result;
+
+                }
+
                 var chatHeight = chatTop;
                 // console.log(chatHeight);
-                var quickContainer = $('<div class="quick-reply-container">');
-                var quickInner = $('<div class="inner">').appendTo(quickContainer);
-                var quickBackground = $('<div class="background">').appendTo(quickContainer);
+                var quickContainer = $('<div class="quick-reply-container">'),
+                    quickInner = $('<div class="inner">').appendTo(quickContainer),
+                    quickBackground = $('<div class="background">').appendTo(quickContainer),
+                    quickIterator = 0;
+                var quickScroll = true;
 
                 $('<a class="btn prev">')
                     .append(
@@ -522,10 +571,23 @@
                             .css('transform', 'scaleX(-1)')
                     )
                     .on("click", function () {
-                        console.log('click worked');
-                        $('.quick-reply-container').animate({
-                            'margin-left': '+=100px'
-                        }, 200)
+                        var arrQuick = $('.quick-reply'),
+                            firstQuick = $(arrQuick[0]),
+                            lastQuick = $(arrQuick[arrQuick.length - 1]);
+                        console.log(firstQuick);
+                        if(quickScroll && ((firstQuick.offset().left - parseInt($(this).css('width'), 10)) < $('.message-container').offset().left)) {
+                            quickScroll = false;
+                            console.log('worked');
+                            $('.quick-reply-container').animate({
+                                'margin-left': '+=' + $(arrQuick[quickIterator]).css('width')
+                            }, 200, function () {
+                                quickScroll = true;
+                            });
+                            if(quickIterator > 0) {
+                                quickIterator--;
+                            }
+                        }
+
                     })
                     .appendTo(quickBackground);
                 $('<a class="btn next">')
@@ -534,10 +596,24 @@
                             .attr('src', 'images/quick-next.png')
                     )
                     .on("click", function () {
-                        console.log('click worked');
-                        $('.quick-reply-container').animate({
-                            'margin-left': '-=100px'
-                        }, 200)
+                        var arrQuick = $('.quick-reply'),
+                            firstQuick = $(arrQuick[0]),
+                            lastQuick = $(arrQuick[arrQuick.length - 1]);
+                        console.log($(this).css('width'));
+                        console.log(lastQuick.offset().left + parseInt(lastQuick.css('width'), 10));
+                        console.log($('.message-container').offset().left + parseInt(chatWidth, 10) + parseInt($(this).css('width'), 10));
+                        if(quickScroll && (( lastQuick.offset().left + parseInt(lastQuick.css('width'), 10) + parseInt(lastQuick.css('width'), 10) ) > ( $('.message-container').offset().left + parseInt(chatWidth, 10)
+                            + parseInt($(this).css('width'), 10) ))) {
+                            quickScroll = false;
+                            $('.quick-reply-container').animate({
+                                'margin-left': '-=' + $(arrQuick[quickIterator]).css('width')
+                            }, 200, function () {
+                                quickScroll = true;
+                            });
+                            if(quickIterator < arrQuick.length) {
+                                quickIterator++;
+                            }
+                        }
                     })
                     .appendTo(quickBackground);
                 var messageContainer = $('<div class="message-container">')
@@ -546,7 +622,7 @@
                 messageContainer.append(quickContainer);
 
 
-                for(var i = 0; i < 3; i++) {
+                for(var i = 0; i < 5; i++) {
                     var quickReply = $('<div class="quick-reply">');
                     if(i === 0) {
                         quickReply.css('margin-left', '40px');
@@ -567,7 +643,7 @@
                     .css('border', '2px solid rgba(0, 0, 0, .001)')
                     .css('height', chatHeight)
                     .css('top', '-' +  ((chatBottom - 58 + chatHeight) + 'px'))
-                    .css('width', '250px')
+                    .css('width', chatWidth)
                     .css('position', 'absolute')
                     .css('right', '18px')
                     .css('display', 'none')
@@ -579,16 +655,19 @@
                             .css('position', 'absolute')
                             .css('bottom', '-2px')
                             .css('right', '-2px')
-                            .css('width', '250px')
+                            .css('width', chatWidth)
                             .css('height', '60px')
                             .css('background-color', '#FFFFFF')
                             .append(
                                 $('<input type="text" placeholder="type message">')
                                     .attr('id', 'chatInput')
-                                    .css('background', '#E5E5E5')
+                                    .addClass('black-placeholder')
+                                    .css('background', 'rgb(200, 200, 200)')
                                     .css('height', '30px')
-                                    .css('width', '160px')
-                                    .css('font-size', '16px')
+                                    .css('width', '180px')
+                                    // .css('color', '#000000')
+                                    .css('font-size', '12px')
+                                    .css('border-radius', '10px')
                                     .keypress(function(event) {
                                         if (event.which == 13) {
                                             event.preventDefault();
@@ -625,6 +704,21 @@
             $('.launcher-container').append(
 
             );
+
+            var arrQuickWidth = 0;
+            $(document).ready(function () {
+                $('.quick-reply').each(function () {
+                    console.log($(this).width());
+                    // console.log(document.getElementsByClassName('quick-reply'));
+                    arrQuickWidth += parseInt($(this).css('width'), 10);
+                });
+                console.log(arrQuickWidth);
+                if( arrQuickWidth > (parseInt(chatWidth, 10) - 2*parseInt($('.quick-reply-container .btn').css('width'), 10)) ) {
+                    $('.quick-reply-container .btn').each(function () {
+                        $(this).css('display', 'block');
+                    })
+                }
+            });
         }
         function chatClose() {
             $('.chat-window').slideUp("fast").removeClass('expanded');
