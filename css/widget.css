@@ -77,8 +77,8 @@
     position: absolute;
     width: 33px;
     height: 33px;
-    right: 37px;
-    bottom: 14px;
+    right: 40px;
+    bottom: 20px;
     border-radius: 25px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05), 0 15px 30px -10px rgba(0, 0, 0, 0.3);
 }
@@ -100,6 +100,19 @@
 .anychat-chat-icon .chat-close {
     display: none;
 }
+    .anychat-chat-icon .chat-close > img {
+        margin-top: 8px;
+        height: 22px;
+        width: 22px;
+        transition: .2s ease-in-out;
+        border-radius: 14px;
+    }
+    .anychat-chat-icon .chat-close > img:hover {
+        border: 1px solid rgba(120, 59, 210, .55);
+        /*text-shadow: 0 0 10px rgba(120, 59, 210, .55);*/
+        -webkit-filter: drop-shadow( 0 0 10px rgba(120, 59, 210, .55) );
+        filter: drop-shadow( 0 0 10px rgba(120, 59, 210, .55) );
+    }
 
 .anychat-button,
 .anychat-block {
@@ -128,9 +141,9 @@
 
 .anychat-chat-icon{
 	box-shadow: none !important;
-    min-width: 250px;
+    min-width: 290px;
     background: #FFFFFF;
-    border: solid rgba(0, 0, 0, .1);
+    border: solid rgba(120, 59, 210, .55);
     border-width: 0 2px;
     /*border-radius: ;*/
     padding: 10px 20px 0;
@@ -142,6 +155,11 @@
     .anychat-chat-icon > a {
         float: right;
     }
+
+.chatbot > .anychat-chat-icon {
+    height: 60px;
+    padding-top: 10px;
+}
 
 .anychat-chat-icon.anychat-panel {
     position: fixed;
@@ -250,7 +268,7 @@
             margin: 5px 12px;
             display: inline;
             clear: both;
-            max-width: 90.33%;
+            max-width: 92%;
             word-wrap: break-word;
             line-height: 100%;
             -webkit-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.22);
@@ -295,7 +313,7 @@
                 top: 0;
                 cursor: pointer;
                 z-index: 1;
-                display: none;
+                display: none !important;
             }
                 .chat-window .quick-reply-container .btn > img {
                     max-width: 100%;
@@ -389,6 +407,7 @@
         line-height: 100%;
         font-size: 12px;
         font-weight: 400;
+        max-width: 170px;
     }
 .anychat-description {
     position: absolute;

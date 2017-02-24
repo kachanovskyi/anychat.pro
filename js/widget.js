@@ -63,7 +63,6 @@
             },
             groups = {
                 anychat: 'chatbot',
-                // email: '#2D70E7',
                 email: 'classic',
                 sms: 'classic',
                 phone: 'classic',
@@ -74,9 +73,20 @@
                 alexa: 'voice',
                 allo: 'voice'
             },
+            labels = {
+                anychat: 'ask our chatbot',
+                email: 'email',
+                sms: 'sms/text',
+                phone: 'phone',
+                messenger: 'messenger',
+                // viber: 'viber',
+                kik: 'kik',
+                whatsapp: 'whatsapp',
+                alexa: 'amazon echo',
+                allo: 'google home'
+            },
             descriptions = {
                 anychat: 'about us, hours, locations',
-                // email: '#2D70E7',
                 email: 'just email us',
                 sms: 'just text us',
                 phone: 'just call us',
@@ -194,8 +204,8 @@
                         )
                         .append(
                             $('<div class="anychat-label">')
-                                .append($('<p class="heading">').text(labelText))
-                                .append($('<p class="subheading">').text(labelText))
+                                .append($('<p class="heading">').text(labels[key]))
+                                .append($('<p class="subheading">').text(descriptions[key]))
                         )
                         // .append($('<div class="anychat-description">')).text(descriptions[key])
 
@@ -212,8 +222,8 @@
                         )
                         .append(
                             $('<div class="anychat-label">')
-                                .append($('<p class="heading">').text(labelText))
-                                .append($('<p class="subheading">').text(labelText))
+                                .append($('<p class="heading">').text(labels[key]))
+                                .append($('<p class="subheading">').text(descriptions[key]))
                         )
                         // .append($('<div class="anychat-description">')).text(descriptions[key])
 
@@ -272,8 +282,8 @@
                         )
                         .append(
                             $('<div class="anychat-label">')
-                                .append($('<p class="heading">').text(labelText))
-                                .append($('<p class="subheading">').text(labelText))
+                                .append($('<p class="heading">').text(labels[key]))
+                                .append($('<p class="subheading">').text(descriptions[key]))
                         );
                     // .append($('<div class="anychat-description">')).text(descriptions[key])
                     chatIcon.css('color', color).hide();
@@ -291,8 +301,8 @@
                         )
                         .append(
                             $('<div class="anychat-label">')
-                                .append($('<p class="heading">').text(labelText))
-                                .append($('<p class="subheading">').text(labelText))
+                                .append($('<p class="heading">').text(labels[key]))
+                                .append($('<p class="subheading">').text(descriptions[key]))
                         )
                         // .append($('<div class="anychat-description">')).text(descriptions[key])
                         // .css('color', color)
@@ -301,8 +311,7 @@
                         chatIcon.append(
                             $('<a class="chat-close">').append(
                                 $('<img>')
-                                    .attr('src', 'images/more.svg')
-                                    .css('transform', 'scaleX(-1)')
+                                    .attr('src', 'images/back.svg')
                                 )
                                 .css('float', 'left')
                                 .css('border-bottom', 'none')
@@ -368,7 +377,7 @@
             //         $('<p>voice channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
             //     )
             // );
-            $(chatbot.children()[0]).css('border-top', '2px solid rgba(0, 0, 0, .1)');
+            $(chatbot.children()[0]).css('border-top', '2px solid rgba(120, 59, 210, .55)');
             // console.log(chatbot.children()[0]);
             // console.log(classic);
             // console.log(voice);
@@ -455,7 +464,7 @@
                 chatIconHeight = 60;
             var chatTop = 0,
                 chatBottom = 60,
-                chatWidth = '250px';
+                chatWidth = '290px';
 
             launcher.click(function() {
                 console.log('launcher clicked');
@@ -494,13 +503,12 @@
                                     .css('position', 'absolute')
                                     .css('bottom', '0')
                                     .css('height', '60px')
-                                    .css('width', '250px')
+                                    .css('width', chatWidth)
                                     .css('background', '#FFFFFF')
                                     .css('right', '18px')
                                     .css('z-index', '-1')
-                                    .css('border', 'solid rgba(0, 0, 0, .1)')
+                                    .css('border', 'solid rgba(120, 59, 210, .55)')
                                     .css('border-width', '0 2px 2px')
-                                    .css('padding-top', '6px')
                                     .append(
                                         $('<a class="add-anychat-link">').text('add anychat to your website')
 
@@ -678,7 +686,7 @@
                 for(var i = 0; i < 5; i++) {
                     var quickReply = $('<div class="quick-reply">');
                     if(i === 0) {
-                        quickReply.css('margin-left', '40px');
+                        quickReply.css('margin-left', '28px');
                         quickReply.text("Hello");
                     } else if (i === 1) {
                         quickReply.text("Hi");
@@ -717,7 +725,7 @@
                                     .addClass('black-placeholder')
                                     .css('background', 'rgb(200, 200, 200)')
                                     .css('height', '30px')
-                                    .css('width', '180px')
+                                    .css('width', '220px')
                                     // .css('color', '#000000')
                                     .css('font-size', '12px')
                                     .css('border-radius', '10px')
@@ -731,7 +739,7 @@
                             .append(
                                 $('<a class="send-message">').append(
                                     $('<img>')
-                                        .attr('src', 'images/more.svg')
+                                        .attr('src', 'images/send.svg')
                                     )
                                     .css('float', 'right')
                                     .css('border-bottom', 'none')
@@ -750,13 +758,17 @@
             });
         }
 
+        var initialChatBottom;
+
         function chatOpen() {
+            // initialChatBottom = $('.chatbot').find('.anychat-chat-icon').css('bottom');
+            // $('.chatbot').find('.anychat-chat-icon').css('bottom', 520);
+            // $('.chat-window').css('top', 520);
             $('.chat-window').slideDown("fast").addClass('expanded');
             // $('#chatInput').fadeIn("fast");
             $('.chat-close').show();
-            $('.launcher-container').append(
-
-            );
+            $('.chatbot').find('.heading').text('our chatbot');
+            $('.chatbot').find('.subheading').text('go ahead, ask about our hours, directions or just say hello');
 
             var arrQuickWidth = 0;
             $(document).ready(function () {
@@ -777,6 +789,8 @@
             $('.chat-window').slideUp("fast").removeClass('expanded');
             // $('#chatInput').fadeOut("fast");
             $('.chat-close').hide();
+            $('.chatbot').find('.heading').text(labels["anychat"]);
+            $('.chatbot').find('.subheading').text(descriptions["anychat"]);
         }
 
         function setResponse(val) {
@@ -799,30 +813,35 @@
             if(param === "quick") {
                 text = elem.text();
             }
-            $("#chatInput").val('');
-            $.ajax({
-                type: "POST",
-                url: baseUrl + "query?v=20150910",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                headers: {
-                    "Authorization": "Bearer " + accessToken
-                },
-                data: JSON.stringify({ query: text, lang: "en", sessionId: "somerandomthing" }),
 
-                success: function(data) {
-                    setResponse(JSON.stringify(data, undefined, 2));
-                },
-                error: function() {
-                    setResponse("Internal Server Error");
-                }
-            });
-            // setResponse("Loading...");
+            if(text.length && text !== " ") {
+                $("#chatInput").val('');
+                $.ajax({
+                    type: "POST",
+                    url: baseUrl + "query?v=20150910",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    headers: {
+                        "Authorization": "Bearer " + accessToken
+                    },
+                    data: JSON.stringify({ query: text, lang: "en", sessionId: "somerandomthing" }),
 
-            var message = $('<div class="chat-message user">');
-            message.text(text).appendTo($('.chat-window').find('.message-container'));
+                    success: function(data) {
+                        setResponse(JSON.stringify(data, undefined, 2));
+                    },
+                    error: function() {
+                        setResponse("Internal Server Error");
+                    }
+                });
+                // setResponse("Loading...");
 
-            chatScrollBottom();
+                var message = $('<div class="chat-message user">');
+                message.text(text).appendTo($('.chat-window').find('.message-container'));
+
+                chatScrollBottom();
+            } else {
+                $("#chatInput").val('').focus();
+            }
         }
 
         function chatScrollBottom() {
