@@ -820,7 +820,7 @@
                     message.text(settings.answers["Email"]).appendTo($('.chat-window').find('.message-container'));
                     break;
                 case 'Phone':
-                    message.text(settings.answers["Phone"].appendTo($('.chat-window').find('.message-container')));
+                    message.text(settings.answers["Phone"]).appendTo($('.chat-window').find('.message-container'));
                     break;
                 default:
                     if(response.result.fulfillment.speech !== "") {
