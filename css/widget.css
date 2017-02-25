@@ -292,10 +292,18 @@
             /*width: 400px;*/
             height: 40px;
             padding: 3px 0;
+            clear: both;
+            position: relative;
         }
             .chat-window .message-container .quick-reply-container .inner {
                 height: 100%;
                 white-space: nowrap;
+            }
+            .chat-window .message-container .quick-reply-container .background {
+                height: 100%;
+                position: absolute;
+                top: 0;
+                right: -2px;
             }
             .chat-window .quick-reply-container .quick-reply {
                 height: 34px;
@@ -309,6 +317,9 @@
                 cursor: pointer;
                 font-size: 12px;
             }
+                .chat-window .quick-reply-container .quick-reply:first-child {
+                    margin-left: 38px;
+                }
             .chat-window .quick-reply-container .btn{
                 position: absolute;
                 width: 38px;
@@ -316,7 +327,7 @@
                 top: 0;
                 cursor: pointer;
                 z-index: 1;
-                display: none !important;
+                display: none;
             }
                 .chat-window .quick-reply-container .btn > img {
                     max-width: 100%;
@@ -325,7 +336,7 @@
                 right: 0;
             }
             .chat-window .quick-reply-container .btn.prev {
-                left: 0;
+                right: 250px;
             }
 
 

@@ -610,83 +610,10 @@
                 // }
 
                 var chatHeight = chatTop;
-                var quickContainer = $('<div class="quick-reply-container">'),
-                    quickInner = $('<div class="inner">').appendTo(quickContainer),
-                    quickBackground = $('<div class="background">').appendTo(quickContainer),
-                    quickIterator = 0;
-                var quickScroll = true;
 
-                $('<a class="btn prev">')
-                    .append(
-                        $('<img>')
-                            .attr('src', 'images/quick-next.png')
-                            .css('transform', 'scaleX(-1)')
-                    )
-                    .on("click", function () {
-                        var arrQuick = $('.quick-reply'),
-                            firstQuick = $(arrQuick[0]),
-                            lastQuick = $(arrQuick[arrQuick.length - 1]);
-
-                        if(quickScroll && ((firstQuick.offset().left - parseInt($(this).css('width'), 10)) < $('.message-container').offset().left)) {
-                            quickScroll = false;
-                            $('.quick-reply-container').animate({
-                                'margin-left': '+=' + $(arrQuick[quickIterator]).css('width')
-                            }, 200, function () {
-                                quickScroll = true;
-                            });
-                            if(quickIterator > 0) {
-                                quickIterator--;
-                            }
-                        }
-
-                    })
-                    .appendTo(quickBackground);
-                $('<a class="btn next">')
-                    .append(
-                        $('<img>')
-                            .attr('src', 'images/quick-next.png')
-                    )
-                    .on("click", function () {
-                        var arrQuick = $('.quick-reply'),
-                            firstQuick = $(arrQuick[0]),
-                            lastQuick = $(arrQuick[arrQuick.length - 1]);
-
-                        if(quickScroll && (( lastQuick.offset().left + parseInt(lastQuick.css('width'), 10) + parseInt(lastQuick.css('width'), 10) ) > ( $('.message-container').offset().left + parseInt(chatWidth, 10)
-                            + parseInt($(this).css('width'), 10) ))) {
-                            quickScroll = false;
-                            $('.quick-reply-container').animate({
-                                'margin-left': '-=' + $(arrQuick[quickIterator]).css('width')
-                            }, 200, function () {
-                                quickScroll = true;
-                            });
-                            if(quickIterator < arrQuick.length) {
-                                quickIterator++;
-                            }
-                        }
-                    })
-                    .appendTo(quickBackground);
                 var messageContainer = $('<div class="message-container">')
                     .css('width', '100%')
                     .css('height', ((chatHeight - 60) + 'px'));
-                messageContainer.append(quickContainer);
-
-
-                for(var i = 0; i < 5; i++) {
-                    var quickReply = $('<div class="quick-reply">');
-                    if(i === 0) {
-                        quickReply.css('margin-left', '28px');
-                        quickReply.text("Hello");
-                    } else if (i === 1) {
-                        quickReply.text("Hi");
-                    } else {
-                        quickReply.text("Howdy");
-                    }
-                    quickReply
-                        .on("click", function () {
-                            send("quick", $(this));
-                        })
-                        .appendTo(quickInner);
-                }
 
                 var chatWindow = $('<div class="chat-window">')
                     .css('height', chatHeight)
@@ -756,6 +683,7 @@
             $('.chat-close').show();
             chatbot.find('.heading').text('our chatbot');
             chatbot.find('.subheading').text('go ahead, ask about our hours, directions or just say hello');
+            $("#chatInput").val('').focus();
         }
         function chatWindowClose(callback) {
             $('.chat-window').slideUp("fast", callback).removeClass('expanded');
@@ -776,18 +704,6 @@
                 } else {
                     chatWindowShow();
                 }
-
-                var arrQuickWidth = 0;
-                $(document).ready(function () {
-                    $('.quick-reply').each(function () {
-                        arrQuickWidth += parseInt($(this).css('width'), 10);
-                    });
-                    if( arrQuickWidth > (parseInt(chatWidth, 10) - 2*parseInt($('.quick-reply-container .btn').css('width'), 10)) ) {
-                        $('.quick-reply-container .btn').each(function () {
-                            $(this).css('display', 'block');
-                        })
-                    }
-                });
             }
         }
 
@@ -807,38 +723,114 @@
             var message = $('<div class="chat-message bot">');
 
             switch (response.result.action) {
+                case 'input.welcome':
+                    var quickContainer = $('<div class="quick-reply-container">'),
+                        quickInner = $('<div class="inner">').appendTo(quickContainer),
+                        quickBackground = $('<div class="background">').appendTo(quickContainer);
+                    var quickIterator = 0,
+                        quickScroll = true;
+
+                    message
+                        .text(response.result.fulfillment.speech + " I'm " + settings.answers["BusinessName"] + " chatbot. How can I help you?")
+                        .appendTo($('.chat-window').find('.message-container'));
+                    quickContainer
+                        .appendTo($('.message-container'));
+
+                    console.log(settings.answers);
+                    for(var x in settings.answers) {
+                        var quickReply = $('<div class="quick-reply">')
+                            .text(x)
+                            .on("click", function () {
+                                send("quick", $(this));
+                            })
+                            .appendTo(quickInner);
+                    }
+
+                    $('<a class="btn prev">')
+                        .append(
+                            $('<img>')
+                                .attr('src', 'images/quick-next.png')
+                                .css('transform', 'scaleX(-1)')
+                        )
+                        .on("click", function () {
+                            var arrQuick = $('.quick-reply'),
+                                firstQuick = $(arrQuick[0]),
+                                lastQuick = $(arrQuick[arrQuick.length - 1]);
+
+                            if(quickScroll && ((firstQuick.offset().left - parseInt($(this).css('width'), 10)) < $('.message-container').offset().left)) {
+                                quickScroll = false;
+                                $('.quick-reply-container').animate({
+                                    'margin-left': '+=' + $(arrQuick[quickIterator]).css('width')
+                                }, 200, function () {
+                                    quickScroll = true;
+                                });
+                                if(quickIterator > 0) {
+                                    quickIterator--;
+                                }
+                            }
+
+                        })
+                        .appendTo(quickBackground);
+                    $('<a class="btn next">')
+                        .append(
+                            $('<img>')
+                                .attr('src', 'images/quick-next.png')
+                        )
+                        .on("click", function () {
+                            var arrQuick = $('.quick-reply'),
+                                firstQuick = $(arrQuick[0]),
+                                lastQuick = $(arrQuick[arrQuick.length - 1]);
+
+                            if(quickScroll && (( lastQuick.offset().left + parseInt(lastQuick.css('width'), 10) + parseInt(lastQuick.css('width'), 10) ) > ( $('.message-container').offset().left + parseInt(chatWidth, 10)
+                                + parseInt($(this).css('width'), 10) ))) {
+                                quickScroll = false;
+                                $('.quick-reply-container').animate({
+                                    'margin-left': '-=' + $(arrQuick[quickIterator]).css('width')
+                                }, 200, function () {
+                                    quickScroll = true;
+                                });
+                                if(quickIterator < arrQuick.length) {
+                                    quickIterator++;
+                                }
+                            }
+                        })
+                        .appendTo(quickBackground);
+
+                    var arrQuickWidth = 0;
+                    $('.quick-reply').each(function () {
+                        arrQuickWidth += parseInt($(this).css('width'), 10);
+                    });
+                    if( arrQuickWidth > (parseInt(chatWidth, 10) - 2*parseInt($('.quick-reply-container .btn').css('width'), 10)) ) {
+                        $('.quick-reply-container .btn').each(function () {
+                            $(this).css('display', 'block');
+                        })
+                    }
+
+                    break;
                 case 'BusinessName':
-                    message.text(settings.answers["BusinessName"]);
+                    message.text(settings.answers["BusinessName"]).appendTo($('.chat-window').find('.message-container'));
                     break;
                 case 'Address':
-                    message.text(settings.answers["Address"]);
+                    message.text(settings.answers["Address"]).appendTo($('.chat-window').find('.message-container'));
                     break;
                 case 'Hours':
-                    message.text(settings.answers["Hours"]);
+                    message.text(settings.answers["Hours"]).appendTo($('.chat-window').find('.message-container'));
                     break;
                 case 'Email':
-                    message.text(settings.answers["Email"]);
+                    message.text(settings.answers["Email"]).appendTo($('.chat-window').find('.message-container'));
                     break;
                 case 'Phone':
-                    message.text(settings.answers["Phone"]);
+                    message.text(settings.answers["Phone"].appendTo($('.chat-window').find('.message-container')));
                     break;
                 default:
                     if(response.result.fulfillment.speech !== "") {
-                        message.text(response.result.fulfillment.speech);
+                        message.text(response.result.fulfillment.speech).appendTo($('.chat-window').find('.message-container'));
                     } else {
-                        message.text("I'm sorry, but I can't really understand you.");
+                        message.text("I'm sorry, but I can't really understand you.").appendTo($('.chat-window').find('.message-container'));
                     }
                     break;
             }
-            message.appendTo($('.chat-window').find('.message-container'));
 
-            // if(response.result.action === "BusinessName" || response.result.action === "Address") {
-            //     message.text(response.result.action).appendTo($('.chat-window').find('.message-container'));
-            // } else if(response.result.fulfillment.speech !== "") {
-            //     message.text(response.result.fulfillment.speech).appendTo($('.chat-window').find('.message-container'));
-            // } else {
-            //     message.text("I'm sorry, but I can't really understand you.").appendTo($('.chat-window').find('.message-container'));
-            // }
             chatScrollBottom();
             // console.log(val);
         }
@@ -847,6 +839,7 @@
             var text = $("#chatInput").val();
             if(param === "quick") {
                 text = elem.text();
+                console.log(settings.answers);
             }
 
             if(text.length && text !== " ") {
@@ -893,20 +886,6 @@
             var link, qr, app = $(icon);
             var container = $('<div>').addClass('anychat-qr');
 
-            // var chatHeight = 0;
-            // messaging.children().each(function () {
-            //     // console.log($(this).css('height'));
-            //     chatHeight += parseInt($(this).css('height'), 10);
-            // });
-            // voice.children().each(function () {
-            //     // console.log($(this).css('height'));
-            //     chatHeight += parseInt($(this).css('height'), 10);
-            // });
-            // classic.children().each(function () {
-            //     // console.log($(this).css('height'));
-            //     chatHeight += parseInt($(this).css('height'), 10);
-            // });
-            // console.log(chatHeight);
             switch (app.data('type')) {
                 case 'anychat':
                     $(chatbot.children()[0]).click(chatOpen);
