@@ -262,6 +262,9 @@
         font-size: 16px;
         /*border: 2px solid rgba(0, 0, 0, .1);*/
     }
+    .chat-window .message-container::-webkit-scrollbar {
+        display: none;
+    }
         .chat-window .message-container .chat-message {
             font-size: 12px;
             padding: 12px;

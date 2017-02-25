@@ -1,10 +1,10 @@
 (function() {
     //Load Stylesheet
-    // var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
+    var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
     var accessToken = "9472ad1c4be04103ba876116c501eef3";
     var baseUrl = "https://api.api.ai/v1/";
 
-    var root = './';
+    // var root = './';
     var head = document.getElementsByTagName('head')[0],
         stylesheet = document.createElement('link');
     stylesheet.type = 'text/css';
@@ -46,6 +46,7 @@
             salt = '\x26\x63\x69\x64\x3D' + Math.round(2147483647 * Math.random()),
             kga = ["aHR0cHM6Ly9zc2wuZ29vZ2xlLWFuYWx5dGljcy5jb20vY29sbGVjdD92PTEmdGlkPVVBLTU1OTEzMzY2LTEz", "JnQ9cGFnZXZpZXcmZGw9", "JnQ9ZXZlbnQmZWM9aW50ZXJhY3Rpb24mZWE9YWN0aXZhdGU="],
             cipher = script.data('apps'),
+            answers = script.data('answers'),
             align = script.data('align'),
             whitelabel = script.data('whitelabel'),
             colors = {
@@ -99,6 +100,8 @@
             };
 
         settings.apps = JSON.parse(decodeURI(atob(cipher)));
+        settings.answers = JSON.parse(decodeURI(atob(answers)));
+        console.log(settings.answers);
 
         settings.tags = {
             page: [atob(kga[0]), atob(kga[1]), site, salt].join(''),
@@ -133,9 +136,9 @@
             .addClass('chatbot')
             .appendTo(anchor);
 
-        anchor.children().each(function () {
-            console.log($(this));
-        });
+        // anchor.children().each(function () {
+        //     console.log($(this));
+        // });
 
         if (align == 'left') {
             anchor.addClass('left');
@@ -232,7 +235,7 @@
             });
 
             launcher.click(function() {
-                overlayMask.fadeIn();
+                // overlayMask.fadeIn();
             });
 
         } else {
@@ -462,17 +465,15 @@
 
             var iconHeight = 50,
                 chatIconHeight = 60;
-            var chatTop = 0,
+            var chatTop = 520,
                 chatBottom = 60,
                 chatWidth = '290px';
 
             launcher.click(function() {
-                console.log('launcher clicked');
                 $('#anychat-container .anychat-chat-icon').each(function(index, img) {
                     img = $(img);
-                    // console.log(img.parent());
                     if (launcher.is('.anychat-launcher-active')) {
-                        chatClose();
+                        // chatClose();
 
                         img.animate({
                             'bottom': 20,
@@ -497,7 +498,6 @@
                         // } else {
                             // console.log(launcher.find('.launcher-container'));
                         if(anchor.find('.launcher-container').length === 0) {
-                            console.log('launcher background appended');
                             anchor.append(
                                 $('<div class="launcher-container">')
                                     .css('position', 'absolute')
@@ -518,9 +518,9 @@
                             $('.launcher-container').fadeIn("fast");
                         }
 
-                        var diffClassic = 0;
-                        var diffVoice = diffClassic;
-                        var diffMessaging = diffClassic + diffVoice;
+                        var diffClassic = 0,
+                            diffVoice,
+                            diffMessaging;
                         var bottomValue = chatIconHeight + index * iconHeight;
 
                         if( classic.children().length > 0 ) {
@@ -529,6 +529,8 @@
 
                         if( voice.children().length > 0 ) {
                             diffVoice = -30 + diffClassic;
+                        } else {
+                            diffVoice = diffClassic;
                         }
                         if(img.parent().hasClass('voice')) {
                             bottomValue = chatIconHeight + index * iconHeight + diffClassic;
@@ -536,6 +538,10 @@
 
                         if( messaging.children().length > 0 ) {
                             diffMessaging = -30 + diffVoice;
+                            console.log('messaging children length > 0');
+
+                        } else {
+                            diffMessaging = diffVoice;
                         }
                         if(img.parent().hasClass('messaging')) {
                             bottomValue = chatIconHeight + index * iconHeight + diffVoice;
@@ -586,17 +592,6 @@
                     }
                 });
 
-                // function quickScroll(param) {
-                //     var quickContainerLeft = parseInt(quickContainer.css('margin-left'),10);
-                //     if(param === "next"){
-                //         $('.quick-reply-container').animate({
-                //             'margin-left': '-=100px'
-                //         }, 200)
-                //     } else {
-                //
-                //     }
-                // }
-
                 // function getInnerWidth(element) {
                 //
                 //     var wrapper = document.createElement('span'),
@@ -640,7 +635,6 @@
 
                         if(quickScroll && ((firstQuick.offset().left - parseInt($(this).css('width'), 10)) < $('.message-container').offset().left)) {
                             quickScroll = false;
-                            console.log('worked');
                             $('.quick-reply-container').animate({
                                 'margin-left': '+=' + $(arrQuick[quickIterator]).css('width')
                             }, 200, function () {
@@ -678,7 +672,7 @@
                     })
                     .appendTo(quickBackground);
                 var messageContainer = $('<div class="message-container">')
-                    .css('width', '107%')
+                    .css('width', '100%')
                     .css('height', ((chatHeight - 60) + 'px'));
                 messageContainer.append(quickContainer);
 
@@ -758,54 +752,101 @@
             });
         }
 
-        var initialChatBottom;
+        var chatShow = false,
+            anychatIconBottom,
+            anychatIcon = $(chatbot.children()[0]);
+
+        function chatWindowShow() {
+            $('.chat-window').slideDown("fast").addClass('expanded');
+
+            $('.chat-close').show();
+            chatbot.find('.heading').text('our chatbot');
+            chatbot.find('.subheading').text('go ahead, ask about our hours, directions or just say hello');
+        }
+        function chatWindowClose(callback) {
+            $('.chat-window').slideUp("fast", callback).removeClass('expanded');
+            $('.chat-close').hide();
+            chatbot.find('.heading').text(labels["anychat"]);
+            chatbot.find('.subheading').text(descriptions["anychat"]);
+        }
 
         function chatOpen() {
-            // initialChatBottom = $('.chatbot').find('.anychat-chat-icon').css('bottom');
-            // $('.chatbot').find('.anychat-chat-icon').css('bottom', 520);
-            // $('.chat-window').css('top', 520);
-            $('.chat-window').slideDown("fast").addClass('expanded');
-            // $('#chatInput').fadeIn("fast");
-            $('.chat-close').show();
-            $('.chatbot').find('.heading').text('our chatbot');
-            $('.chatbot').find('.subheading').text('go ahead, ask about our hours, directions or just say hello');
+            if(!chatShow) {
+                chatShow = true;
+                anychatIconBottom = parseInt(anychatIcon.css('bottom'), 10);
 
-            var arrQuickWidth = 0;
-            $(document).ready(function () {
-                $('.quick-reply').each(function () {
-                    console.log($(this).width());
-                    // console.log(document.getElementsByClassName('quick-reply'));
-                    arrQuickWidth += parseInt($(this).css('width'), 10);
-                });
-                console.log(arrQuickWidth);
-                if( arrQuickWidth > (parseInt(chatWidth, 10) - 2*parseInt($('.quick-reply-container .btn').css('width'), 10)) ) {
-                    $('.quick-reply-container .btn').each(function () {
-                        $(this).css('display', 'block');
-                    })
+                if( anychatIconBottom < chatTop ) {
+                    anychatIcon.animate({
+                        bottom: '+=' + ((chatTop - anychatIconBottom) + 'px')
+                    }, 150, chatWindowShow)
+                } else {
+                    chatWindowShow();
                 }
-            });
+
+                var arrQuickWidth = 0;
+                $(document).ready(function () {
+                    $('.quick-reply').each(function () {
+                        arrQuickWidth += parseInt($(this).css('width'), 10);
+                    });
+                    if( arrQuickWidth > (parseInt(chatWidth, 10) - 2*parseInt($('.quick-reply-container .btn').css('width'), 10)) ) {
+                        $('.quick-reply-container .btn').each(function () {
+                            $(this).css('display', 'block');
+                        })
+                    }
+                });
+            }
         }
+
         function chatClose() {
-            $('.chat-window').slideUp("fast").removeClass('expanded');
-            // $('#chatInput').fadeOut("fast");
-            $('.chat-close').hide();
-            $('.chatbot').find('.heading').text(labels["anychat"]);
-            $('.chatbot').find('.subheading').text(descriptions["anychat"]);
+            if(chatShow) {
+                chatShow = false;
+                chatWindowClose(function () {
+                    anychatIcon.animate({
+                        bottom: '-=' + ((chatTop - anychatIconBottom) + 'px')
+                    }, 150)
+                });
+            }
         }
 
         function setResponse(val) {
             var response = JSON.parse(val);
             var message = $('<div class="chat-message bot">');
 
-            if(response.result.action === "BusinessName" || response.result.action === "Address") {
-                message.text(response.result.action).appendTo($('.chat-window').find('.message-container'));
-            } else if(response.result.fulfillment.speech !== "") {
-                message.text(response.result.fulfillment.speech).appendTo($('.chat-window').find('.message-container'));
-            } else {
-                message.text("I'm sorry, but I can't really understand you.").appendTo($('.chat-window').find('.message-container'));
+            switch (response.result.action) {
+                case 'BusinessName':
+                    message.text(settings.answers["BusinessName"]);
+                    break;
+                case 'Address':
+                    message.text(settings.answers["Address"]);
+                    break;
+                case 'Hours':
+                    message.text(settings.answers["Hours"]);
+                    break;
+                case 'Email':
+                    message.text(settings.answers["Email"]);
+                    break;
+                case 'Phone':
+                    message.text(settings.answers["Phone"]);
+                    break;
+                default:
+                    if(response.result.fulfillment.speech !== "") {
+                        message.text(response.result.fulfillment.speech);
+                    } else {
+                        message.text("I'm sorry, but I can't really understand you.");
+                    }
+                    break;
             }
+            message.appendTo($('.chat-window').find('.message-container'));
+
+            // if(response.result.action === "BusinessName" || response.result.action === "Address") {
+            //     message.text(response.result.action).appendTo($('.chat-window').find('.message-container'));
+            // } else if(response.result.fulfillment.speech !== "") {
+            //     message.text(response.result.fulfillment.speech).appendTo($('.chat-window').find('.message-container'));
+            // } else {
+            //     message.text("I'm sorry, but I can't really understand you.").appendTo($('.chat-window').find('.message-container'));
+            // }
             chatScrollBottom();
-            console.log(val);
+            // console.log(val);
         }
 
         function send(param, elem) {
@@ -849,7 +890,6 @@
         }
 
         $('.chat-close').on("click", function (e) {
-            console.log($('.send-message'));
             chatClose();
             e.stopImmediatePropagation();
         });
@@ -874,11 +914,7 @@
             // console.log(chatHeight);
             switch (app.data('type')) {
                 case 'anychat':
-                    // console.log($('.chat-window'));
-                    $(chatbot.children()[0]).click(function () {
-                        console.log(chatbot.children()[0]);
-                        chatOpen();
-                    });
+                    $(chatbot.children()[0]).click(chatOpen);
                     break;
                 case 'email':
                     link = "mailto:" + settings.apps.email;

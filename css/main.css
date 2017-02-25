@@ -40,6 +40,7 @@
 
 	body {
 		-webkit-text-size-adjust: none;
+		overflow-x: hidden;
 	}
 
 /* Box Model */
@@ -280,6 +281,23 @@
 	}
 
 /* Form */
+
+	.form-container {
+		width: 700px;
+		height: 500px;
+		background: #ffffff;
+		border: 1px solid #9968e2;
+		border-radius: 12px;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: 50px 30px;
+		display: none;
+		-webkit-box-shadow: 0px 0px 59px 19px rgba(145,143,145,1);
+		-moz-box-shadow: 0px 0px 59px 19px rgba(145,143,145,1);
+		box-shadow: 0px 0px 59px 19px rgba(145,143,145,1);
+	}
 
 	form {
 		margin: 0 0 2em 0;
@@ -1118,7 +1136,8 @@
 			margin-bottom: 0;
 		}
 	#get-it,
-	#next {
+	#next,
+	#show-form {
 		display: inline-block;
 		vertical-align: bottom;
 		margin-bottom: .8em;

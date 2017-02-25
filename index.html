@@ -338,6 +338,7 @@
                             <br>
                             <div style="margin-bottom: 30px;">
                                 <a id="next" class="button special icon fa-magic">Next</a>
+                                <a id="show-form" class="button special">Show form</a>
                             </div>
                             <div class="generate-code-container" style="display: none;">
                                 <b style="color:#783bd2;"><span style="color:#828282;margin-right: 6px;display: inline-block; vertical-align: top;">Step 4: </span><div style="display: inline-block; width: 88%;margin-bottom: 20px;"> Generate your custom code
@@ -366,17 +367,19 @@
             <div class="preview" style="position: fixed; bottom: 35px; right: 75px; display: none;">
                 <img src="./images/testitout.png" alt="">
             </div>
-            <form style="display: none;" role="form" name="questionsForm" id="questionsForm" autocomplete="off" action="https://formspree.io/info@botscrew.com" method="POST" target="_blank">
-                <input type="text" name="Name" placeholder="Business name">
-                <input type="email" name="Address" placeholder="Address">
-                <input type="text" name="Hours" placeholder="Hours of operation">
-                <input type="text" name="Number" placeholder="Phone number">
-                <input type="email" name="Email" placeholder="Email address">
-
-                <textarea placeholder="Your message (optional)" rows="1" cols="33" name="Message" style="resize:none"></textarea>
-                <input id="submitQuestions" type="button" value="Send Message" class="menu-item bot-btn white text-blue">
-            </form>
         </section>
+    </div>
+
+    <div class="form-container hidden">
+        <form role="form" name="questionsForm" id="questionsForm" autocomplete="off" action="https://formspree.io/info@botscrew.com" method="POST" target="_blank">
+            <input type="text" name="BusinessName" placeholder="Business name">
+            <input type="text" name="Address" placeholder="Address">
+            <input type="text" name="Hours" placeholder="Hours of operation">
+            <input type="text" name="Phone" placeholder="Phone number">
+            <input type="email" name="Email" placeholder="Email address">
+
+            <input id="submitQuestions" type="button" value="Close form" class="button special">
+        </form>
     </div>
 
     <!-- Scripts -->
@@ -452,32 +455,41 @@
 
     <script>
     function generate() {
-        var color, apps = {};
+        var color, apps = {}, answers = {};
+        var formContainer = $('.form-container');
+
+        $('.form-container input[type=text], .form-container input[type=email]').each(function (index, input) {
+            if (input.value) {
+                answers[input.name] = input.value;
+            } else {
+                answers[input.name] = input.name;
+            }
+        });
 
         color = $('#icon-color-picker > div.selected').data('color') || '#783bd2';
 
         $($('.input-block:not(.inactive)').find('input[type=text]').get().reverse()).each(function(index, input) {
-            console.log(input.name, 'input');
-//            console.log()
+
             if (input.value) {
                 apps[input.name] = input.value;
             } else {
                 apps[input.name] = $(input).attr('data-default');
-                console.log($(input).attr('data-default'))
             }
+
         });
 
-        var payload = btoa(encodeURI(JSON.stringify(apps)));
-        console.log(apps);
+        var payload = btoa(encodeURI(JSON.stringify(apps))),
+            encodedAnswers = btoa(encodeURI(JSON.stringify(answers)));
+        console.log(answers);
         var embed = document.getElementById("embed");
 
-        console.log(payload, 'payload');
+//        console.log(payload, 'payload');
 
-        embed.value = '<script data-align="right" data-overlay="false" id="anychat-script" src="https://rawgit.com/kachanovskyi/anychat.pro/master/js/widget.js" data-color="' + color + '" data-apps="' + payload + '"><\/script>';
+        embed.value = '<script data-align="right" data-overlay="false" id="anychat-script" src="https://rawgit.com/kachanovskyi/anychat.pro/master/js/widget.js" data-color="' + color + '" data-apps="' + payload + '" data-answers="' + encodedAnswers + '"><\/script>';
 
         $('#anychat-script').data('apps', payload).data('color', color);
         $('#anychat-container').remove();
-        console.log(apps);
+//        console.log(apps);
 
         window.initializeShopchat();
 
@@ -494,6 +506,20 @@
             placeholder: 'sortable-placeholder',
             stop: function() {
                 generate();
+            }
+        });
+
+        $('#show-form').click(function () {
+            var formContainer = $('.form-container');
+            if(formContainer.hasClass('hidden')) {
+                formContainer.removeClass('hidden').fadeIn('fast');
+            }
+        });
+        $('#submitQuestions').click(function () {
+            generate();
+            var formContainer = $('.form-container');
+            if(!formContainer.hasClass('hidden')) {
+                formContainer.addClass('hidden').fadeOut('fast');
             }
         });
 
@@ -547,6 +573,6 @@
         });
     });
     </script>
-    <script id="anychat-script" src="./js/widget.js" data-color="#783bd2" data-questions="eyJCdXNpbmVzc05hbWUiOiJBbnlDSEFUIiwiSG91cnMiOiI4OjAwYW0gLSA4OjAwcG0iLCJFbWFpbCI6IiBpbmZvQGNoYXRib3RzdHVkaW9zLmNvIiwiUGhvbmUiOiIrMTk0OTIyODk0NzUiLCJBZGRyZXNzIjoiU29tZSBzdHJlZXQifQ==" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImFsZXhhIjoiMjI2MzMyODI3ODAzNjAwIiwiYWxsbyI6IkNoYXRib3QgU3R1ZGlvcyIsIm1lc3NlbmdlciI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>
+    <script id="anychat-script" src="./js/widget.js" data-color="#783bd2" data-answers="eyJCdXNpbmVzc05hbWUiOiJBbnlDSEFUIiwiSG91cnMiOiI4OjAwYW0gLSA4OjAwcG0iLCJFbWFpbCI6IiBpbmZvQGNoYXRib3RzdHVkaW9zLmNvIiwiUGhvbmUiOiIrMTk0OTIyODk0NzUiLCJBZGRyZXNzIjoiU29tZSBzdHJlZXQifQ==" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImFsZXhhIjoiMjI2MzMyODI3ODAzNjAwIiwiYWxsbyI6IkNoYXRib3QgU3R1ZGlvcyIsIm1lc3NlbmdlciI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>
 </body>
 </html>
