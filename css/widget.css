@@ -246,11 +246,8 @@
 }
 
 .chat-window {
-    width: 250px;
-    position: absolute;
-    right: 18px;
-    /*background: ;*/
     overflow: hidden;
+    border: 2px solid rgba(120, 59, 210, 0.54902);
 }
 
     .chat-window .message-container {

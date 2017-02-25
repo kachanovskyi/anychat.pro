@@ -101,7 +101,6 @@
 
         settings.apps = JSON.parse(decodeURI(atob(cipher)));
         settings.answers = JSON.parse(decodeURI(atob(answers)));
-        console.log(settings.answers);
 
         settings.tags = {
             page: [atob(kga[0]), atob(kga[1]), site, salt].join(''),
@@ -314,7 +313,7 @@
                         chatIcon.append(
                             $('<a class="chat-close">').append(
                                 $('<img>')
-                                    .attr('src', 'images/back.svg')
+                                    .attr('src', root + 'images/back.svg')
                                 )
                                 .css('float', 'left')
                                 .css('border-bottom', 'none')
@@ -381,10 +380,7 @@
             //     )
             // );
             $(chatbot.children()[0]).css('border-top', '2px solid rgba(120, 59, 210, .55)');
-            // console.log(chatbot.children()[0]);
-            // console.log(classic);
-            // console.log(voice);
-            // console.log(messaging);
+            $(chatbot.children()[0]).css('border-bottom', '2px solid rgba(0, 0, 0, 0.439216)');
 
             anchor.children().each(function () {
                 $($(this).children()[0]).css('border-bottom', '2px solid rgba(0, 0, 0, .44)');
@@ -538,7 +534,6 @@
 
                         if( messaging.children().length > 0 ) {
                             diffMessaging = -30 + diffVoice;
-                            console.log('messaging children length > 0');
 
                         } else {
                             diffMessaging = diffVoice;
@@ -549,7 +544,6 @@
 
                         if(img.parent().hasClass('chatbot')) {
                             bottomValue = chatIconHeight + index * iconHeight + diffMessaging;
-                            console.log('it worked, actually');
                         }
 
                         img.show().animate({
@@ -695,7 +689,6 @@
                 }
 
                 var chatWindow = $('<div class="chat-window">')
-                    .css('border', '2px solid rgba(0, 0, 0, .001)')
                     .css('height', chatHeight)
                     .css('top', '-' +  ((chatBottom - 58 + chatHeight) + 'px'))
                     .css('width', chatWidth)
@@ -706,7 +699,7 @@
                     .append(messageContainer)
                     .append(
                         $('<div class="bottom">')
-                            .css('border', '2px solid rgba(0, 0, 0, .1)')
+                            .css('border', '2px solid rgba(0, 0, 0, 0.439216)')
                             .css('position', 'absolute')
                             .css('bottom', '-2px')
                             .css('right', '-2px')
@@ -733,7 +726,7 @@
                             .append(
                                 $('<a class="send-message">').append(
                                     $('<img>')
-                                        .attr('src', 'images/send.svg')
+                                        .attr('src', root + 'images/send.svg')
                                     )
                                     .css('float', 'right')
                                     .css('border-bottom', 'none')
