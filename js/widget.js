@@ -876,6 +876,7 @@
             } else {
                 $("#chatInput").val('').focus();
             }
+            chatScrollBottom();
         }
 
         function chatScrollBottom() {
