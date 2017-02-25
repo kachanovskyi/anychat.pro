@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900");
+
 .anychat-brand,
 .anychat-chat-icon,
 .anychat-button,
@@ -11,6 +13,7 @@
     z-index: 10000;
     right: 0;
     bottom: 0;
+    font-family: "Source Sans Pro", sans-serif;
 }
 
 #anychat-container.left {
