@@ -667,7 +667,7 @@
                     .appendTo(quickBackground);
                 var messageContainer = $('<div class="message-container">')
                     .css('width', '100%')
-                    .css('height', chatHeight);
+                    .css('height', ((chatHeight - 60) + 'px'));
                 messageContainer.append(quickContainer);
 
 
@@ -702,6 +702,7 @@
                             .css('border', '2px solid rgba(0, 0, 0, 0.439216)')
                             .css('position', 'absolute')
                             .css('bottom', '-2px')
+                            .css('margin', 0)
                             .css('right', '-2px')
                             .css('width', chatWidth)
                             .css('height', '60px')
