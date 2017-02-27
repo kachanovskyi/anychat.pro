@@ -1,10 +1,10 @@
 (function() {
     //Load Stylesheet
+    // var root = './';
     var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
     var accessToken = "afc2e32efdff44819a7cbc62e58009ca";
     var baseUrl = "https://api.api.ai/v1/";
 
-    // var root = './';
     var head = document.getElementsByTagName('head')[0],
         stylesheet = document.createElement('link');
     stylesheet.type = 'text/css';
@@ -616,55 +616,55 @@
                     .css('width', '100%')
                     .css('height', ((chatHeight - 60) + 'px'));
 
-                var chatWindow = $('<div class="chat-window">')
-                    .css('height', chatHeight)
-                    .css('top', '-' +  ((chatBottom - 58 + chatHeight) + 'px'))
-                    .css('width', chatWidth)
-                    .css('position', 'absolute')
-                    .css('right', '18px')
-                    .css('display', 'none')
-                    .css('z-index', '10001')
-                    .append(messageContainer)
-                    .append(
-                        $('<div class="bottom">')
-                            .css('border', '2px solid rgba(0, 0, 0, 0.439216)')
-                            .css('position', 'absolute')
-                            .css('bottom', '-2px')
-                            .css('margin', 0)
-                            .css('right', '-2px')
-                            .css('width', chatWidth)
-                            .css('height', '60px')
-                            .css('background-color', '#FFFFFF')
-                            .append(
-                                $('<input type="text" placeholder="type message">')
-                                    .attr('id', 'chatInput')
-                                    .addClass('black-placeholder')
-                                    .css('background', 'rgb(200, 200, 200)')
-                                    .css('height', '30px')
-                                    .css('width', '220px')
-                                    // .css('color', '#000000')
-                                    .css('font-size', '12px')
-                                    .css('border-radius', '10px')
-                                    .keypress(function(event) {
-                                        if (event.which == 13) {
-                                            event.preventDefault();
-                                            send();
-                                        }
-                                    })
-                            )
-                            .append(
-                                $('<a class="send-message">').append(
-                                    $('<img>')
-                                        .attr('src', root + 'images/send.svg')
-                                    )
-                                    .css('float', 'right')
-                                    .css('border-bottom', 'none')
-                                    .click(send)
-                            )
-                    )
-                    .appendTo(chatbot);
-
-
+                if($('.chat-window').length === 0) {
+                    var chatWindow = $('<div class="chat-window">')
+                        .css('height', chatHeight)
+                        .css('top', '-' +  ((chatBottom - 58 + chatHeight) + 'px'))
+                        .css('width', chatWidth)
+                        .css('position', 'absolute')
+                        .css('right', '18px')
+                        .css('display', 'none')
+                        .css('z-index', '10001')
+                        .append(messageContainer)
+                        .append(
+                            $('<div class="bottom">')
+                                .css('border', '2px solid rgba(0, 0, 0, 0.439216)')
+                                .css('position', 'absolute')
+                                .css('bottom', '-2px')
+                                .css('margin', 0)
+                                .css('right', '-2px')
+                                .css('width', chatWidth)
+                                .css('height', '60px')
+                                .css('background-color', '#FFFFFF')
+                                .append(
+                                    $('<input type="text" placeholder="type message">')
+                                        .attr('id', 'chatInput')
+                                        .addClass('black-placeholder')
+                                        .css('background', 'rgb(200, 200, 200)')
+                                        .css('height', '30px')
+                                        .css('width', '220px')
+                                        // .css('color', '#000000')
+                                        .css('font-size', '12px')
+                                        .css('border-radius', '10px')
+                                        .keypress(function(event) {
+                                            if (event.which == 13) {
+                                                event.preventDefault();
+                                                send();
+                                            }
+                                        })
+                                )
+                                .append(
+                                    $('<a class="send-message">').append(
+                                        $('<img>')
+                                            .attr('src', root + 'images/send.svg')
+                                        )
+                                        .css('float', 'right')
+                                        .css('border-bottom', 'none')
+                                        .click(send)
+                                )
+                        )
+                        .appendTo(chatbot);
+                }
 
                 if (!launcher.is('.anychat-launcher-active')) {
                     $.get(settings.tags.event);
