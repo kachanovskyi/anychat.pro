@@ -328,6 +328,8 @@
                 cursor: pointer;
                 z-index: 1;
                 display: none;
+                background: #FFFFFF;
+                opacity: .88;
             }
                 .chat-window .quick-reply-container .btn > img {
                     max-width: 100%;

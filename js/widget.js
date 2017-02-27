@@ -1,7 +1,7 @@
 (function() {
     //Load Stylesheet
     var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
-    var accessToken = "9472ad1c4be04103ba876116c501eef3";
+    var accessToken = "afc2e32efdff44819a7cbc62e58009ca";
     var baseUrl = "https://api.api.ai/v1/";
 
     // var root = './';
@@ -506,8 +506,9 @@
                                     .css('border', 'solid rgba(120, 59, 210, .55)')
                                     .css('border-width', '0 2px 2px')
                                     .append(
-                                        $('<a class="add-anychat-link">').text('add anychat to your website')
-
+                                        $('<a class="add-anychat-link">')
+                                            .attr('href', 'http://www.anychat.pro/')
+                                            .text('add anychat to your website')
                                     )
                             )
                         } else {
@@ -721,6 +722,7 @@
         function setResponse(val) {
             var response = JSON.parse(val);
             var message = $('<div class="chat-message bot">');
+            console.log(response.result.action);
 
             switch (response.result.action) {
                 case 'input.welcome':
@@ -736,7 +738,6 @@
                     quickContainer
                         .appendTo($('.message-container'));
 
-                    console.log(settings.answers);
                     for(var x in settings.answers) {
                         var quickReply = $('<div class="quick-reply">')
                             .text(x)
@@ -749,8 +750,7 @@
                     $('<a class="btn prev">')
                         .append(
                             $('<img>')
-                                .attr('src', 'images/quick-next.png')
-                                .css('transform', 'scaleX(-1)')
+                                .attr('src', root + 'images/back.svg')
                         )
                         .on("click", function () {
                             var arrQuick = $('.quick-reply'),
@@ -774,7 +774,8 @@
                     $('<a class="btn next">')
                         .append(
                             $('<img>')
-                                .attr('src', 'images/quick-next.png')
+                                .attr('src', root + 'images/back.svg')
+                                .css('transform', 'scaleX(-1)')
                         )
                         .on("click", function () {
                             var arrQuick = $('.quick-reply'),
@@ -839,11 +840,13 @@
             var text = $("#chatInput").val();
             if(param === "quick") {
                 text = elem.text();
-                console.log(settings.answers);
             }
 
             if(text.length && text !== " ") {
+
                 $("#chatInput").val('');
+                console.log(text);
+                console.log(JSON.stringify({ query: text, lang: "en", sessionId: "somerandomthing" }));
                 $.ajax({
                     type: "POST",
                     url: baseUrl + "query?v=20150910",
