@@ -1,7 +1,7 @@
 (function() {
     //Load Stylesheet
-    // var root = './';
-    var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
+    var root = './';
+    // var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
     var accessToken = "afc2e32efdff44819a7cbc62e58009ca";
     var baseUrl = "https://api.api.ai/v1/";
 
@@ -379,11 +379,11 @@
             //         $('<p>voice channels</p>').css('position', 'absolute').css('right', '14px').css('top', '0').css('line-height', '100%').css('font-size', '10pt')
             //     )
             // );
-            $(chatbot.children()[0]).css('border-top', '2px solid rgba(120, 59, 210, .55)');
-            $(chatbot.children()[0]).css('border-bottom', '2px solid rgba(0, 0, 0, 0.439216)');
+            $(chatbot.children()[0]).css('border-top', '1px solid rgba(0, 0, 0, 0.139216)');
+            // $(chatbot.children()[0]).css('border-bottom', '1px solid rgba(0, 0, 0, 0.439216)');
 
             anchor.children().each(function () {
-                $($(this).children()[0]).css('border-bottom', '2px solid rgba(0, 0, 0, .44)');
+                $($(this).children()[0]).css('border-bottom', '1px solid rgba(0, 0, 0, .44)');
             });
 
             //Add a more icon
@@ -497,14 +497,14 @@
                             anchor.append(
                                 $('<div class="launcher-container">')
                                     .css('position', 'absolute')
-                                    .css('bottom', '0')
+                                    .css('bottom', '2px')
                                     .css('height', '60px')
                                     .css('width', chatWidth)
                                     .css('background', '#FFFFFF')
                                     .css('right', '18px')
                                     .css('z-index', '-1')
-                                    .css('border', 'solid rgba(120, 59, 210, .55)')
-                                    .css('border-width', '0 2px 2px')
+                                    .css('border', 'solid rgba(0, 0, 0, .14)')
+                                    .css('border-width', '0 1px 1px')
                                     .append(
                                         $('<a class="add-anychat-link">')
                                             .attr('href', 'http://www.anychat.pro/')
@@ -628,11 +628,11 @@
                         .append(messageContainer)
                         .append(
                             $('<div class="bottom">')
-                                .css('border', '2px solid rgba(0, 0, 0, 0.439216)')
+                                .css('border', '1px solid rgba(0, 0, 0, 0.139216)')
                                 .css('position', 'absolute')
                                 .css('bottom', '-2px')
                                 .css('margin', 0)
-                                .css('right', '-2px')
+                                .css('right', '-1px')
                                 .css('width', chatWidth)
                                 .css('height', '60px')
                                 .css('background-color', '#FFFFFF')
@@ -643,6 +643,7 @@
                                         .css('background', 'rgb(200, 200, 200)')
                                         .css('height', '30px')
                                         .css('width', '220px')
+                                        .css('padding', '0 0.75em')
                                         // .css('color', '#000000')
                                         .css('font-size', '12px')
                                         .css('border-radius', '10px')
@@ -747,19 +748,19 @@
                             .appendTo(quickInner);
                     }
 
-                    $('<a class="btn prev">')
+                    $('<a class="btn-prev">')
                         .append(
                             $('<img>')
                                 .attr('src', root + 'images/back.svg')
                         )
                         .on("click", function () {
-                            var arrQuick = $('.quick-reply'),
+                            var arrQuick = $(this).parent().parent().find($('.quick-reply')),
                                 firstQuick = $(arrQuick[0]),
                                 lastQuick = $(arrQuick[arrQuick.length - 1]);
 
                             if(quickScroll && ((firstQuick.offset().left - parseInt($(this).css('width'), 10)) < $('.message-container').offset().left)) {
                                 quickScroll = false;
-                                $('.quick-reply-container').animate({
+                                $(this).parent().parent().animate({
                                     'margin-left': '+=' + $(arrQuick[quickIterator]).css('width')
                                 }, 200, function () {
                                     quickScroll = true;
@@ -771,21 +772,23 @@
 
                         })
                         .appendTo(quickBackground);
-                    $('<a class="btn next">')
+                    $('<a class="btn-next">')
                         .append(
                             $('<img>')
                                 .attr('src', root + 'images/back.svg')
                                 .css('transform', 'scaleX(-1)')
                         )
                         .on("click", function () {
-                            var arrQuick = $('.quick-reply'),
+                            console.log('clicked');
+                            var arrQuick = $(this).parent().parent().find($('.quick-reply')),
                                 firstQuick = $(arrQuick[0]),
                                 lastQuick = $(arrQuick[arrQuick.length - 1]);
+                            console.log(arrQuick);
 
                             if(quickScroll && (( lastQuick.offset().left + parseInt(lastQuick.css('width'), 10) + parseInt(lastQuick.css('width'), 10) ) > ( $('.message-container').offset().left + parseInt(chatWidth, 10)
                                 + parseInt($(this).css('width'), 10) ))) {
                                 quickScroll = false;
-                                $('.quick-reply-container').animate({
+                                $(this).parent().parent().animate({
                                     'margin-left': '-=' + $(arrQuick[quickIterator]).css('width')
                                 }, 200, function () {
                                     quickScroll = true;
@@ -801,8 +804,8 @@
                     $('.quick-reply').each(function () {
                         arrQuickWidth += parseInt($(this).css('width'), 10);
                     });
-                    if( arrQuickWidth > (parseInt(chatWidth, 10) - 2*parseInt($('.quick-reply-container .btn').css('width'), 10)) ) {
-                        $('.quick-reply-container .btn').each(function () {
+                    if( arrQuickWidth > (parseInt(chatWidth, 10) - 2*parseInt($('.quick-reply-container .btn-next').css('width'), 10)) ) {
+                        $('.quick-reply-container .btn-next, .quick-reply-container .btn-prev').each(function () {
                             $(this).css('display', 'block');
                         })
                     }
