@@ -33,6 +33,7 @@
 }
 
 .launcher-container {
+    padding-top: 8px;
     /*position: absolute;*/
     /*bottom: 0;*/
     /*background: #ffffff;*/
