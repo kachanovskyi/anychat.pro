@@ -460,15 +460,22 @@
 
             var $w = $(window);
 
-            var launcherContBottom = 10;
-            var iconHeight = 50,
+            var launcherContBottom = 10,
                 chatIconHeight = 60;
-            var chatTop = $w.height() - chatIconHeight + launcherContBottom,
+            var chatTop = $w.height() - chatIconHeight + launcherContBottom - 11,
                 chatBottom = 60,
                 chatWidth = ($w.width() - 18);
+            var iconHeight = ($w.height() - chatIconHeight - 18) / numberOfApps;
 
             if(chatWidth > 290 ) {
                 chatWidth = 290;
+            }
+            if(chatTop > 520) {
+                chatTop = 520;
+                console.log('it worked ', chatTop);
+            }
+            if(iconHeight > 50) {
+                iconHeight = 50;
             }
 
             launcher.click(function() {
@@ -504,7 +511,7 @@
                                 $('<div class="launcher-container">')
                                     .css('position', 'absolute')
                                     .css('bottom', launcherContBottom)
-                                    .css('height', '50px')
+                                    .css('height', '60px')
                                     .css('width', chatWidth)
                                     .css('background', '#FFFFFF')
                                     .css('right', '18px')
@@ -527,11 +534,11 @@
                         var bottomValue = chatIconHeight + index * iconHeight;
 
                         if( classic.children().length > 0 ) {
-                            diffClassic = -30;
+                            diffClassic = -chatIconHeight/2;
                         }
 
                         if( voice.children().length > 0 ) {
-                            diffVoice = -30 + diffClassic;
+                            diffVoice = -chatIconHeight/2 + diffClassic;
                         } else {
                             diffVoice = diffClassic;
                         }
@@ -540,7 +547,7 @@
                         }
 
                         if( messaging.children().length > 0 ) {
-                            diffMessaging = -30 + diffVoice;
+                            diffMessaging = -chatIconHeight/2 + diffVoice;
 
                         } else {
                             diffMessaging = diffVoice;
@@ -558,9 +565,9 @@
                             'bottom': bottomValue
                         }, 'fast');
 
-                        if(chatIconHeight + index * iconHeight > chatTop) {
-                            chatTop = chatIconHeight + index * iconHeight + diffMessaging;
-                        }
+                        // if(chatIconHeight + index * iconHeight > chatTop) {
+                        //     chatTop = chatIconHeight + index * iconHeight + diffMessaging;
+                        // }
 
                             // anchor.children().each(function () {
                             //     if($($(this).children()[0]).data('type') === img.data('type')) {
@@ -649,6 +656,7 @@
                                         .css('background', 'rgb(200, 200, 200)')
                                         .css('height', '30px')
                                         .css('width', '220px')
+                                        .css('max-width', '80%')
                                         .css('padding', '0 0.75em')
                                         // .css('color', '#000000')
                                         .css('font-size', '12px')
@@ -708,7 +716,8 @@
                 if( anychatIconBottom < chatTop ) {
                     anychatIcon.animate({
                         bottom: '+=' + ((chatTop - anychatIconBottom) + 'px')
-                    }, 150, chatWindowShow)
+                    }, 150, chatWindowShow);
+                    console.log(chatTop - anychatIconBottom);
                 } else {
                     chatWindowShow();
                 }
@@ -831,6 +840,9 @@
                     break;
                 case 'Phone':
                     message.text(settings.answers["Phone"]).appendTo($('.chat-window').find('.message-container'));
+                    break;
+                case 'About':
+                    message.text(settings.answers["About"]).appendTo($('.chat-window').find('.message-container'));
                     break;
                 default:
                     if(response.result.fulfillment.speech !== "") {
