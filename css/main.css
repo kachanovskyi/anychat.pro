@@ -300,6 +300,7 @@
 		max-width: 90%;
 		max-height: 100%;
 		overflow-y: auto;
+		z-index: 10001;
 	}
 	/*.form-container > input[type="text"],*/
 	/*.form-container > input[type="password"],*/
