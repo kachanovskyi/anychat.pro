@@ -1,7 +1,7 @@
 (function() {
     //Load Stylesheet
-    // var root = './';
-    var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
+    var root = './';
+    // var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
     var accessToken = "afc2e32efdff44819a7cbc62e58009ca";
     var baseUrl = "https://api.api.ai/v1/";
 
@@ -458,12 +458,18 @@
             //     }
             // });
 
+            var $w = $(window);
 
+            var launcherContBottom = 10;
             var iconHeight = 50,
                 chatIconHeight = 60;
-            var chatTop = 520,
+            var chatTop = $w.height() - chatIconHeight + launcherContBottom,
                 chatBottom = 60,
-                chatWidth = '290px';
+                chatWidth = ($w.width() - 18);
+
+            if(chatWidth > 290 ) {
+                chatWidth = 290;
+            }
 
             launcher.click(function() {
                 $('#anychat-container .anychat-chat-icon').each(function(index, img) {
@@ -497,8 +503,8 @@
                             anchor.append(
                                 $('<div class="launcher-container">')
                                     .css('position', 'absolute')
-                                    .css('bottom', '2px')
-                                    .css('height', '60px')
+                                    .css('bottom', launcherContBottom)
+                                    .css('height', '50px')
                                     .css('width', chatWidth)
                                     .css('background', '#FFFFFF')
                                     .css('right', '18px')
@@ -610,7 +616,7 @@
                 //
                 // }
 
-                var chatHeight = chatTop;
+                var chatHeight = (chatTop - 8);
 
                 var messageContainer = $('<div class="message-container">')
                     .css('width', '100%')
@@ -619,7 +625,7 @@
                 if($('.chat-window').length === 0) {
                     var chatWindow = $('<div class="chat-window">')
                         .css('height', chatHeight)
-                        .css('top', '-' +  ((chatBottom - 58 + chatHeight) + 'px'))
+                        .css('top', '-' +  ((chatBottom - 50 + chatHeight) + 'px'))
                         .css('width', chatWidth)
                         .css('position', 'absolute')
                         .css('right', '18px')
@@ -630,7 +636,7 @@
                             $('<div class="bottom">')
                                 .css('border', '1px solid rgba(0, 0, 0, 0.139216)')
                                 .css('position', 'absolute')
-                                .css('bottom', '-2px')
+                                .css('bottom', '0')
                                 .css('margin', 0)
                                 .css('right', '-1px')
                                 .css('width', chatWidth)

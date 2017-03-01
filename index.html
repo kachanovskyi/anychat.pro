@@ -162,18 +162,18 @@
                                 <img style="width: 80%; margin-left: 10%;" class="app-icon" src="./images/anychat.svg" alt="email">
                             </div>
                             <div class="app-label" style="color:#783bd2;margin-top: -40px;">
-                                AnyCHAT Bot
-                                <div class="checkbox-container">
+                                anychat bot
+                                <div class="checkbox-container disabled">
                                     <input type="checkbox" checked="" class="ios toggle">
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="anychat" data-default="http://anychat.pro/" type="text" placeholder="Upgrade to activate. Request invite in next step.">
+                            <input style="display: none;" name="anychat" data-default="http://anychat.pro/" type="text" placeholder="Upgrade to activate. Request invite in next step.">
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/sms.svg" alt="sms">
-                            <div class="app-label" style="color:#2F80ED;">
-                                SMS/TEXT
+                            <div class="app-label" style="color:#000000;">
+                                sms/text
                                 <div class="checkbox-container">
                                     <input type="checkbox" class="ios toggle">
                                     <label for="toggle"></label>
@@ -183,8 +183,8 @@
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/email.svg" alt="email">
-                            <div class="app-label" style="color:#da3337;">
-                                Email
+                            <div class="app-label" style="color:#000000;">
+                                email
                                 <div class="checkbox-container">
                                     <input type="checkbox" class="ios toggle">
                                     <label for="toggle"></label>
@@ -194,8 +194,8 @@
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/phone.svg" alt="phone">
-                            <div class="app-label" style="color:#0AD02C;">
-                                Phone
+                            <div class="app-label" style="color:#000000;">
+                                phone
                                 <div class="checkbox-container">
                                     <input type="checkbox" class="ios toggle">
                                     <label for="toggle"></label>
@@ -371,12 +371,14 @@
     </div>
 
     <div class="form-container hidden">
-        <form role="form" name="questionsForm" id="questionsForm" autocomplete="off" action="https://formspree.io/info@botscrew.com" method="POST" target="_blank">
+        <form role="form" name="questionsForm" id="questionsForm" autocomplete="off" action="" method="POST">
             <input type="text" name="BusinessName" placeholder="Business name">
-            <input type="text" name="Address" placeholder="Address">
+            <input type="text" name="Address" placeholder="Address (street, city, state, zip)">
             <input type="text" name="Hours" placeholder="Hours of operation">
             <input type="text" name="Phone" placeholder="Phone number">
             <input type="email" name="Email" placeholder="Email address">
+            <!--<input type="text" name="About" placeholder="About us">-->
+            <textarea placeholder="About us" rows="1" cols="33" name="About" style="resize:none"></textarea>
 
             <input id="submitQuestions" type="button" value="Close form" class="button special">
         </form>
@@ -427,23 +429,25 @@
                         org_checkbox.hide().after(ios_checkbox);
                         // Add click event listener to the ios checkbox
                         ios_checkbox.click(function() {
-                            var block = $(this).parent().parent().parent();
-                            // Toggle the check state
-                            ios_checkbox.toggleClass("checked");
-                            // Check if the ios checkbox is checked
-                            if (ios_checkbox.hasClass("checked")) {
-                                // Update state
-                                org_checkbox.prop('checked', true);
-                                block.removeClass('inactive');
-                                block.find('input[type="text"], input[type="email"]').get(0).focus();
-                                generate();
+                            if(!$(this).parent().hasClass('disabled')) {
+                                var block = $(this).parent().parent().parent();
+                                // Toggle the check state
+                                ios_checkbox.toggleClass("checked");
+                                // Check if the ios checkbox is checked
+                                if (ios_checkbox.hasClass("checked")) {
+                                    // Update state
+                                    org_checkbox.prop('checked', true);
+                                    block.removeClass('inactive');
+                                    block.find('input[type="text"], input[type="email"]').get(0).focus();
+                                    generate();
 
-                            } else {
-                                // Update state
-                                org_checkbox.prop('checked', false);
-                                block.addClass('inactive');
-                                block.find('input[type="text"], input[type="email"]').get(0).blur();
-                                generate();
+                                } else {
+                                    // Update state
+                                    org_checkbox.prop('checked', false);
+                                    block.addClass('inactive');
+                                    block.find('input[type="text"], input[type="email"]').get(0).blur();
+                                    generate();
+                                }
                             }
                         });
                     });
@@ -458,7 +462,7 @@
         var color, apps = {}, answers = {};
         var formContainer = $('.form-container');
 
-        $('.form-container input[type=text], .form-container input[type=email]').each(function (index, input) {
+        $('.form-container input[type=text], .form-container input[type=email], .form-container textarea').each(function (index, input) {
             if (input.value) {
                 answers[input.name] = input.value;
             } else {
