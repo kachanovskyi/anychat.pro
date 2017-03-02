@@ -638,7 +638,7 @@
                 var chatHeight = (chatTop);
 
                 var messageContainer = $('<div class="message-container">')
-                    .css('width', '100%')
+                    .css('width', chatWidth)
                     .css('height', ((chatHeight - 60) + 'px'));
 
                 if($('.chat-window').length === 0) {
