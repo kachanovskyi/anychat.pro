@@ -161,7 +161,7 @@
     }
 
 .chatbot > .anychat-chat-icon {
-    height: 60px;
+    height: 60px !important;
     padding-top: 10px;
     /*box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.3);*/
 }
@@ -324,7 +324,7 @@
                 font-size: 12px;
             }
                 .chat-window .quick-reply-container .quick-reply:first-child {
-                    margin-left: 38px;
+                    margin-left: 12px;
                 }
             .chat-window .quick-reply-container .btn-next,
             .chat-window .quick-reply-container .btn-prev {
