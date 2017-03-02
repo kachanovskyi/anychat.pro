@@ -568,9 +568,9 @@
                             bottomValue = chatIconHeight + index * iconHeight + diffMessaging;
                         }
 
-                        if(img.data('type') === "anychat") {
-                            bottomValue = chatTop;
-                        }
+                        // if(img.data('type') === "anychat") {
+                        //     bottomValue = chatTop;
+                        // }
 
                         img.show().animate({
                             'opacity': 1,
