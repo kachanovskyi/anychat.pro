@@ -475,7 +475,8 @@
             launcherCont.bottom = 10;
             launcherCont.right = 18;
 
-            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            // if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            if($w.width() < 500) {
                 launcherCont.bottom = 0;
                 launcherCont.right = 0;
                 chatTop = $w.height() - chatIconHeight;
@@ -765,11 +766,14 @@
                     var quickIterator = 0,
                         quickScroll = true;
 
-                    message
-                        .text(response.result.fulfillment.speech + " I'm " + settings.answers["BusinessName"] + " chatbot. How can I help you?")
-                        .appendTo($('.chat-window').find('.message-container'));
+                    $('<div>')
+                        .append(
+                            message
+                            .text(response.result.fulfillment.speech + " I'm " + settings.answers["BusinessName"] + " chatbot. How can I help you?")
+                        )
+                        .prependTo($('.chat-window').find('.message-container'));
                     quickContainer
-                        .appendTo($('.message-container'));
+                        .prependTo($('.message-container'));
 
                     for(var x in settings.answers) {
                         if(x === "Location" || x === "Hours") {
@@ -788,57 +792,57 @@
                         })
                         .appendTo(quickInner);
 
-                    $('<a class="btn-prev">')
-                        .append(
-                            $('<img>')
-                                .attr('src', root + 'images/back.svg')
-                        )
-                        .on("click", function () {
-                            var arrQuick = $(this).parent().parent().find($('.quick-reply')),
-                                firstQuick = $(arrQuick[0]),
-                                lastQuick = $(arrQuick[arrQuick.length - 1]);
-
-                            if(quickScroll && ((firstQuick.offset().left - parseInt($(this).css('width'), 10)) < $('.message-container').offset().left)) {
-                                quickScroll = false;
-                                $(this).parent().parent().animate({
-                                    'margin-left': '+=' + $(arrQuick[quickIterator]).css('width')
-                                }, 200, function () {
-                                    quickScroll = true;
-                                });
-                                if(quickIterator > 0) {
-                                    quickIterator--;
-                                }
-                            }
-
-                        })
-                        .appendTo(quickBackground);
-                    $('<a class="btn-next">')
-                        .append(
-                            $('<img>')
-                                .attr('src', root + 'images/back.svg')
-                                .css('transform', 'scaleX(-1)')
-                        )
-                        .on("click", function () {
-                            console.log('clicked');
-                            var arrQuick = $(this).parent().parent().find($('.quick-reply')),
-                                firstQuick = $(arrQuick[0]),
-                                lastQuick = $(arrQuick[arrQuick.length - 1]);
-                            console.log(arrQuick);
-
-                            if(quickScroll && (( lastQuick.offset().left + parseInt(lastQuick.css('width'), 10) + parseInt(lastQuick.css('width'), 10) ) > ( $('.message-container').offset().left + parseInt(chatWidth, 10)
-                                + parseInt($(this).css('width'), 10) ))) {
-                                quickScroll = false;
-                                $(this).parent().parent().animate({
-                                    'margin-left': '-=' + $(arrQuick[quickIterator]).css('width')
-                                }, 200, function () {
-                                    quickScroll = true;
-                                });
-                                if(quickIterator < arrQuick.length) {
-                                    quickIterator++;
-                                }
-                            }
-                        })
-                        .appendTo(quickBackground);
+                    // $('<a class="btn-prev">')
+                    //     .append(
+                    //         $('<img>')
+                    //             .attr('src', root + 'images/back.svg')
+                    //     )
+                    //     .on("click", function () {
+                    //         var arrQuick = $(this).parent().parent().find($('.quick-reply')),
+                    //             firstQuick = $(arrQuick[0]),
+                    //             lastQuick = $(arrQuick[arrQuick.length - 1]);
+                    //
+                    //         if(quickScroll && ((firstQuick.offset().left - parseInt($(this).css('width'), 10)) < $('.message-container').offset().left)) {
+                    //             quickScroll = false;
+                    //             $(this).parent().parent().animate({
+                    //                 'margin-left': '+=' + $(arrQuick[quickIterator]).css('width')
+                    //             }, 200, function () {
+                    //                 quickScroll = true;
+                    //             });
+                    //             if(quickIterator > 0) {
+                    //                 quickIterator--;
+                    //             }
+                    //         }
+                    //
+                    //     })
+                    //     .appendTo(quickBackground);
+                    // $('<a class="btn-next">')
+                    //     .append(
+                    //         $('<img>')
+                    //             .attr('src', root + 'images/back.svg')
+                    //             .css('transform', 'scaleX(-1)')
+                    //     )
+                    //     .on("click", function () {
+                    //         console.log('clicked');
+                    //         var arrQuick = $(this).parent().parent().find($('.quick-reply')),
+                    //             firstQuick = $(arrQuick[0]),
+                    //             lastQuick = $(arrQuick[arrQuick.length - 1]);
+                    //         console.log(arrQuick);
+                    //
+                    //         if(quickScroll && (( lastQuick.offset().left + parseInt(lastQuick.css('width'), 10) + parseInt(lastQuick.css('width'), 10) ) > ( $('.message-container').offset().left + parseInt(chatWidth, 10)
+                    //             + parseInt($(this).css('width'), 10) ))) {
+                    //             quickScroll = false;
+                    //             $(this).parent().parent().animate({
+                    //                 'margin-left': '-=' + $(arrQuick[quickIterator]).css('width')
+                    //             }, 200, function () {
+                    //                 quickScroll = true;
+                    //             });
+                    //             if(quickIterator < arrQuick.length) {
+                    //                 quickIterator++;
+                    //             }
+                    //         }
+                    //     })
+                    //     .appendTo(quickBackground);
 
                     var arrQuickWidth = 0;
                     $('.quick-reply').each(function () {
@@ -852,29 +856,61 @@
 
                     break;
                 case 'BusinessName':
-                    message.text(settings.answers["BusinessName"]).appendTo($('.chat-window').find('.message-container'));
+                    $('<div>')
+                        .append(
+                            message.text(settings.answers["BusinessName"])
+                        )
+                        .prependTo($('.chat-window').find('.message-container'));
                     break;
                 case 'Location':
-                    message.text(settings.answers["Location"]).appendTo($('.chat-window').find('.message-container'));
+                    $('<div>')
+                        .append(
+                            message.text(settings.answers["Location"])
+                        )
+                        .prependTo($('.chat-window').find('.message-container'));
                     break;
                 case 'Hours':
-                    message.text(settings.answers["Hours"]).appendTo($('.chat-window').find('.message-container'));
+                    $('<div>')
+                        .append(
+                            message.text(settings.answers["Hours"])
+                        )
+                        .prependTo($('.chat-window').find('.message-container'));
                     break;
                 case 'Email':
-                    message.text(settings.answers["Email"]).appendTo($('.chat-window').find('.message-container'));
+                    $('<div>')
+                        .append(
+                            message.text(settings.answers["EMail"])
+                        )
+                        .prependTo($('.chat-window').find('.message-container'));
                     break;
                 case 'Phone':
-                    message.text(settings.answers["Phone"]).appendTo($('.chat-window').find('.message-container'));
+                    $('<div>')
+                        .append(
+                            message.text(settings.answers["Phone"])
+                        )
+                        .prependTo($('.chat-window').find('.message-container'));
                     break;
                 case 'About':
-                    console.log(aboutOptions);
-                    message.text(aboutOptions[getRandomInt(0, 2)]).appendTo($('.chat-window').find('.message-container'));
+                    $('<div>')
+                        .append(
+                            message.text(aboutOptions[getRandomInt(0, 2)])
+                        )
+                        .prependTo($('.chat-window').find('.message-container'));
+                    // message.text(aboutOptions[getRandomInt(0, 2)]).appendTo($('.chat-window').find('.message-container'));
                     break;
                 default:
                     if(response.result.fulfillment.speech !== "") {
-                        message.text(response.result.fulfillment.speech).appendTo($('.chat-window').find('.message-container'));
+                        $('<div>')
+                            .append(
+                                message.text(response.result.fulfillment.speech)
+                            )
+                            .prependTo($('.chat-window').find('.message-container'));
                     } else {
-                        message.text("I'm sorry, but I can't really understand you.").appendTo($('.chat-window').find('.message-container'));
+                        $('<div>')
+                            .append(
+                                message.text("I'm sorry, but I can't really understand you.")
+                            )
+                            .prependTo($('.chat-window').find('.message-container'));
                     }
                     break;
             }
@@ -914,7 +950,10 @@
                 // setResponse("Loading...");
 
                 var message = $('<div class="chat-message user">');
-                message.text(text).appendTo($('.chat-window').find('.message-container'));
+                $('<div>')
+                    .append(message.text(text))
+                    .prependTo($('.chat-window')
+                    .find('.message-container'));
 
                 chatScrollBottom();
             } else {
@@ -924,7 +963,7 @@
         }
 
         function chatScrollBottom() {
-            $(".message-container").animate({ scrollTop: $('.message-container').prop("scrollHeight")}, 150);
+            $(".message-container").animate({ scrollTop: $('.message-container').prop("scrollHeight")}, 0);
         }
 
         $('.chat-close').on("click", function (e) {
