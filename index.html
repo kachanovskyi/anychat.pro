@@ -441,15 +441,19 @@
                                     org_checkbox.prop('checked', true);
                                     block.removeClass('inactive');
                                     block.find('input[type="text"], input[type="email"]').get(0).focus();
-                                    generate();
+
+                                    if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+                                        generate();
+                                    }
 
                                 } else {
                                     // Update state
                                     org_checkbox.prop('checked', false);
                                     block.addClass('inactive');
                                     block.find('input[type="text"], input[type="email"]').get(0).blur();
-                                    generate();
-                                }
+                                    if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+                                        generate();
+                                    }                                }
                             }
                         });
                     });
@@ -472,7 +476,7 @@
             }
         });
 
-        console.log(answers);
+//        console.log(answers);
 
         color = $('#icon-color-picker > div.selected').data('color') || '#783bd2';
 
@@ -559,7 +563,9 @@
         });
 
         $('.input-block').find('input[type=text]').blur(function() {
-            generate();
+            if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+                generate();
+            }
         });
 
         $('input[type=text]').focus(function(event) {
@@ -574,7 +580,10 @@
         $('#icon-color-picker > div').click(function(event) {
             $(event.currentTarget).addClass('selected');
             $(event.currentTarget).siblings().removeClass('selected');
-            generate();
+
+            if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+                generate();
+            }
         });
     });
     </script>

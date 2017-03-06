@@ -110,6 +110,7 @@
         settings.color = script.data('color');
         settings.overlay = script.data('overlay');
         var numberOfApps = Object.keys(settings.apps).length;
+        var aboutPrefixes = ["Here's a little something about us", "Here's a little something about our team", "Here's a little secret offer just for you"];
         var aboutOptions = [];
         // if (!Mobile) {
         //     if (settings.apps.sms) {
@@ -475,8 +476,8 @@
             launcherCont.bottom = 10;
             launcherCont.right = 18;
 
-            // if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-            if($w.width() < 500) {
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            // if($w.width() < 500) {
                 launcherCont.bottom = 0;
                 launcherCont.right = 0;
                 chatTop = $w.height() - chatIconHeight;
@@ -743,7 +744,7 @@
                 chatShow = false;
                 chatWindowClose(function () {
                     anychatIcon.animate({
-                        bottom: chatTop
+                        bottom: anychatIconBottom
                     }, 150)
                 });
             }
@@ -768,12 +769,22 @@
 
                     $('<div>')
                         .append(
-                            message
-                            .text(response.result.fulfillment.speech + " I'm " + settings.answers["BusinessName"] + " chatbot. How can I help you?")
+                            $('<div class="chat-message bot">').text("Hi there")
+                            // message.text(response.result.fulfillment.speech + " I'm " + settings.answers["BusinessName"] + " chatbot. How can I help you?")
+
                         )
                         .prependTo($('.chat-window').find('.message-container'));
-                    quickContainer
-                        .prependTo($('.message-container'));
+                    setTimeout(function () {
+                        $('<div>')
+                            .append(
+                                $('<div class="chat-message bot">').text("How can I help you?")
+                            )
+                            .prependTo($('.chat-window').find('.message-container'));
+                    }, 999);
+                    setTimeout(function () {
+                        quickContainer
+                            .prependTo($('.message-container'));
+                    }, 999);
 
                     for(var x in settings.answers) {
                         if(x === "Location" || x === "Hours") {
@@ -865,16 +876,30 @@
                 case 'Location':
                     $('<div>')
                         .append(
-                            message.text(settings.answers["Location"])
+                            $('<div class="chat-message bot">').text("This is our address:")
                         )
                         .prependTo($('.chat-window').find('.message-container'));
+                    setTimeout(function () {
+                        $('<div>')
+                            .append(
+                                message.text(settings.answers["Location"])
+                            )
+                            .prependTo($('.chat-window').find('.message-container'));
+                    }, 600);
                     break;
                 case 'Hours':
                     $('<div>')
                         .append(
-                            message.text(settings.answers["Hours"])
+                            $('<div class="chat-message bot">').text("These are our hours:")
                         )
                         .prependTo($('.chat-window').find('.message-container'));
+                    setTimeout(function () {
+                        $('<div>')
+                            .append(
+                                message.text(settings.answers["Hours"])
+                            )
+                            .prependTo($('.chat-window').find('.message-container'));
+                    }, 600);
                     break;
                 case 'Email':
                     $('<div>')
@@ -893,9 +918,16 @@
                 case 'About':
                     $('<div>')
                         .append(
-                            message.text(aboutOptions[getRandomInt(0, 2)])
+                            $('<div class="chat-message bot">').text(aboutPrefixes[getRandomInt(0, 2)])
                         )
                         .prependTo($('.chat-window').find('.message-container'));
+                    setTimeout(function () {
+                        $('<div>')
+                            .append(
+                                message.text(aboutOptions[getRandomInt(0, 2)])
+                            )
+                            .prependTo($('.chat-window').find('.message-container'));
+                    }, 600);
                     // message.text(aboutOptions[getRandomInt(0, 2)]).appendTo($('.chat-window').find('.message-container'));
                     break;
                 default:
