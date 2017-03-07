@@ -493,7 +493,7 @@
     </script>
 
     <script>
-    function generate() {
+    function generate(param) {
         var color, apps = {}, answers = {};
         var formContainer = $('.form-container');
 
@@ -531,6 +531,9 @@
 
         window.initializeShopchat();
 
+        if(param === 'active') {
+            $('.anychat-launcher').addClass('anychat-launcher-active');
+        }
         $('.anychat-launcher').click();
     }
 
@@ -612,6 +615,8 @@
 
             if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
                 generate();
+            } else {
+                generate('active');
             }
         });
     });
