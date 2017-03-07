@@ -18,21 +18,21 @@
         <section id="wrapper">
             <canvas id="chatCanvas" style="position:absolute; left: 0; bottom: 0; top:0; z-index:-1;" width="707" height="633"></canvas>
             <div class="container-inner">
-                <h2 id="widget-heading" style="margin-top: .8em;">Right now, a monumental shift in consumer behavior is happening!</h2>
-                <p style="background:white;">
-                    That’s right. Consumers	are	tired of downloading apps, scrolling through search	results,
-                    reading	reviews, surfing the web when all they want	are simple answers.
-                </p>
-                <p style="background:white;">
-                    <b style="color: #783bd2;">But they love to text.</b> So make it easy. Be	there. Right where they live… in their messaging apps!
-                </p>
-                <p style="background:white;">
-                    AnyCHAT is a mobile-friendly aiWidget™	that makes it super	simple for consumers to connect	with you on	their favorite	messaging channels – anytime,     anywhere,	any	channel.
-                </p>
+                <!--<h2 id="widget-heading" style="margin-top: .8em;">Right now, a monumental shift in consumer behavior is happening!</h2>-->
+                <!--<p style="background:white;">-->
+                    <!--That’s right. Consumers	are	tired of downloading apps, scrolling through search	results,-->
+                    <!--reading	reviews, surfing the web when all they want	are simple answers.-->
+                <!--</p>-->
+                <!--<p style="background:white;">-->
+                    <!--<b style="color: #783bd2;">But they love to text.</b> So make it easy. Be	there. Right where they live… in their messaging apps!-->
+                <!--</p>-->
+                <!--<p style="background:white;">-->
+                    <!--AnyCHAT is a mobile-friendly aiWidget™	that makes it super	simple for consumers to connect	with you on	their favorite	messaging channels – anytime,     anywhere,	any	channel.-->
+                <!--</p>-->
 
-                <div style="margin-top: 3em; display: inline-block;">
-                    <a id="get-it" class="button special">Get it now!</a>
-                </div>
+                <!--<div style="margin-top: 3em; display: inline-block;">-->
+                    <!--<a id="get-it" class="button special">Get it now!</a>-->
+                <!--</div>-->
 
                     <style>
                     .input-block {
@@ -56,6 +56,23 @@
                         font-size: 20px;
                         margin: -48px 0 0 52px;
                     }
+                    .input-block .app-label > p {
+                        width: calc(100% - 60px);
+                        margin: 0;
+                        line-height: 100%;
+                        display: inline-block;
+                    }
+
+                    #show-form {
+                        position: absolute;
+                        bottom: 10px;
+                        color: gray;
+                        font-size: 14pt;
+                    }
+                    #show-form:hover {
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
 
                     .input-block input {
                         background: none;
@@ -64,7 +81,10 @@
                         height: 46px;
                         padding-left: 0;
                         font-size: 20px;
-                        margin-top: 24px;
+                        /*margin-top: 24px;*/
+                        position: absolute;
+                        bottom: 10px;
+                        max-width: 88%;
                     }
 
                     .input-block.inactive .app-label {
@@ -153,100 +173,166 @@
                         background: #0AD02C;
                     }
                     </style>
-                    <div class="input-block-container ui-sortable" style="margin-top: 3em; display: none;">
-                        <p><b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 1: </span>Fill in the details for the channels you want to activate.</b></p>
+                    <div class="input-block-container ui-sortable" style="margin-top: 2em;">
+                        <p><b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 1: </span>Fill in the details for the channels you want to activate</b></p>
                         <p><b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 2: </span> Drag to re-arrange the order</b></p>
+                        <p><b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 3: </span> Pick a color for your chat button</b></p>
+                        <style>
+                            #icon-color-picker > div {
+                                cursor: pointer;
+                                position: relative;
+                                display: inline-block;
+                                height: 52px;
+                                width: 52px;
+                                border-radius: 27px;
+                                padding: 0;
+                                border-style: dashed;
+                                border-width: 1px;
+                                border-color: white;
+                            }
+                        </style>
+                        <div id="icon-color-picker" style="text-align:left; margin-top: 20px;">
+                            <div data-color="#DA3337">
+                                <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <ellipse fill="#DA3337" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div data-color="#F2994A">
+                                <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <ellipse fill="#F2994A" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div data-color="#F2C94C">
+                                <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <ellipse fill="#F2C94C" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div data-color="#6FCF97">
+                                <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <ellipse fill="#6FCF97" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div data-color="#2F80ED">
+                                <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <ellipse fill="#2F80ED" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div data-color="#56CCF2">
+                                <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <ellipse fill="#56CCF2" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                                    </g>
+                                </svg>
+                            </div>
+                            <br>
+                                <span style="font-size:13pt;line-height:100%;color:#828282;margin-top: 15px;">
+                                    (You can easily customize the color further by generating the code and changing the 6-digit Hex Code)
+                                </span>
+                        </div>
                         <div class="input-block ui-sortable-handle">
                             <!--<img class="app-icon" src="./images/anychat.svg" alt="email">-->
                             <div style="width: 44px; height: 44px; background-color: #783bd2; border-radius: 100px;">
                                 <img style="width: 80%; margin-left: 10%;" class="app-icon" src="./images/anychat.svg" alt="email">
                             </div>
                             <div class="app-label" style="color:#783bd2;margin-top: -40px;">
-                                anychat bot
+                                <p>anychat bot</p>
                                 <div class="checkbox-container disabled">
                                     <input type="checkbox" checked="" class="ios toggle">
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input style="display: none;" name="anychat" data-default="http://anychat.pro/" type="text" placeholder="Upgrade to activate. Request invite in next step.">
+                            <a id="show-form">chatbot form</a>
+                            <!--<input style="display: none;" name="anychat" data-default="http://anychat.pro/" type="text" placeholder="Upgrade to activate. Request invite in next step.">-->
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/sms.svg" alt="sms">
                             <div class="app-label" style="color:#000000;">
-                                sms/text
+                                <p>sms/text</p>
                                 <div class="checkbox-container">
                                     <input type="checkbox" class="ios toggle">
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="sms" data-default="+19492289475" type="text" placeholder="Phone number">
+                            <div style="max-width: 100%; overflow: hidden">
+                                <input name="sms" data-default="+19492289475" type="text" placeholder="phone number">
+                            </div>
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/email.svg" alt="email">
                             <div class="app-label" style="color:#000000;">
-                                email
+                                <p>email</p>
                                 <div class="checkbox-container">
                                     <input type="checkbox" class="ios toggle">
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="email" data-default="info@chatbotstudios.co" type="text" placeholder="contact@company.com">
+                            <input name="email" data-default="info@chatbotstudios.co" type="text" placeholder="contact@yourcompany.com">
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/phone.svg" alt="phone">
                             <div class="app-label" style="color:#000000;">
-                                phone
+                                <p>phone</p>
                                 <div class="checkbox-container">
                                     <input type="checkbox" class="ios toggle">
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="phone" data-default="+19492289475" type="text" placeholder="Phone number">
+                            <input name="phone" data-default="+19492289475" type="text" placeholder="phone number">
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/alexa.svg" alt="phone">
                             <div class="app-label" style="color:#0084FF;">
-                                Amazon Echo/Alexa
+                                <p>amazon alexa</p>
                                 <div class="checkbox-container">
                                     <input type="checkbox" class="ios toggle">
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="alexa" data-default="226332827803600" type="text" placeholder="Alexa skill ID">
+                            <input name="alexa" data-default="226332827803600" type="text" placeholder="alexa skill id">
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/allo.svg" alt="phone">
                             <div class="app-label" style="color:#F5B900;">
-                                Google Home/Allo
+                                <p>google assistant</p>
                                 <div class="checkbox-container">
                                     <input type="checkbox" class="ios toggle">
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="allo" data-default="Chatbot Studios" type="text" placeholder="Username">
+                            <input name="allo" data-default="Chatbot Studios" type="text" placeholder="google action id">
                         </div>
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/messenger.svg" alt="phone">
                             <div class="app-label" style="color:#0084FF;">
-                                Messenger
+                                <p>messenger</p>
                                 <div class="checkbox-container">
                                     <input type="checkbox" class="ios toggle">
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="messenger" data-default="226332827803600" type="text" placeholder="Facebook ID">
+                            <input name="messenger" data-default="226332827803600" type="text" placeholder="m.me/yourchatbotname">
                         </div>
 
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/kik.svg" alt="kik">
                             <div class="app-label" style="color:#82BC23;">
-                                Kik
+                                <p>kik</p>
                                 <div class="checkbox-container">
                                     <input type="checkbox" class="ios toggle">
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="kik" data-default="Chatbot Studios" type="text" placeholder="Username">
+                            <input name="kik" data-default="Chatbot Studios" type="text" placeholder="http://kik.me/yourchatbotname">
                         </div>
                         <!--<div class="input-block inactive ui-sortable-handle">-->
                             <!--<img class="app-icon" src="./images/viber.svg" alt="viber">-->
@@ -263,103 +349,41 @@
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/whatsapp.svg" alt="whatsapp">
                             <div class="app-label" style="color:#30BE2D;">
-                                Whatsapp
+                                <p>whatsapp</p>
                                 <div class="checkbox-container">
                                     <input type="checkbox" class="ios toggle">
                                     <label for="toggle"></label>
                                 </div>
                             </div>
-                            <input name="whatsapp" data-default="+19492289475" type="text" placeholder="Phone number">
+                            <input name="whatsapp" data-default="+19492289475" type="text" placeholder="phone number">
                         </div>
                         <div class="actions-block">
-                            <b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 3: </span> Pick a color for your chat icon</b>
-                            <style>
-                            #icon-color-picker > div {
-                                cursor: pointer;
-                                position: relative;
-                                display: inline-block;
-                                height: 52px;
-                                width: 52px;
-                                border-radius: 27px;
-                                padding: 0;
-                                border-style: dashed;
-                                border-width: 1px;
-                                border-color: white;
-                            }
-                            </style>
-                            <div id="icon-color-picker" style="text-align:left; margin-top: 20px;">
-                                <div data-color="#DA3337">
-                                    <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-                                        <g fill="none" fill-rule="evenodd">
-                                            <ellipse fill="#DA3337" cx="13" cy="13" rx="12" ry="12"></ellipse>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <div data-color="#F2994A">
-                                    <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-                                        <g fill="none" fill-rule="evenodd">
-                                            <ellipse fill="#F2994A" cx="13" cy="13" rx="12" ry="12"></ellipse>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <div data-color="#F2C94C">
-                                    <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-                                        <g fill="none" fill-rule="evenodd">
-                                            <ellipse fill="#F2C94C" cx="13" cy="13" rx="12" ry="12"></ellipse>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <div data-color="#6FCF97">
-                                    <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-                                        <g fill="none" fill-rule="evenodd">
-                                            <ellipse fill="#6FCF97" cx="13" cy="13" rx="12" ry="12"></ellipse>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <div data-color="#2F80ED">
-                                    <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-                                        <g fill="none" fill-rule="evenodd">
-                                            <ellipse fill="#2F80ED" cx="13" cy="13" rx="12" ry="12"></ellipse>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <div data-color="#56CCF2">
-                                    <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-                                        <g fill="none" fill-rule="evenodd">
-                                            <ellipse fill="#56CCF2" cx="13" cy="13" rx="12" ry="12"></ellipse>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <br>
-                                <span style="font-size:13pt;line-height:100%;color:#828282;margin-top: 15px;">
-                                    (You can easily customize the color further by generating the code and changing the 6-digit Hex Code)
-                                </span>
-                            </div>
+                            <!--<b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 3: </span> Pick a color for your chat icon</b>-->
                             <br>
                             <div style="margin-bottom: 30px;">
-                                <a id="next" class="button special icon fa-magic">Next</a>
-                                <a id="show-form" class="button special">Show form</a>
+                                <!--<a id="next" class="button special icon fa-magic">Next</a>-->
+                                <a href="javascript:generate();" class="button special icon fa-magic">Generate code</a>
                             </div>
-                            <div class="generate-code-container" style="display: none;">
-                                <b style="color:#783bd2;"><span style="color:#828282;margin-right: 6px;display: inline-block; vertical-align: top;">Step 4: </span><div style="display: inline-block; width: 88%;margin-bottom: 20px;"> Generate your custom code
-                                    <p style="color: #8b8f94; font-size: 13pt;">
-                                        TERMS OF USE: FREE to use for 30 days for Non-Members
-                                        (For additional time and to learn more, send a request to jedi@chatbotstudios.co)
-                                    </p>
-                                </div></b>
-                                <a href="javascript:generate();" class="button special icon fa-magic" style="margin-bottom:40px;">Generate code</a>
+                            <!--<div class="generate-code-container" style="display: none;">-->
+                                <!--<b style="color:#783bd2;"><span style="color:#828282;margin-right: 6px;display: inline-block; vertical-align: top;">Step 4: </span><div style="display: inline-block; width: 88%;margin-bottom: 20px;"> Generate your custom code-->
+                                    <!--<p style="color: #8b8f94; font-size: 13pt;">-->
+                                        <!--TERMS OF USE: FREE to use for 30 days for Non-Members-->
+                                        <!--(For additional time and to learn more, send a request to jedi@chatbotstudios.co)-->
+                                    <!--</p>-->
+                                <!--</div></b>-->
+                                <!--<a href="javascript:generate();" class="button special icon fa-magic" style="margin-bottom:40px;">Generate code</a>-->
                                 <textarea id="embed" onclick="this.focus();this.select();" cols="30" rows="3" spellcheck="false" style="color: #333333;resize:none;"></textarea>
                                 <br>
-                                <b style="color:#783bd2;"><span style="color:#828282;margin-right: 6px;display: inline-block; vertical-align: top;">Step 5: </span><div style="display: inline-block; width: 88%;margin-bottom: 20px;">
+                                <b style="color:#783bd2;"><span style="color:#828282;margin-right: 6px;display: inline-block; vertical-align: top;">Step 4: </span><div style="display: inline-block; width: 88%;margin-bottom: 20px;">
                                     Copy and insert code near the end of your website's HTML source code.
                                     <p style="color: #8b8f94; font-size: 13pt;">
-                                        (Make sure to insert on every page you want the aiWidget™ to appear)
+                                        (make sure to insert this html code on every page you want the anychat button to appear)
                                     </p>
                                 </div></b>
-                                <p style="background: white;">
-                                    AnyCHAT is an aiWidget™ designed, developed and managed by Chatbot Studios.
-                                    At Chatbot Studios, we build smart chatbots, voicebots and iotbots for business. Reach Out!
-                                </p>
+                                <!--<p style="background: white;">-->
+                                    <!--AnyCHAT is an aiWidget™ designed, developed and managed by Chatbot Studios.-->
+                                    <!--At Chatbot Studios, we build smart chatbots, voicebots and iotbots for business. Reach Out!-->
+                                <!--</p>-->
                             </div>
                         </div>
                     </div>
@@ -461,6 +485,11 @@
                 }
             });
         })(jQuery);
+
+        $(document).ready(function () {
+            $(".input-block-container").show();
+            $(".ios").iosCheckbox();
+        });
     </script>
 
     <script>
@@ -532,14 +561,14 @@
             }
         });
 
-        $("#get-it").click(function() {
-            $(".input-block-container").show();
-            $(".ios").iosCheckbox();
-
-            $('html, body').animate({
-                scrollTop: $(".input-block-container").offset().top
-            }, 500);
-        });
+//        $("#get-it").click(function() {
+//            $(".input-block-container").show();
+//            $(".ios").iosCheckbox();
+//
+//            $('html, body').animate({
+//                scrollTop: $(".input-block-container").offset().top
+//            }, 500);
+//        });
 
         $("#next").click(function() {
             $(".generate-code-container").show();
@@ -587,6 +616,6 @@
         });
     });
     </script>
-    <script id="anychat-script" src="./js/widget.js" data-color="#783bd2" data-answers="JTdCJTIyQnVzaW5lc3NOYW1lJTIyOiUyMkFueUNIQVQlMjIsJTIyTG9jYXRpb24lMjI6JTIyU29tZXdoZXJlJTIwaW4lMjB0aGUlMjBVU0ElMjIsJTIySG91cnMlMjI6JTIyODowMGFtJTIwLSUyMDg6MDBwbSUyMiwlMjJQaG9uZSUyMjolMjIrMTk0OTIyODk0NzUlMjIsJTIyRW1haWwlMjI6JTIyaW5mb0BjaGF0Ym90c3R1ZGlvcy5jbyUyMiwlMjJBYm91dF8xJTIyOiUyMkF3ZXNvbWUlMjBjb21wYW55JTIyLCUyMkFib3V0XzIlMjI6JTIyQ2hhdGJvdCUyMGNvbXBhbnklMjIsJTIyQWJvdXRfMyUyMjolMjJCZXN0JTIwY29tcGFueSUyMGV2ZXIlMjIlN0Q=" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImFsZXhhIjoiMjI2MzMyODI3ODAzNjAwIiwiYWxsbyI6IkNoYXRib3QgU3R1ZGlvcyIsIm1lc3NlbmdlciI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>
+    <script id="anychat-script" src="./js/widget.js" data-color="#783bd2" data-answers="eyJCdXNpbmVzc05hbWUiOiJBbnlDSEFUIiwiTG9jYXRpb24iOiJ3ZSdyZSBsb2NhdGVkIG9uIHRoZSAzcmQgZmxvb3Igb2YgdGhlIHdld29yayBvZmZpY2VzIGFjcm9zcyB0aGUgc3RyZWV0IGZyb20gdGhlIGlydmluZSBzcGVjdHJ1bS4gdGFwIGhlcmUgdG8gZ2V0IGRpcmVjdGlvbnMiLCJIb3VycyI6Im91ciBvZmZpY2VzIGFyZSBvcGVuIGZyb20gMTAgYW0gdG8gNCBwbSBtb25kYXkgdGhyb3VnaCBmcmlkYXkuIGJ1dCBvdXIgY2hhdGJvdHMgYXJlIGF2YWlsYWJsZSAyNC83IiwiUGhvbmUiOiIgMTk0OTIyODk0NzUiLCJFbWFpbCI6ImluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJBYm91dF8xIjoid2UncmUgY3JlYXRpbmcgYSBuZXR3b3JrIG9mIDQgJiA1IHN0YXIgbG9jYWwgYnVzaW5lc3NlcyB0aGF0IGNhbiBlYXNpbHkgYmUgcmVhY2hlZCBvbiB0aGUgY2hhbm5lbCBvZiB5b3VyIGNob2ljZS4gbGVzcyBoYXNzbGUsIG1vcmUgYWN0aW9uIiwiQWJvdXRfMiI6IndlJ3JlIGEgcmVtb3RlIHRlYW0gb2YgY29udmVyc2F0aW9uYWwgZXhwZXJ0cyB3aXRoIHRvbnMgb2YgZXhwZXJpZW5jZSBkZXNpZ25pbmcgYW5kIGRldmVsb3BpbmcgdXNlZnVsIGNoYXRib3RzIGFuZCB2b2ljZWJvdHMiLCJBYm91dF8zIjoiaGVyZSdzIGFuIGluc2lkZXIgZGVhbCBmb3IgeW91OiBqb2luIHRoZSBuZXR3b3JrIHRvZGF5IHdpdGggdGhlIHByb21vIGNvZGUgXCJpbmJldGFcIiBhbmQgd2UnbGwgd2FpdmUgdGhlIHNldHVwIGZlZSAoYSAkMzMzIHZhbHVlKSEifQ==" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImFsZXhhIjoiMjI2MzMyODI3ODAzNjAwIiwiYWxsbyI6IkNoYXRib3QgU3R1ZGlvcyIsIm1lc3NlbmdlciI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>
 </body>
 </html>
