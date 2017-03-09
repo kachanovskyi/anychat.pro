@@ -470,47 +470,39 @@
             var launcherCont = {},
                 chatIconHeight = 60,
                 iconHeight = 50;
-            var chatTop = 520,
+            var chatTop = 518,
                 chatBottom = 60,
                 chatWidth = 290;
             launcherCont.bottom = 10;
-            launcherCont.right = 18;
+            launcherCont.right = 16;
 
             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             // if($w.width() < 500) {
                 launcherCont.bottom = 0;
-                launcherCont.right = 0;
                 chatTop = $w.height() - chatIconHeight;
                 iconHeight = Math.floor(($w.height() - chatIconHeight - (chatIconHeight - iconHeight)) / (numberOfApps));
 
-                console.log(iconHeight);
                 if(iconHeight > 70) {
                     iconHeight = 70;
                 }
 
                 // console.log(numberOfApps);
                 chatWidth = $w.width();
-                $('.anychat-chat-icon').css('right', 0).css('width', chatWidth).css('height', iconHeight);
-                $('.anychat-launcher').css('right', '-=18').css('bottom', '-=10');
+                $('.anychat-chat-icon').css('right', launcherCont.right).css('width', chatWidth - 2*launcherCont.right).css('height', iconHeight);
+                $('.anychat-launcher').css('bottom', '-=10');
             }
 
             launcher.click(function() {
 
                 if($w.width() < 500) {
-                    console.log('worked', numberOfApps);
 
                     if(numberOfApps < 10) {
-                        console.log($w.height(), 'window height');
-                        console.log(chatIconHeight, 'chatIcon height');
-                        console.log(iconHeight, 'icon height');
-                        console.log(numberOfApps, 'number of apps');
-
                         iconHeight = Math.floor(($w.height() - chatIconHeight - (chatIconHeight)) / (numberOfApps));
-                        console.log(iconHeight);
                     }
                     if (iconHeight > 70) {
                         iconHeight = 70;
                     }
+
                 }
 
                 $('#anychat-container .anychat-chat-icon').each(function(index, img) {
@@ -545,7 +537,7 @@
                                     .css('position', 'absolute')
                                     .css('bottom', launcherCont.bottom)
                                     .css('height', '60px')
-                                    .css('width', chatWidth)
+                                    .css('width', chatWidth - 2*launcherCont.right)
                                     .css('background', '#FFFFFF')
                                     .css('right', launcherCont.right)
                                     .css('z-index', '-1')
@@ -663,14 +655,14 @@
                 var chatHeight = (chatTop);
 
                 var messageContainer = $('<div class="message-container">')
-                    .css('width', chatWidth)
+                    .css('width', chatWidth - 2*launcherCont.right)
                     .css('height', ((chatHeight - 60) + 'px'));
 
                 if($('.chat-window').length === 0) {
                     var chatWindow = $('<div class="chat-window">')
                         .css('height', chatHeight)
                         .css('top', '-' +  ((chatBottom - 60 + chatHeight) + 'px'))
-                        .css('width', chatWidth)
+                        .css('width', chatWidth - 2*launcherCont.right)
                         .css('position', 'absolute')
                         .css('right', launcherCont.right)
                         .css('display', 'none')
@@ -683,7 +675,7 @@
                                 .css('bottom', '0')
                                 .css('margin', 0)
                                 .css('right', '-1px')
-                                .css('width', chatWidth)
+                                .css('width', chatWidth - 2*launcherCont.right)
                                 .css('height', '60px')
                                 .css('background-color', '#FFFFFF')
                                 .append(
