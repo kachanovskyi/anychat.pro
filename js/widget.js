@@ -110,7 +110,7 @@
         settings.color = script.data('color');
         settings.overlay = script.data('overlay');
         var numberOfApps = Object.keys(settings.apps).length;
-        var aboutPrefixes = ["Here's a little something about us", "Here's a little something about our team", "Here's a little secret offer just for you"];
+        // var aboutPrefixes = ["Here's a little something about us", "Here's a little something about our team", "Here's a little secret offer just for you"];
         var aboutOptions = [];
         // if (!Mobile) {
         //     if (settings.apps.sms) {
@@ -481,25 +481,49 @@
                 launcherCont.bottom = 0;
                 launcherCont.right = 0;
                 chatTop = $w.height() - chatIconHeight;
-                iconHeight = ($w.height() - chatIconHeight - (chatIconHeight - iconHeight)) / (numberOfApps);
-                console.log(numberOfApps);
+                iconHeight = Math.floor(($w.height() - chatIconHeight - (chatIconHeight - iconHeight)) / (numberOfApps));
+
+                console.log(iconHeight);
+                if(iconHeight > 70) {
+                    iconHeight = 70;
+                }
+
+                // console.log(numberOfApps);
                 chatWidth = $w.width();
                 $('.anychat-chat-icon').css('right', 0).css('width', chatWidth).css('height', iconHeight);
                 $('.anychat-launcher').css('right', '-=18').css('bottom', '-=10');
             }
 
             launcher.click(function() {
+
+                if($w.width() < 500) {
+                    console.log('worked', numberOfApps);
+
+                    if(numberOfApps < 10) {
+                        console.log($w.height(), 'window height');
+                        console.log(chatIconHeight, 'chatIcon height');
+                        console.log(iconHeight, 'icon height');
+                        console.log(numberOfApps, 'number of apps');
+
+                        iconHeight = Math.floor(($w.height() - chatIconHeight - (chatIconHeight)) / (numberOfApps));
+                        console.log(iconHeight);
+                    }
+                    if (iconHeight > 70) {
+                        iconHeight = 70;
+                    }
+                }
+
                 $('#anychat-container .anychat-chat-icon').each(function(index, img) {
                     img = $(img);
                     if (launcher.is('.anychat-launcher-active')) {
                         // chatClose();
                         img.animate({
-                            'bottom': 20,
-                            'right': 16,
+                            'bottom': launcherCont.bottom,
+                            'right': launcherCont.right,
                             'opacity': 0
                         }, 'fast', function() {
-                            img.css('right', '')
-                                .css('bottom', '')
+                            img.css('right', launcherCont.right)
+                                .css('bottom', 'launcherCont.bottom')
                                 .hide();
                         });
 
@@ -873,32 +897,32 @@
                         .prependTo($('.chat-window').find('.message-container'));
                     break;
                 case 'Location':
-                    $('<div>')
-                        .append(
-                            $('<div class="chat-message bot">').text("This is our address:")
-                        )
-                        .prependTo($('.chat-window').find('.message-container'));
-                    setTimeout(function () {
+                    // $('<div>')
+                    //     .append(
+                    //         $('<div class="chat-message bot">').text("This is our address:")
+                    //     )
+                    //     .prependTo($('.chat-window').find('.message-container'));
+                    // setTimeout(function () {
                         $('<div>')
                             .append(
                                 message.text(settings.answers["Location"])
                             )
                             .prependTo($('.chat-window').find('.message-container'));
-                    }, 600);
+                    // }, 600);
                     break;
                 case 'Hours':
-                    $('<div>')
-                        .append(
-                            $('<div class="chat-message bot">').text("These are our hours:")
-                        )
-                        .prependTo($('.chat-window').find('.message-container'));
-                    setTimeout(function () {
+                    // $('<div>')
+                    //     .append(
+                    //         $('<div class="chat-message bot">').text("These are our hours:")
+                    //     )
+                    //     .prependTo($('.chat-window').find('.message-container'));
+                    // setTimeout(function () {
                         $('<div>')
                             .append(
                                 message.text(settings.answers["Hours"])
                             )
                             .prependTo($('.chat-window').find('.message-container'));
-                    }, 600);
+                    // }, 600);
                     break;
                 case 'Email':
                     $('<div>')
@@ -915,18 +939,18 @@
                         .prependTo($('.chat-window').find('.message-container'));
                     break;
                 case 'About':
-                    $('<div>')
-                        .append(
-                            $('<div class="chat-message bot">').text(aboutPrefixes[getRandomInt(0, 2)])
-                        )
-                        .prependTo($('.chat-window').find('.message-container'));
-                    setTimeout(function () {
+                    // $('<div>')
+                    //     .append(
+                    //         $('<div class="chat-message bot">').text(aboutPrefixes[getRandomInt(0, 2)])
+                    //     )
+                    //     .prependTo($('.chat-window').find('.message-container'));
+                    // setTimeout(function () {
                         $('<div>')
                             .append(
                                 message.text(aboutOptions[getRandomInt(0, 2)])
                             )
                             .prependTo($('.chat-window').find('.message-container'));
-                    }, 600);
+                    // }, 600);
                     // message.text(aboutOptions[getRandomInt(0, 2)]).appendTo($('.chat-window').find('.message-container'));
                     break;
                 default:
