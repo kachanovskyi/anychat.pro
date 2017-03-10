@@ -475,10 +475,12 @@
                 chatWidth = 290;
             launcherCont.bottom = 10;
             launcherCont.right = 16;
+            launcherCont.width = 290;
 
             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             // if($w.width() < 500) {
                 launcherCont.bottom = 0;
+                launcherCont.width = chatWidth - 2*launcherCont.right;
                 chatTop = $w.height() - chatIconHeight;
                 iconHeight = Math.floor(($w.height() - chatIconHeight - (chatIconHeight - iconHeight)) / (numberOfApps));
 
@@ -488,7 +490,7 @@
 
                 // console.log(numberOfApps);
                 chatWidth = $w.width();
-                $('.anychat-chat-icon').css('right', launcherCont.right).css('width', chatWidth - 2*launcherCont.right).css('height', iconHeight);
+                $('.anychat-chat-icon').css('right', launcherCont.right).css('width', launcherCont.width).css('height', iconHeight);
                 $('.anychat-launcher').css('bottom', '-=10');
             }
 
@@ -531,13 +533,14 @@
                         //     }
                         // } else {
                             // console.log(launcher.find('.launcher-container'));
+                        console.log($('.anychat-chat-icon').width());
                         if(anchor.find('.launcher-container').length === 0) {
                             anchor.append(
                                 $('<div class="launcher-container">')
                                     .css('position', 'absolute')
                                     .css('bottom', launcherCont.bottom)
                                     .css('height', '60px')
-                                    .css('width', chatWidth - 2*launcherCont.right)
+                                    .css('width', launcherCont.width)
                                     .css('background', '#FFFFFF')
                                     .css('right', launcherCont.right)
                                     .css('z-index', '-1')
@@ -652,17 +655,17 @@
                 //
                 // }
 
-                var chatHeight = (chatTop);
+                var chatHeight = (chatTop - 10);
 
                 var messageContainer = $('<div class="message-container">')
-                    .css('width', chatWidth - 2*launcherCont.right)
+                    .css('width', launcherCont.width)
                     .css('height', ((chatHeight - 60) + 'px'));
 
                 if($('.chat-window').length === 0) {
                     var chatWindow = $('<div class="chat-window">')
                         .css('height', chatHeight)
-                        .css('top', '-' +  ((chatBottom - 60 + chatHeight) + 'px'))
-                        .css('width', chatWidth - 2*launcherCont.right)
+                        .css('top', '-' +  ((chatBottom - chatIconHeight + launcherCont.bottom + chatHeight) + 'px'))
+                        .css('width', launcherCont.width)
                         .css('position', 'absolute')
                         .css('right', launcherCont.right)
                         .css('display', 'none')
@@ -672,10 +675,10 @@
                             $('<div class="bottom">')
                                 .css('border', '1px solid rgba(0, 0, 0, 0.139216)')
                                 .css('position', 'absolute')
-                                .css('bottom', '0')
+                                .css('bottom', 0)
                                 .css('margin', 0)
                                 .css('right', '-1px')
-                                .css('width', chatWidth - 2*launcherCont.right)
+                                .css('width', launcherCont.width)
                                 .css('height', '60px')
                                 .css('background-color', '#FFFFFF')
                                 .append(
