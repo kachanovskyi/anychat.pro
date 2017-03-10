@@ -480,7 +480,6 @@
             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             // if($w.width() < 500) {
                 launcherCont.bottom = 0;
-                launcherCont.width = chatWidth - 2*launcherCont.right;
                 chatTop = $w.height() - chatIconHeight;
                 iconHeight = Math.floor(($w.height() - chatIconHeight - (chatIconHeight - iconHeight)) / (numberOfApps));
 
@@ -490,6 +489,7 @@
 
                 // console.log(numberOfApps);
                 chatWidth = $w.width();
+                launcherCont.width = chatWidth - 2*launcherCont.right;
                 $('.anychat-chat-icon').css('right', launcherCont.right).css('width', launcherCont.width).css('height', iconHeight);
                 $('.anychat-launcher').css('bottom', '-=10');
             }
