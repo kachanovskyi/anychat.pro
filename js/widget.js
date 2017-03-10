@@ -479,7 +479,7 @@
 
             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             // if($w.width() < 500) {
-                launcherCont.bottom = 0;
+                // launcherCont.bottom = 0;
                 chatTop = $w.height() - chatIconHeight;
                 iconHeight = Math.floor(($w.height() - chatIconHeight - (chatIconHeight - iconHeight)) / (numberOfApps));
 
