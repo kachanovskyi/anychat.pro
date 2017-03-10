@@ -491,7 +491,6 @@
                 chatWidth = $w.width();
                 launcherCont.width = chatWidth - 2*launcherCont.right;
                 $('.anychat-chat-icon').css('right', launcherCont.right).css('width', launcherCont.width).css('height', iconHeight);
-                $('.anychat-launcher').css('bottom', '-=10');
             }
 
             launcher.click(function() {
