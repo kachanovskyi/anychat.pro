@@ -34,12 +34,14 @@
 
 .launcher-container {
     padding-top: 8px;
+    background-color: #F8F8F8;
     /*position: absolute;*/
     /*bottom: 0;*/
     /*background: #ffffff;*/
     /*z-index: -1;*/
     /*border: solid rgba(0, 0, 0, .1);*/
     /*border-width: 0 2px 2px;*/
+    /*display: none !important;*/
 }
     .launcher-container .add-anychat-link {
         border: none;
@@ -82,7 +84,7 @@
     width: 33px;
     height: 33px;
     right: 38px;
-    bottom: 20px;
+    bottom: 18px;
     border-radius: 25px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05), 0 15px 30px -10px rgba(0, 0, 0, 0.3);
 }
@@ -146,14 +148,23 @@
 .anychat-chat-icon{
 	box-shadow: none !important;
     min-width: 290px;
-    background: #FFFFFF;
+    background: #F8F8F8;
     border: solid rgba(0, 0, 0, .14);
     border-width: 0 1px;
     /*border-radius: ;*/
     padding: 10px 20px 0;
+    transition: .1s ease-in-out;
+}
+.anychat-chat-icon.group-title {
+    background-color: #ffffff;
+}
+.anychat-chat-icon.group-title:hover {
+    background-color: #ffffff;
+    border-right: 1px solid rgba(0, 0, 0, .14);
 }
 .anychat-chat-icon:hover {
-    /*background: #f7fcf2;*/
+    background: #EDE2FE;
+    border-right: 3px solid #783DD1;
 }
     .anychat-chat-icon > img,
     .anychat-chat-icon > a {

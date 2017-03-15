@@ -473,9 +473,10 @@
             var chatTop = 518,
                 chatBottom = 60,
                 chatWidth = 290;
-            launcherCont.bottom = 10;
+            launcherCont.bottom = 0;
             launcherCont.right = 16;
             launcherCont.width = 290;
+            launcherCont.height = 10;
 
             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             // if($w.width() < 500) {
@@ -520,7 +521,10 @@
                                 .hide();
                         });
 
-                        $('.launcher-container').fadeOut("fast");
+                        $('.launcher-container').fadeOut({ duration: 200, queue: false });
+                        launcher.animate({
+                            right: 38
+                        }, { duration: 200, queue: false });
 
                     } else {
                         // if (numberOfApps > maxIconCount) {
@@ -534,13 +538,17 @@
                             // console.log(launcher.find('.launcher-container'));
                         console.log($('.anychat-chat-icon').width());
                         if(anchor.find('.launcher-container').length === 0) {
+                            launcher.animate({
+                                right: 290
+                            }, { duration: 200, queue: false });
+
                             anchor.append(
                                 $('<div class="launcher-container">')
                                     .css('position', 'absolute')
                                     .css('bottom', launcherCont.bottom)
                                     .css('height', '60px')
                                     .css('width', launcherCont.width)
-                                    .css('background', '#FFFFFF')
+                                    // .css('background', '#FFFFFF')
                                     .css('right', launcherCont.right)
                                     .css('z-index', '-1')
                                     .css('border', 'solid rgba(0, 0, 0, .14)')
@@ -552,13 +560,18 @@
                                     )
                             )
                         } else {
-                            $('.launcher-container').fadeIn("fast");
+                            launcher.animate({
+                                right: 260
+                            }, { duration: 200, queue: false });
+
+                            $('.launcher-container').fadeIn({ duration: 200, queue: false });
                         }
 
                         var diffClassic = 0,
                             diffVoice,
                             diffMessaging;
-                        var bottomValue = chatIconHeight + index * iconHeight;
+                        var bottomValue = launcherCont.height + index * iconHeight;
+                        // var bottomValue = chatIconHeight + index * iconHeight;
 
                         if( classic.children().length > 0 ) {
                             diffClassic = -chatIconHeight/2;
@@ -570,7 +583,8 @@
                             diffVoice = diffClassic;
                         }
                         if(img.parent().hasClass('voice')) {
-                            bottomValue = chatIconHeight + index * iconHeight + diffClassic;
+                            bottomValue = launcherCont.height + index * iconHeight + diffClassic;
+                            // bottomValue = chatIconHeight + index * iconHeight + diffClassic;
                         }
 
                         if( messaging.children().length > 0 ) {
@@ -580,11 +594,13 @@
                             diffMessaging = diffVoice;
                         }
                         if(img.parent().hasClass('messaging')) {
-                            bottomValue = chatIconHeight + index * iconHeight + diffVoice;
+                            bottomValue = launcherCont.height + index * iconHeight + diffVoice;
+                            // bottomValue = chatIconHeight + index * iconHeight + diffVoice;
                         }
 
                         if(img.parent().hasClass('chatbot')) {
-                            bottomValue = chatIconHeight + index * iconHeight + diffMessaging;
+                            bottomValue = launcherCont.height + index * iconHeight + diffMessaging;
+                            // bottomValue = chatIconHeight + index * iconHeight + diffMessaging;
                         }
 
                         // if(img.data('type') === "anychat") {
