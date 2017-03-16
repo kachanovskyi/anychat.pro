@@ -1,7 +1,7 @@
 (function() {
     //Load Stylesheet
-    // var root = './';
-    var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
+    var root = './';
+    // var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
     var accessToken = "afc2e32efdff44819a7cbc62e58009ca";
     var baseUrl = "https://api.api.ai/v1/";
 
@@ -35,6 +35,19 @@
 
         script.src = url;
         document.getElementsByTagName("head")[0].appendChild(script);
+    }
+
+
+
+    function formatAMPM(date) {
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = hours + ':' + minutes + ampm;
+        return strTime;
     }
 
     function init() {
@@ -112,6 +125,9 @@
         var numberOfApps = Object.keys(settings.apps).length;
         // var aboutPrefixes = ["Here's a little something about us", "Here's a little something about our team", "Here's a little secret offer just for you"];
         var aboutOptions = [];
+
+        var botWrote = false,
+            userWrote = false;
         // if (!Mobile) {
         //     if (settings.apps.sms) {
         //         numberOfApps--;
@@ -387,11 +403,6 @@
             //     )
             // );
             $(chatbot.children()[0]).css('border-top', '1px solid rgba(0, 0, 0, 0.139216)');
-            // $(chatbot.children()[0]).css('border-bottom', '1px solid rgba(0, 0, 0, 0.439216)');
-
-            anchor.children().each(function () {
-                $($(this).children()[0]).css('border-bottom', '1px solid rgba(0, 0, 0, .44)');
-            });
 
             //Add a more icon
             var more = $('<div>')
@@ -706,12 +717,14 @@
                         )
                         .appendTo(chatbot);
 
-                    $('<div class="message-outer">')
+                    $('<div class="message-outer bot">')
                         .css('visibility', 'hidden')
+                        .css('margin-bottom', '8px')
                         .append(
                             $('<div class="chat-message bot">').text("this one intended to be invisible:)")
                         )
                         .prependTo($('#chat-window').find('.message-container'));
+                    botWrote = true;
                 }
 
                 if (!launcher.is('.anychat-launcher-active')) {
@@ -780,13 +793,14 @@
 
             switch (response.result.action) {
                 case 'input.welcome':
+                    botWrote = true;
                     var quickContainer = $('<div class="quick-reply-container">'),
                         quickInner = $('<div class="inner">').appendTo(quickContainer),
                         quickBackground = $('<div class="background">').appendTo(quickContainer);
                     var quickIterator = 0,
                         quickScroll = true;
 
-                    $('<div class="message-outer">')
+                    $('<div class="message-outer bot">')
                         .append(
                             $('<div class="chat-message bot">').text("Hi there")
                             // message.text(response.result.fulfillment.speech + " I'm " + settings.answers["BusinessName"] + " chatbot. How can I help you?")
@@ -886,7 +900,8 @@
 
                     break;
                 case 'BusinessName':
-                    $('<div class="message-outer">')
+                    botWrote = true;
+                    $('<div class="message-outer bot">')
                         .append(
                             message.text(settings.answers["BusinessName"])
                         )
@@ -899,7 +914,8 @@
                     //     )
                     //     .prependTo($('#chat-window').find('.message-container'));
                     // setTimeout(function () {
-                        $('<div class="message-outer">')
+                    botWrote = true;
+                    $('<div class="message-outer bot">')
                             .append(
                                 message.text(settings.answers["Location"])
                             )
@@ -913,7 +929,8 @@
                     //     )
                     //     .prependTo($('#chat-window').find('.message-container'));
                     // setTimeout(function () {
-                        $('<div class="message-outer">')
+                    botWrote = true;
+                    $('<div class="message-outer bot">')
                             .append(
                                 message.text(settings.answers["Hours"])
                             )
@@ -921,27 +938,30 @@
                     // }, 600);
                     break;
                 case 'Email':
-                    $('<div class="message-outer">')
+                    botWrote = true;
+                    $('<div class="message-outer bot">')
                         .append(
                             message.text(settings.answers["EMail"])
                         )
                         .prependTo($('#chat-window').find('.message-container'));
                     break;
                 case 'Phone':
-                    $('<div class="message-outer">')
+                    botWrote = true;
+                    $('<div class="message-outer bot">')
                         .append(
                             message.text(settings.answers["Phone"])
                         )
                         .prependTo($('#chat-window').find('.message-container'));
                     break;
                 case 'About':
+                    botWrote = true;
                     // $('<div>')
                     //     .append(
                     //         $('<div class="chat-message bot">').text(aboutPrefixes[getRandomInt(0, 2)])
                     //     )
                     //     .prependTo($('#chat-window').find('.message-container'));
                     // setTimeout(function () {
-                        $('<div class="message-outer">')
+                        $('<div class="message-outer bot">')
                             .append(
                                 message.text(aboutOptions[getRandomInt(0, 2)])
                             )
@@ -950,14 +970,15 @@
                     // message.text(aboutOptions[getRandomInt(0, 2)]).appendTo($('#chat-window').find('.message-container'));
                     break;
                 default:
+                    botWrote = true;
                     if(response.result.fulfillment.speech !== "") {
-                        $('<div class="message-outer">')
+                        $('<div class="message-outer bot">')
                             .append(
                                 message.text(response.result.fulfillment.speech)
                             )
                             .prependTo($('#chat-window').find('.message-container'));
                     } else {
-                        $('<div class="message-outer">')
+                        $('<div class="message-outer bot">')
                             .append(
                                 message.text("I'm sorry, but I can't really understand you.")
                             )
@@ -1001,10 +1022,38 @@
                 // setResponse("Loading...");
 
                 var message = $('<div class="chat-message user">');
-                $('<div class="message-outer">')
-                    .append(message.text(text))
-                    .prependTo($('#chat-window')
-                    .find('.message-container'));
+                // console.log($('#chat-window').find('.message-container').find('.message-outer.user'));
+
+                if( botWrote ) {
+                    $('<div class="message-outer user">')
+                        .prependTo($('#chat-window')
+                            .find('.message-container'));
+                    console.log($('#chat-window').find('.message-container').find('.message-outer.user'));
+                }
+
+                message
+                    .text(text)
+                    .append($('<div class="arrow">'))
+                    .append($('<p class="hour">').text(formatAMPM(new Date())))
+                    .append($('<p class="person">').text("you"))
+                    .appendTo(
+                        $('#chat-window').find('.message-container').find('.message-outer.user')[0]
+                    );
+                if(message.width() < 55 + 15) {
+                    message.find('.hour').css('margin-right', 55);
+                } else {
+                    message.find('.hour').css('margin-right', message.width() - 14);
+                }
+                userWrote = true;
+
+                // console.log(formatAMPM(new Date()));
+
+                // $('<div class="message-outer user">')
+                //     .append(message.text(text).append(
+                //         $('<div class="arrow">')
+                //     ))
+                //     .prependTo($('#chat-window')
+                //     .find('.message-container'));
 
                 chatScrollBottom();
             } else {

@@ -281,7 +281,7 @@
         position: absolute;
         width: 100%;
         height: 50px;
-        box-shadow: 0 0 10px rgba(120, 59, 210, .55);
+        box-shadow: 0 0 10px rgba(120, 59, 210, .22);
         border-radius: 0 0 18px 18px;
         background: #ffffff;
         padding: 0 16px;
@@ -312,7 +312,7 @@
         background-color: #ffffff;
         border-radius: 18px 18px 0 0;
         padding: 2px 10px;
-        box-shadow: 0 0 10px rgba(120, 59, 210, .55);
+        box-shadow: 0 0 10px rgba(120, 59, 210, .22);
     }
         #chat-window .chat-bottom .send-message {
             display: inline-block;
@@ -355,7 +355,7 @@
         /*vertical-align: bottom;*/
         display: flex;
         flex-direction: column-reverse;
-        padding: 54px 8px;
+        padding: 54px 8px 72px;
     }
     #chat-window .message-container::-webkit-scrollbar {
         display: none;
@@ -364,29 +364,80 @@
             margin-top: 54px;
         }
         #chat-window .message-container .chat-message {
-            font-size: 12px;
-            padding: 12px;
-            margin: 5px 12px;
+            font-weight: 400;
+            font-size: 14px;
+            padding: 12px 18px;
+            margin: 4px 12px;
             display: inline;
             clear: both;
             max-width: 92%;
             word-wrap: break-word;
             line-height: 100%;
-            -webkit-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.22);
-            -moz-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.22);
-            box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.22);
+            /*-webkit-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.22);*/
+            /*-moz-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.22);*/
+            /*box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.22);*/
+            position: relative;
+            border-radius: 18px;
         }
         #chat-window .message-container .chat-message.bot {
-            background-color: #FFFFFF;
+            background-color: #D8D8D8;
             float: left;
+            color: #000000;
         }
+            #chat-window .message-container .chat-message.bot .arrow {
+                position: absolute;
+                z-index: 100;
+                left: 598px;
+                top: 110px;
+                border-top: 40px solid transparent !important;
+                border-bottom: 10px solid transparent !important;
+
+                border-left: 40px solid #db001e !important;
+            }
         #chat-window .message-container .chat-message.user {
-            background-color: rgba(120, 59, 210, .55);
-            color: #ffffff;
+            background-color: #7842CE;
+            color: rgba(256, 256, 256, .7);
             float: right;
         }
+            #chat-window .message-container .chat-message.user .arrow {
+                position: absolute;
+                right: 2px;
+                margin-top: 2px;
+                border-top: 20px solid #7842CE !important;
+                border-bottom: 18px solid transparent !important;
+                border-left: 30px solid transparent !important;
+            }
+            #chat-window .message-container .chat-message.user .arrow,
+            #chat-window .message-container .chat-message.user .person,
+            #chat-window .message-container .chat-message.user .hour {
+                visibility: hidden;
+            }
+            #chat-window .message-container .message-outer {
+                margin-bottom: 16px;
+            }
+                #chat-window .message-container .message-outer.user .chat-message.user:last-child .arrow,
+                #chat-window .message-container .message-outer.user .chat-message.user:last-child .person,
+                #chat-window .message-container .message-outer.user .chat-message.user:last-child .hour {
+                    visibility: visible;
+                }
 
-        .classic .anychat-chat-icon {
+            #chat-window .message-container .chat-message.user .person {
+                right: 12px;
+            }
+            #chat-window .message-container .chat-message.user .hour {
+                right: 0;
+            }
+            #chat-window .message-container .chat-message.user .person,
+            #chat-window .message-container .chat-message.user .hour {
+                position: absolute;
+                margin-top: 12px;
+                color: #000000;
+                font-size: 12px;
+                opacity: .8;
+            }
+
+
+.classic .anychat-chat-icon {
             border-bottom: none !important;
         }
 
@@ -472,7 +523,7 @@
     /*opacity: 0;*/
     /*filter: alpha(opacity=0);*/
     margin-top: -5px;
-    right: 76px;
+    right: 86px;
     position: absolute;
     display: inline-block;
 	background-size: 80%;
