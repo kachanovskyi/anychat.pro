@@ -1,7 +1,7 @@
 (function() {
     //Load Stylesheet
-    var root = './';
-    // var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
+    // var root = './';
+    var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
     var accessToken = "afc2e32efdff44819a7cbc62e58009ca";
     var baseUrl = "https://api.api.ai/v1/";
 
@@ -94,13 +94,13 @@
                 phone: 'phone',
                 messenger: 'messenger',
                 // viber: 'viber',
-                kik: 'kik',
+                kik: 'Kik',
                 whatsapp: 'whatsapp',
                 alexa: 'amazon echo',
                 allo: 'google home'
             },
             descriptions = {
-                anychat: 'about us, hours, locations',
+                anychat: 'about us, our hours or just say hello',
                 email: 'just email us',
                 sms: 'just text us',
                 phone: 'just call us',
@@ -347,13 +347,27 @@
                 }
             });
 
+            if(chatbot.children().length > 0) {
+                $('<div>')
+                    .addClass('anychat-chat-icon')
+                    .addClass('group-title')
+                    .addClass('anychat-chatbot')
+                    // .css('background-color', colors[key])
+                    .append(
+                        $('<p><b>SMART AI</b></p>')
+                    )
+                    // .append($('<div class="anychat-description">')).text(descriptions[key])
+                    // .css('color', color)
+                    .hide()
+                    .appendTo(anchor.find('.chatbot'));
+            }
             if(classic.children().length > 0) {
                 $('<div>')
                     .addClass('anychat-chat-icon')
                     .addClass('group-title')
                     // .css('background-color', colors[key])
                     .append(
-                        $('<p>Classic Channels</p>')
+                        $('<p><b>Classis</b></p>'.toUpperCase())
                     )
                     // .append($('<div class="anychat-description">')).text(descriptions[key])
                     // .css('color', color)
@@ -366,7 +380,7 @@
                     .addClass('group-title')
                     // .css('background-color', colors[key])
                     .append(
-                        $('<p>Voice Channels</p>')
+                        $('<p><b>Voice</b></p>'.toUpperCase())
                     )
                     // .append($('<div class="anychat-description">')).text(descriptions[key])
                     // .css('color', color)
@@ -379,7 +393,7 @@
                     .addClass('group-title')
                     // .css('background-color', colors[key])
                     .append(
-                        $('<p>Messaging Channels</p>')
+                        $('<p><b>Messaging</b></p>'.toUpperCase())
                     )
                     // .append($('<div class="anychat-description">')).text(descriptions[key])
                     // .css('color', color)
@@ -481,13 +495,13 @@
             var launcherCont = {},
                 chatIconHeight = 60,
                 iconHeight = 60;
-            var chatTop = 534 + iconHeight,
+            var chatTop = 544,
                 chatBottom = 50,
                 chatWidth = 333;
-            launcherCont.bottom = 0;
+            launcherCont.bottom = 3;
             launcherCont.right = 16;
             launcherCont.width = 333;
-            launcherCont.height = 10;
+            launcherCont.height = 20;
 
             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             // if($w.width() < 500) {
@@ -499,7 +513,6 @@
                     iconHeight = 70;
                 }
 
-                // console.log(numberOfApps);
                 chatWidth = $w.width();
                 launcherCont.width = chatWidth - 2*launcherCont.right;
                 $('.anychat-chat-icon').css('right', launcherCont.right).css('width', launcherCont.width).css('height', iconHeight);
@@ -520,6 +533,17 @@
 
                 $('#anychat-container .anychat-chat-icon').each(function(index, img) {
                     img = $(img);
+
+                    if(!img.hasClass('group-title')) {
+                        img
+                            .css('background', 'url("' + root + '/images/background.png")')
+                            .css('background-size', '100%')
+                            .on('hover', function () {
+                                $(this).css('background', 'transparent');
+                                console.log("this");
+                            })
+                    }
+
                     if (launcher.is('.anychat-launcher-active')) {
                         // chatClose();
                         img.animate({
@@ -610,7 +634,7 @@
                         }
 
                         if(img.parent().hasClass('chatbot')) {
-                            bottomValue = launcherCont.height + index * iconHeight + diffMessaging;
+                            bottomValue = Math.floor(launcherCont.height + index * iconHeight + diffMessaging);
                             // bottomValue = chatIconHeight + index * iconHeight + diffMessaging;
                         }
 
@@ -680,13 +704,13 @@
                         .append(
                             $('<div class="chat-top">')
                                 .css('bottom', chatHeight - chatBottom)
-                                .append(
-                                $('<img>').attr('src', root + 'images/anychat.png')
-                                )
+                                // .append(
+                                // $('<img>').attr('src', root + 'images/anychat.png')
+                                // )
                                 .append(
                                     $('<div class="anychat-label">')
-                                        .append($('<p class="heading">').text("our chatbot"))
-                                        .append($('<p class="subheading">').text("About us, Hours, Location or just say hello"))
+                                        .append($('<p class="heading">').text("remember, you can always go back to the main screen to chat with a human"))
+                                        // .append($('<p class="subheading">').text("About us, Hours, Location or just say hello"))
                                 )
                         )
                         .append(
@@ -825,16 +849,18 @@
                                .text(x)
                                .on("click", function () {
                                    send("quick", $(this));
-                               })
-                               .appendTo(quickInner);
+                               });
+                            $('<div class="color-dot">').prependTo(quickReply);
+                           quickReply.appendTo(quickInner);
                         }
                     }
                     $('<div class="quick-reply">')
                         .text("About")
+                        .prepend($('<div class="color-dot">'))
                         .on("click", function () {
                             send("quick", $(this));
                         })
-                        .appendTo(quickInner);
+                    .appendTo(quickInner);
 
                     // $('<a class="btn-prev">')
                     //     .append(
@@ -1033,9 +1059,9 @@
 
                 message
                     .text(text)
-                    .append($('<div class="arrow">'))
+                    // .append($('<div class="arrow">'))
                     .append($('<p class="hour">').text(formatAMPM(new Date())))
-                    .append($('<p class="person">').text("you"))
+                    // .append($('<p class="person">').text("you"))
                     .appendTo(
                         $('#chat-window').find('.message-container').find('.message-outer.user')[0]
                     );
