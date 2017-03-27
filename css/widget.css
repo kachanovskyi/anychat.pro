@@ -50,7 +50,10 @@
         line-height: 100%;
         color: #8b8f94;
         cursor: pointer;
-        margin-left: 24px;
+        position: absolute;
+        bottom: 3px;
+        left: 22px;
+        margin-bottom: 0;
     }
 
     .launcher-container .add-anychat-link:hover {
@@ -85,7 +88,7 @@
     width: 46px;
     height: 46px;
     right: 38px;
-    bottom: 30px;
+    bottom: 27px;
     border-radius: 16px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05), 0 15px 30px -10px rgba(0, 0, 0, 0.3);
 }

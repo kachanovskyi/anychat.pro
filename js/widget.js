@@ -140,6 +140,7 @@
         }
 
         var maxIconCount = Math.floor((window.innerHeight - 130) / 1); //mocked up.
+        var indexAboutUs = 0;
 
         var anchor = $('<div>')
             .attr('id', 'anychat-container')
@@ -590,9 +591,9 @@
                                     .css('border', 'solid rgba(0, 0, 0, .14)')
                                     .css('border-width', '0 1px 1px')
                                     .append(
-                                        $('<a class="add-anychat-link">')
+                                        $('<a class="add-anychat-link" target="_blank">')
                                             .attr('href', 'http://www.anychat.pro/')
-                                            .text('add anychat to your website')
+                                            .text('powered by a.i.')
                                     )
                             )
                         } else {
@@ -1003,11 +1004,18 @@
                     //     )
                     //     .prependTo($('#chat-window').find('.message-container'));
                     // setTimeout(function () {
-                        $('<div class="message-outer bot">')
-                            .append(
-                                message.text(aboutOptions[getRandomInt(0, 2)])
-                            )
-                            .prependTo($('#chat-window').find('.message-container'));
+                    $('<div class="message-outer bot">')
+                        .append(
+                            message.text(aboutOptions[indexAboutUs])
+                        )
+                        .prependTo($('#chat-window').find('.message-container'));
+
+                    if(indexAboutUs > 2) {
+                        indexAboutUs = 0;
+                    } else {
+                        indexAboutUs++;
+                    }
+
                     // }, 600);
                     // message.text(aboutOptions[getRandomInt(0, 2)]).appendTo($('#chat-window').find('.message-container'));
                     break;
