@@ -1,7 +1,7 @@
 (function() {
     //Load Stylesheet
-    // var root = './';
-    var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
+    var root = './';
+    // var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
     var accessToken = "afc2e32efdff44819a7cbc62e58009ca";
     var baseUrl = "https://api.api.ai/v1/";
 
@@ -94,7 +94,7 @@
                 phone: 'phone',
                 messenger: 'messenger',
                 // viber: 'viber',
-                kik: 'Kik',
+                kik: 'kik',
                 whatsapp: 'whatsapp',
                 alexa: 'amazon echo',
                 allo: 'google home'
@@ -367,7 +367,7 @@
                     .addClass('group-title')
                     // .css('background-color', colors[key])
                     .append(
-                        $('<p><b>Classis</b></p>'.toUpperCase())
+                        $('<p><b>Classic</b></p>'.toUpperCase())
                     )
                     // .append($('<div class="anychat-description">')).text(descriptions[key])
                     // .css('color', color)
@@ -516,6 +516,8 @@
                 chatWidth = $w.width();
                 launcherCont.width = chatWidth - 2*launcherCont.right;
                 $('.anychat-chat-icon').css('right', launcherCont.right).css('width', launcherCont.width).css('height', iconHeight);
+
+                $('.anychat-chat-icon img').css('height', iconHeight).css('width', iconHeight);
             }
 
             launcher.click(function() {
@@ -540,7 +542,6 @@
                             .css('background-size', '100%')
                             .on('hover', function () {
                                 $(this).css('background', 'transparent');
-                                console.log("this");
                             })
                     }
 
@@ -609,11 +610,21 @@
                         // var bottomValue = chatIconHeight + index * iconHeight;
 
                         if( classic.children().length > 0 ) {
-                            diffClassic = -chatIconHeight/1.33;
+                            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                            // if($w.width() < 500) {
+                                diffClassic = -chatIconHeight + 25;
+                            } else {
+                                diffClassic = -chatIconHeight/1.33;
+                            }
                         }
 
                         if( voice.children().length > 0 ) {
-                            diffVoice = -chatIconHeight/1.33 + diffClassic;
+                            // if($w.width() < 500) {
+                            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                                diffVoice = -chatIconHeight + 25 + diffClassic;
+                            } else {
+                                diffVoice = -chatIconHeight/1.33 + diffClassic;
+                            }
                         } else {
                             diffVoice = diffClassic;
                         }
@@ -623,7 +634,12 @@
                         }
 
                         if( messaging.children().length > 0 ) {
-                            diffMessaging = -chatIconHeight/1.33 + diffVoice;
+                            // if($w.width() < 500) {
+                            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                                diffMessaging = -chatIconHeight + 25 + diffVoice;
+                            } else {
+                                diffMessaging = -chatIconHeight/1.33 + diffVoice;
+                            }
 
                         } else {
                             diffMessaging = diffVoice;
@@ -770,7 +786,7 @@
             $('.chat-close').show();
             // chatbot.find('.heading').text('our chatbot');
             // chatbot.find('.subheading').text('go ahead, ask about our hours, directions or just say hello');
-            $("#chatInput").val('').focus();
+            $("#chatInput").val('');
         }
         function chatWindowClose(callback) {
             $('#chat-window').slideUp("fast", callback).removeClass('expanded');

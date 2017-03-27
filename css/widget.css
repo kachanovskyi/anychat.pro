@@ -144,7 +144,7 @@
     height: 60px;
     width: 60px;
     display: inline-block;
-    margin-top: -2px;
+    /*max-height: 100%;*/
 }
 
 .anychat-chat-icon{
@@ -154,7 +154,6 @@
     border-width: 0 1px;
     /*border-radius: ;*/
     padding-right: 12px;
-    transition: .2s ease-in-out;
 }
 .anychat-chat-icon.group-title {
     background-color: #ffffff;
@@ -162,8 +161,9 @@
     padding-right: 0;
 }
 .anychat-chat-icon.group-title:hover {
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     border-right: 1px solid rgba(0, 0, 0, .14);
+    cursor: default;
 }
 .anychat-chat-icon.group-title.anychat-chatbot {
     height: 20px !important;
@@ -191,7 +191,7 @@
     }
 
 .chatbot > .anychat-chat-icon {
-    height: 60px !important;
+    /*height: 60px !important;*/
 }
 
 .anychat-chat-icon.anychat-panel {
