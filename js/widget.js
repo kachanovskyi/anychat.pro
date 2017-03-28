@@ -506,6 +506,8 @@
 
             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             // if($w.width() < 500) {
+                chatbot.find('.group-title.anychat-chatbot').css('z-index', '-1');
+                console.log(chatbot);
                 // launcherCont.bottom = 0;
                 chatTop = $w.height() - chatIconHeight;
                 iconHeight = Math.floor(($w.height() - chatIconHeight - (chatIconHeight - iconHeight)) / (numberOfApps));
@@ -519,6 +521,8 @@
                 $('.anychat-chat-icon').css('right', launcherCont.right).css('width', launcherCont.width).css('height', iconHeight);
 
                 $('.anychat-chat-icon img').css('height', iconHeight).css('width', iconHeight);
+            } else {
+
             }
 
             launcher.click(function() {
@@ -762,7 +766,7 @@
                         .css('visibility', 'hidden')
                         .css('margin-bottom', '8px')
                         .append(
-                            $('<div class="chat-message bot">').text("this one intended to be invisible:)")
+                            $('<div class="chat-message bot purple">').text("remember, you can always go back to the main screen to chat with a human")
                         )
                         .prependTo($('#chat-window').find('.message-container'));
                     botWrote = true;
