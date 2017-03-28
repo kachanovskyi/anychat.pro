@@ -806,7 +806,7 @@
                 anychatIconBottom = parseInt(anychatIcon.css('bottom'), 10);
 
                 anychatIcon.animate({
-                    bottom: chatTop
+                    bottom: chatTop - 1
                 }, 150, chatWindowShow);
                 // if( anychatIconBottom < chatTop ) {
                 //     console.log(chatTop - anychatIconBottom);
