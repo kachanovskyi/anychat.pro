@@ -955,19 +955,24 @@
                         .prependTo($('#chat-window').find('.message-container'));
                     break;
                 case 'Location':
-                    // $('<div>')
-                    //     .append(
-                    //         $('<div class="chat-message bot">').text("This is our address:")
-                    //     )
-                    //     .prependTo($('#chat-window').find('.message-container'));
-                    // setTimeout(function () {
                     botWrote = true;
-                    $('<div class="message-outer bot">')
+                    var answer = settings.answers["Location"];
+                    console.log(answer);
+                    var curResponse = $('<div class="message-outer bot">')
                             .append(
-                                message.text(settings.answers["Location"])
-                            )
-                            .prependTo($('#chat-window').find('.message-container'));
-                    // }, 600);
+                                message.text(answer.text)
+                            );
+
+                    if(answer.url.length > 1 && answer.url && answer.url !== " ") {
+                        message.append(
+                            $('<a class="location-link">')
+                                .attr('target', '_blank')
+                                .attr('href', answer.url)
+                                .text(' tap here to get directions')
+                        )
+                    }
+
+                    curResponse.prependTo($('#chat-window').find('.message-container'));
                     break;
                 case 'Hours':
                     // $('<div>')

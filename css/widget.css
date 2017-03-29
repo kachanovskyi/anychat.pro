@@ -169,7 +169,7 @@
     cursor: default;
 }
 .anychat-chat-icon.group-title.anychat-chatbot {
-    height: 20px !important;
+    height: 26px !important;
     border-top: 1px solid rgba(0, 0, 0, .14);
     border-radius: 18px 18px 0 0;
 }
@@ -181,6 +181,11 @@
     left: 5px;
     margin-bottom: 0;
 }
+
+.anychat-chat-icon.group-title.anychat-chatbot > p {
+    bottom: 6px;
+}
+
 .anychat-chat-icon.group-title b {
     font-weight: 600 !important;
 }
@@ -286,13 +291,15 @@
 }
     #chat-window .chat-top {
         position: absolute;
+        right: 50%;
+        transform: translateX(50%);
         width: 72%;
         height: 50px;
         box-shadow: 0 0 6px 6px rgba(0, 0, 0, .25);
         border-radius: 18px;
         background: #ffffff;
         padding: 12px 18px;
-        margin: 4px 12px;
+        margin: 4px 0;
         top: 0;
     }
         #chat-window .chat-top > img {
@@ -311,6 +318,7 @@
             display: block;
             font-weight: 400;
             margin: 0 auto;
+            text-align: center;
         }
         #chat-window .chat-top .subheading {
             /*color: #783bd2;*/
@@ -394,11 +402,10 @@
             border-radius: 18px;
         }
         #chat-window .message-container .chat-message.bot {
-            background-color: #D8D8D8;
             float: left;
-            color: #000000;
+            color: rgba(256, 256, 256, .7);
+            background-color: #7842CE;
         }
-            #chat-window .message-container .chat-message.bot.purple,
             #chat-window .chat-top {
                 background-color: #7842CE;
                 color: rgba(256, 256, 256, .7);
@@ -414,8 +421,8 @@
                 border-left: 40px solid #db001e !important;
             }
         #chat-window .message-container .chat-message.user {
-            background-color: #7842CE;
-            color: rgba(256, 256, 256, .7);
+            background-color: #D8D8D8;
+            color: #000000;
             float: right;
         }
             #chat-window .message-container .chat-message.user .arrow {
@@ -439,6 +446,10 @@
                 #chat-window .message-container .message-outer.user .chat-message.user:last-child .hour {
                     visibility: visible;
                 }
+            .location-link {
+                color: rgba(256, 256, 256, .7);
+                text-decoration: underline;
+            }
 
             #chat-window .message-container .chat-message.user .person {
                 right: 12px;
@@ -470,7 +481,7 @@
             #chat-window .message-container .quick-reply-container .inner {
                 height: 100%;
                 white-space: nowrap;
-                text-align: right;
+                text-align: center;
             }
             #chat-window .message-container .quick-reply-container .background {
                 height: 100%;
