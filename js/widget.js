@@ -789,34 +789,15 @@
             $('#chat-window').slideDown("fast").addClass('expanded');
 
             $('.chat-close').show();
-            // chatbot.find('.heading').text('our chatbot');
-            // chatbot.find('.subheading').text('go ahead, ask about our hours, directions or just say hello');
+
             $("#chatInput").val('');
         }
         function chatWindowClose(callback) {
             $('#chat-window').slideUp("fast", callback).removeClass('expanded');
             $('.chat-close').hide();
-            // chatbot.find('.heading').text(labels["anychat"]);
-            // chatbot.find('.subheading').text(descriptions["anychat"]);
         }
 
-        function chatOpen() {
-            if(!chatShow) {
-                chatShow = true;
-                anychatIconBottom = parseInt(anychatIcon.css('bottom'), 10);
-
-                anychatIcon.animate({
-                    bottom: chatTop - 1
-                }, 150, chatWindowShow);
-                // if( anychatIconBottom < chatTop ) {
-                //     console.log(chatTop - anychatIconBottom);
-                // } else {
-                //     chatWindowShow();
-                // }
-            }
-        }
-
-        function chatClose() {
+        function chatToggle() {
             if(chatShow) {
                 chatShow = false;
                 chatWindowClose(function () {
@@ -824,8 +805,26 @@
                         bottom: anychatIconBottom
                     }, 150)
                 });
+            } else {
+                chatShow = true;
+                anychatIconBottom = parseInt(anychatIcon.css('bottom'), 10);
+
+                anychatIcon.animate({
+                    bottom: chatTop
+                }, 150, chatWindowShow);
             }
         }
+
+        // function chatClose() {
+        //     if(chatShow) {
+        //         chatShow = false;
+        //         chatWindowClose(function () {
+        //             anychatIcon.animate({
+        //                 bottom: anychatIconBottom
+        //             }, 150)
+        //         });
+        //     }
+        // }
 
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -1081,13 +1080,11 @@
                 // setResponse("Loading...");
 
                 var message = $('<div class="chat-message user">');
-                // console.log($('#chat-window').find('.message-container').find('.message-outer.user'));
 
                 if( botWrote ) {
                     $('<div class="message-outer user">')
                         .prependTo($('#chat-window')
                             .find('.message-container'));
-                    console.log($('#chat-window').find('.message-container').find('.message-outer.user'));
                 }
 
                 message
@@ -1105,30 +1102,27 @@
                 }
                 userWrote = true;
 
-                // console.log(formatAMPM(new Date()));
-
-                // $('<div class="message-outer user">')
-                //     .append(message.text(text).append(
-                //         $('<div class="arrow">')
-                //     ))
-                //     .prependTo($('#chat-window')
-                //     .find('.message-container'));
-
                 chatScrollBottom();
             } else {
                 $("#chatInput").val('').focus();
             }
             chatScrollBottom();
+
+            var chatTop = $('#chat-window').find('.chat-top');
+
+            if(chatTop.css('display') == 'block') {
+                chatTop.fadeOut('slow');
+            }
         }
 
         function chatScrollBottom() {
             $(".message-container").animate({ scrollTop: $('.message-container').prop("scrollHeight")}, 0);
         }
 
-        $('.chat-close').on("click", function (e) {
-            chatClose();
-            e.stopImmediatePropagation();
-        });
+        // $('.chat-close').on("click", function (e) {
+        //     chatClose();
+        //     e.stopImmediatePropagation();
+        // });
 
         $('.anychat-chat-icon, .anychat-overlay-chat-icon').each(function(index, icon) {
             var link, qr, app = $(icon);
@@ -1136,7 +1130,7 @@
 
             switch (app.data('type')) {
                 case 'anychat':
-                    $(chatbot.children()[0]).click(chatOpen);
+                    $(chatbot.children()[0]).click(chatToggle);
                     break;
                 case 'email':
                     link = "mailto:" + settings.apps.email;

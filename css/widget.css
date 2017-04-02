@@ -118,12 +118,12 @@
         transition: .2s ease-in-out;
         border-radius: 14px;
     }
-    .anychat-chat-icon .chat-close > img:hover {
-        border: 1px solid rgba(120, 59, 210, .55);
-        /*text-shadow: 0 0 10px rgba(120, 59, 210, .55);*/
-        -webkit-filter: drop-shadow( 0 0 10px rgba(120, 59, 210, .55) );
-        filter: drop-shadow( 0 0 10px rgba(120, 59, 210, .55) );
-    }
+    /*.anychat-chat-icon .chat-close > img:hover {*/
+        /*border: 1px solid rgba(120, 59, 210, .55);*/
+        /*!*text-shadow: 0 0 10px rgba(120, 59, 210, .55);*!*/
+        /*-webkit-filter: drop-shadow( 0 0 10px rgba(120, 59, 210, .55) );*/
+        /*filter: drop-shadow( 0 0 10px rgba(120, 59, 210, .55) );*/
+    /*}*/
 
 .anychat-button,
 .anychat-block {
