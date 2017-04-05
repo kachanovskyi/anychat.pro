@@ -496,7 +496,7 @@
             var launcherCont = {},
                 chatIconHeight = 60,
                 iconHeight = 60;
-            var chatTop = 544,
+            var chatTop = 548,
                 chatBottom = 50,
                 chatWidth = 333;
             launcherCont.bottom = 3;
@@ -619,7 +619,7 @@
                             // if($w.width() < 500) {
                                 diffClassic = -chatIconHeight + 25;
                             } else {
-                                diffClassic = -chatIconHeight/1.33;
+                                diffClassic = -chatIconHeight + 16;
                             }
                         }
 
@@ -628,7 +628,7 @@
                             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
                                 diffVoice = -chatIconHeight + 25 + diffClassic;
                             } else {
-                                diffVoice = -chatIconHeight/1.33 + diffClassic;
+                                diffVoice = -chatIconHeight + 16 + diffClassic;
                             }
                         } else {
                             diffVoice = diffClassic;
@@ -643,7 +643,7 @@
                             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
                                 diffMessaging = -chatIconHeight + 25 + diffVoice;
                             } else {
-                                diffMessaging = -chatIconHeight/1.33 + diffVoice;
+                                diffMessaging = -chatIconHeight + 16 + diffVoice;
                             }
 
                         } else {
@@ -665,7 +665,8 @@
 
                         img.show().animate({
                             'opacity': 1,
-                            'bottom': bottomValue
+                            'bottom': bottomValue,
+                            'width': launcherCont.width
                         }, 'fast');
 
                         // if(chatIconHeight + index * iconHeight > chatTop) {
