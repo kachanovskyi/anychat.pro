@@ -497,16 +497,12 @@
 
         $('.form-container input[type=text], .form-container input[type=email], .form-container textarea').each(function (index, input) {
 
-            var answer = answers[input.name];
-
-            if(input.name = 'Location' && input.value) {
-                answer = {};
-                answer.text = input.value;
-            } else if (input.value) {
-                answer = input.value;
+            if(input.value) {
+                answers[input.name] = input.value
             } else {
-                answer = input.name;
+                answers[input.name] = input.name;
             }
+
         });
 
         color = $('#icon-color-picker > div.selected').data('color') || '#783bd2';

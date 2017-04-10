@@ -151,6 +151,8 @@
 }
 
 .anychat-chat-icon{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 	box-shadow: none !important;
     min-width: 333px;
     border: solid rgba(0, 0, 0, .14);

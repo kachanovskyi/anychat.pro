@@ -1007,26 +1007,26 @@
                     break;
                 case 'About':
                     botWrote = true;
-                    // $('<div>')
-                    //     .append(
-                    //         $('<div class="chat-message bot">').text(aboutPrefixes[getRandomInt(0, 2)])
-                    //     )
-                    //     .prependTo($('#chat-window').find('.message-container'));
-                    // setTimeout(function () {
+                    var messText;
+
+                    if(aboutOptions[0] !== "About_1" && aboutOptions[1] !== "About_2" && aboutOptions[2] !== "About_3") {
+                        while(aboutOptions[indexAboutUs] === "About_1" || aboutOptions[indexAboutUs] === "About_2" || aboutOptions[indexAboutUs] === "About_3") {
+                            indexAboutUs++;
+                            if(indexAboutUs > 2) {
+                                indexAboutUs = 0;
+                            }
+                        }
+                        messText = aboutOptions[indexAboutUs];
+                    } else {
+                        messText = "Sorry, but I don't know anything";
+                    }
+
                     $('<div class="message-outer bot">')
                         .append(
-                            message.text(aboutOptions[indexAboutUs])
+                            message.text(messText)
                         )
                         .prependTo($('#chat-window').find('.message-container'));
 
-                    if(indexAboutUs > 2) {
-                        indexAboutUs = 0;
-                    } else {
-                        indexAboutUs++;
-                    }
-
-                    // }, 600);
-                    // message.text(aboutOptions[getRandomInt(0, 2)]).appendTo($('#chat-window').find('.message-container'));
                     break;
                 default:
                     botWrote = true;
