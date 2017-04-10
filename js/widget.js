@@ -956,7 +956,6 @@
                         .prependTo($('#chat-window').find('.message-container'));
                     break;
                 case 'Location':
-                    console.log('location case: ' + settings.answers["Location"].text);
                     botWrote = true;
                     var answer = {};
                     answer.text = settings.answers["Location"].text;
@@ -1014,7 +1013,7 @@
                     botWrote = true;
                     var messText;
 
-                    if(aboutOptions[0] !== "About_1" && aboutOptions[1] !== "About_2" && aboutOptions[2] !== "About_3") {
+                    if(aboutOptions[0] !== "About_1" || aboutOptions[1] !== "About_2" || aboutOptions[2] !== "About_3") {
                         while(aboutOptions[indexAboutUs] === "About_1" || aboutOptions[indexAboutUs] === "About_2" || aboutOptions[indexAboutUs] === "About_3") {
                             indexAboutUs++;
                             if(indexAboutUs > 2) {
@@ -1022,8 +1021,12 @@
                             }
                         }
                         messText = aboutOptions[indexAboutUs];
+                        indexAboutUs++;
+                        if(indexAboutUs > 2) {
+                            indexAboutUs = 0;
+                        }
                     } else {
-                        messText = "Sorry, but I don't know anything";
+                        messText = "Sorry, but I don't know anything about that";
                     }
 
                     $('<div class="message-outer bot">')
