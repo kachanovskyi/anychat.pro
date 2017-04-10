@@ -956,12 +956,12 @@
                         .prependTo($('#chat-window').find('.message-container'));
                     break;
                 case 'Location':
-                    console.log('location case: ' + settings.answers["Location"]);
+                    console.log('location case: ' + settings.answers["Location"].text);
                     botWrote = true;
                     var answer = {};
                     answer.text = settings.answers["Location"].text;
                     answer.url = settings.answers["Location"].url;
-                    console.log(answer.text);
+                    // console.log(answer.text);
 
                     var curResponse = $('<div class="message-outer bot">')
                             .append(
