@@ -956,7 +956,8 @@
                     break;
                 case 'Location':
                     botWrote = true;
-                    var answer = settings.answers["Location"];
+                    var answer = {};
+                    answer.text = settings.answers["Location"];
 
                     var curResponse = $('<div class="message-outer bot">')
                             .append(
@@ -993,7 +994,7 @@
                     botWrote = true;
                     $('<div class="message-outer bot">')
                         .append(
-                            message.text(settings.answers["EMail"])
+                            message.text(settings.answers["Email"])
                         )
                         .prependTo($('#chat-window').find('.message-container'));
                     break;
