@@ -36,6 +36,8 @@
     padding-top: 8px;
     background-color: #ffffff;
     border-radius: 0 0 18px 18px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
     /*position: absolute;*/
     /*bottom: 0;*/
     /*background: #ffffff;*/

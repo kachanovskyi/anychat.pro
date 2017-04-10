@@ -957,13 +957,13 @@
                 case 'Location':
                     botWrote = true;
                     var answer = settings.answers["Location"];
-                    console.log(answer);
+
                     var curResponse = $('<div class="message-outer bot">')
                             .append(
                                 message.text(answer.text)
                             );
 
-                    if(answer.url.length > 1 && answer.url && answer.url !== " ") {
+                    if(answer.url !== undefined && answer.url.length > 1 && answer.url && answer.url !== " ") {
                         message.append(
                             $('<a class="location-link">')
                                 .attr('target', '_blank')
