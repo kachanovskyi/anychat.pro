@@ -1011,22 +1011,18 @@
                     break;
                 case 'About':
                     botWrote = true;
-                    if(indexAboutUs > 2) {
-                        indexAboutUs = 0;
-                    }
-                    var messText = aboutOptions[indexAboutUs];
 
-                    if(aboutOptions[indexAboutUs] === "About_1") {
-                        indexAboutUs++;
-                    } else if(aboutOptions[indexAboutUs] === "About_2") {
-                        indexAboutUs++;
-                    } else if(aboutOptions[indexAboutUs] === "About_3") {
-                        indexAboutUs++;
-                    } else {
+                    if((aboutOptions[0] === "About_1") && (aboutOptions[1] === "About_2") && (aboutOptions[2] === "About_3")) {
                         messText = "Sorry, but I don't know anything about that";
+                        correctAnswer = false;
+                    } else {
+                        messText = aboutOptions[indexAboutUs];
                     }
 
                     indexAboutUs++;
+                    if(indexAboutUs > 2) {
+                        indexAboutUs = 0;
+                    }
 
                     $('<div class="message-outer bot">')
                         .append(
