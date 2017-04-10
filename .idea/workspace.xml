@@ -23,8 +23,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1522">
-              <caret line="645" column="0" lean-forward="false" selection-start-line="645" selection-start-column="0" selection-end-line="645" selection-end-column="0" />
+            <state relative-caret-position="575">
+              <caret line="645" column="569" lean-forward="false" selection-start-line="645" selection-start-column="569" selection-end-line="645" selection-end-column="569" />
               <folding>
                 <element signature="n#style#0;n#canvas#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -51,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="widget.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="widget.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/widget.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="654">
-              <caret line="964" column="0" lean-forward="true" selection-start-line="964" selection-start-column="0" selection-end-line="964" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="5" column="40" lean-forward="false" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
               <folding>
                 <element signature="e#55755#55771#0" expanded="false" />
                 <marker date="1491836117858" expanded="true" signature="58191:58226" ph="..." />
@@ -78,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="widget.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="widget.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/widget.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="39" column="27" lean-forward="false" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+            <state relative-caret-position="68">
+              <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -107,9 +107,9 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/../gistfile1.html" />
         <option value="$PROJECT_DIR$/css/main.css" />
-        <option value="$PROJECT_DIR$/css/widget.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/widget.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/css/widget.css" />
       </list>
     </option>
   </component>
@@ -380,12 +380,12 @@
       <workItem from="1491287009192" duration="5000" />
       <workItem from="1491287020844" duration="6113000" />
       <workItem from="1491378788504" duration="2836000" />
-      <workItem from="1491829506398" duration="6606000" />
+      <workItem from="1491829506398" duration="6974000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="428635000" />
+    <option name="totallyTimeSpent" value="429003000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1122,18 +1122,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/widget.css">
+    <entry file="file://$PROJECT_DIR$/js/widget.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="39" column="27" lean-forward="false" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="85">
+          <caret line="5" column="40" lean-forward="false" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+          <folding>
+            <element signature="e#55755#55771#0" expanded="false" />
+            <marker date="1491836117858" expanded="true" signature="58191:58226" ph="..." />
+            <marker date="1491836117858" expanded="true" signature="60037:60072" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1522">
-          <caret line="645" column="0" lean-forward="false" selection-start-line="645" selection-start-column="0" selection-end-line="645" selection-end-column="0" />
+        <state relative-caret-position="575">
+          <caret line="645" column="569" lean-forward="false" selection-start-line="645" selection-start-column="569" selection-end-line="645" selection-end-column="569" />
           <folding>
             <element signature="n#style#0;n#canvas#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#section#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1159,15 +1163,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/widget.js">
+    <entry file="file://$PROJECT_DIR$/css/widget.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="964" column="0" lean-forward="true" selection-start-line="964" selection-start-column="0" selection-end-line="964" selection-end-column="0" />
-          <folding>
-            <element signature="e#55755#55771#0" expanded="false" />
-            <marker date="1491836117858" expanded="true" signature="58191:58226" ph="..." />
-            <marker date="1491836117858" expanded="true" signature="60037:60072" ph="..." />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="4" column="26" lean-forward="false" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
