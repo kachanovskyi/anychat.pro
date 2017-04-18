@@ -966,7 +966,7 @@
 
                     container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("1: Add User");
 
-                    $('<a class="anychat-block" style="border-color: rgba(255,255,255,0.3)">').text(settings.apps.kik).appendTo(container);
+                    $('<a class="anychat-block">').text(settings.apps.kik).appendTo(container);
                     $('<br><span>').text('2: Start chat').appendTo(container);
 
                     if (Mobile) {
@@ -979,6 +979,7 @@
                     break;
 
                 case 'alexa':
+                    link = "http://www.anychat.pro/";
                     break;
 
                 case 'allo':
@@ -993,7 +994,7 @@
 
                     container.css('color', 'white').css('padding', '8px').css('padding-top', '32px').text("1: Add User");
 
-                    $('<a class="anychat-block" style="border-color: rgba(255,255,255,0.3)">').text(settings.apps.allo).appendTo(container);
+                    $('<a class="anychat-block">').text(settings.apps.allo).appendTo(container);
                     $('<br><span>').text('2: Start chat').appendTo(container);
 
                     if (Mobile) {
@@ -1019,7 +1020,6 @@
                         app.removeClass('anychat-panel');
                         app.find('.anychat-qr').removeClass('active');
                         app.css('background-color', '#FFFFFF');
-                        app.find('img').css('width', '33px').css('height', '33px');
                     }
                 }
             }
@@ -1037,7 +1037,6 @@
                         app.addClass('anychat-panel');
                         app.css('background-color', colors[app.data('type')]);
                         app.find('.anychat-qr').addClass('active');
-                        app.find('img').css('width', '50px').css('height', '50px');
                     }
                 }
 
