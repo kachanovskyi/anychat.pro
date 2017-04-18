@@ -18,22 +18,6 @@
         <section id="wrapper">
             <canvas id="chatCanvas" style="position:absolute; left: 0; bottom: 0; top:0; z-index:-1;" width="707" height="633"></canvas>
             <div class="container-inner">
-                <!--<h2 id="widget-heading" style="margin-top: .8em;">Right now, a monumental shift in consumer behavior is happening!</h2>-->
-                <!--<p style="background:white;">-->
-                    <!--That’s right. Consumers	are	tired of downloading apps, scrolling through search	results,-->
-                    <!--reading	reviews, surfing the web when all they want	are simple answers.-->
-                <!--</p>-->
-                <!--<p style="background:white;">-->
-                    <!--<b style="color: #783bd2;">But they love to text.</b> So make it easy. Be	there. Right where they live… in their messaging apps!-->
-                <!--</p>-->
-                <!--<p style="background:white;">-->
-                    <!--AnyCHAT is a mobile-friendly aiWidget™	that makes it super	simple for consumers to connect	with you on	their favorite	messaging channels – anytime,     anywhere,	any	channel.-->
-                <!--</p>-->
-
-                <!--<div style="margin-top: 3em; display: inline-block;">-->
-                    <!--<a id="get-it" class="button special">Get it now!</a>-->
-                <!--</div>-->
-
                     <style>
                     .input-block {
                         cursor: move;
@@ -81,7 +65,6 @@
                         height: 46px;
                         padding-left: 0;
                         font-size: 20px;
-                        /*margin-top: 24px;*/
                         position: absolute;
                         bottom: 10px;
                         max-width: 88%;
@@ -227,20 +210,9 @@
                                     </g>
                                 </svg>
                             </div>
-                            <!--<div data-color="#56CCF2">-->
-                                <!--<svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">-->
-                                    <!--<g fill="none" fill-rule="evenodd">-->
-                                        <!--<ellipse fill="#56CCF2" cx="13" cy="13" rx="12" ry="12"></ellipse>-->
-                                    <!--</g>-->
-                                <!--</svg>-->
-                            <!--</div>-->
                             <br>
-                                <!--<span style="font-size:13pt;line-height:100%;color:#828282;margin-top: 15px;">-->
-                                    <!--(You can easily customize the color further by generating the code and changing the 6-digit Hex Code)-->
-                                <!--</span>-->
                         </div>
                         <div class="input-block ui-sortable-handle">
-                            <!--<img class="app-icon" src="./images/anychat.svg" alt="email">-->
                             <div style="width: 44px; height: 44px;">
                                 <img style="width: 100%;height:100%" class="app-icon" src="./images/anychat.png" alt="email">
                             </div>
@@ -332,17 +304,6 @@
                             </div>
                             <input name="kik" data-default="Chatbot Studios" type="text" placeholder="kik.me/yourchatbotname">
                         </div>
-                        <!--<div class="input-block inactive ui-sortable-handle">-->
-                            <!--<img class="app-icon" src="./images/viber.svg" alt="viber">-->
-                            <!--<div class="app-label"  style="color:#675CA8;">-->
-                                <!--Viber-->
-                                <!--<div class="checkbox-container">-->
-                                    <!--<input type="checkbox" class="ios toggle">-->
-                                    <!--<label for="toggle"></label>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<input name="viber" data-default="+19492289475" type="text" placeholder="Phone number">-->
-                        <!--</div>-->
 
                         <div class="input-block inactive ui-sortable-handle">
                             <img class="app-icon" src="./images/whatsapp.png" alt="whatsapp">
@@ -356,32 +317,18 @@
                             <input name="whatsapp" data-default="+19492289475" type="text" placeholder="phone number">
                         </div>
                         <div class="actions-block">
-                            <!--<b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 3: </span> Pick a color for your chat icon</b>-->
                             <br>
                             <div style="margin-bottom: 30px;">
-                                <!--<a id="next" class="button special icon fa-magic">Next</a>-->
                                 <a href="javascript:generate();" class="button special icon fa-magic">Generate code</a>
                             </div>
-                            <!--<div class="generate-code-container" style="display: none;">-->
-                                <!--<b style="color:#783bd2;"><span style="color:#828282;margin-right: 6px;display: inline-block; vertical-align: top;">Step 4: </span><div style="display: inline-block; width: 88%;margin-bottom: 20px;"> Generate your custom code-->
-                                    <!--<p style="color: #8b8f94; font-size: 13pt;">-->
-                                        <!--TERMS OF USE: FREE to use for 30 days for Non-Members-->
-                                        <!--(For additional time and to learn more, send a request to jedi@chatbotstudios.co)-->
-                                    <!--</p>-->
-                                <!--</div></b>-->
-                                <!--<a href="javascript:generate();" class="button special icon fa-magic" style="margin-bottom:40px;">Generate code</a>-->
-                                <textarea id="embed" onclick="this.focus();this.select();" cols="30" rows="3" spellcheck="false" style="color: #333333;resize:none;"></textarea>
-                                <br>
-                                <b style="color:#783bd2;"><span style="color:#828282;margin-right: 6px;display: inline-block; vertical-align: top;">Step 4: </span><div style="display: inline-block; width: 88%;margin-bottom: 20px;">
-                                    Copy and insert code near the end of your website's HTML source code.
-                                    <p style="color: #8b8f94; font-size: 13pt;">
-                                        (make sure to insert this html code on any page you want the anychat button to appear)
-                                    </p>
-                                </div></b>
-                                <!--<p style="background: white;">-->
-                                    <!--AnyCHAT is an aiWidget™ designed, developed and managed by Chatbot Studios.-->
-                                    <!--At Chatbot Studios, we build smart chatbots, voicebots and iotbots for business. Reach Out!-->
-                                <!--</p>-->
+                              <textarea id="embed" onclick="this.focus();this.select();" cols="30" rows="3" spellcheck="false" style="color: #333333;resize:none;"></textarea>
+                              <br>
+                              <b style="color:#783bd2;"><span style="color:#828282;margin-right: 6px;display: inline-block; vertical-align: top;">Step 4: </span><div style="display: inline-block; width: 88%;margin-bottom: 20px;">
+                                  Copy and insert code near the end of your website's HTML source code.
+                                  <p style="color: #8b8f94; font-size: 13pt;">
+                                      (make sure to insert this html code on any page you want the anychat button to appear)
+                                  </p>
+                              </div></b>
                             </div>
                         </div>
                     </div>
@@ -402,7 +349,6 @@
             <input type="text" name="About_1" placeholder="About us">
             <input type="text" name="About_2" placeholder="About us">
             <input type="text" name="About_3" placeholder="About us">
-            <!--<textarea placeholder="About us" rows="1" cols="33" name="About" style="resize:none"></textarea>-->
 
             <input id="submitQuestions" type="button" value="Close form" class="button special">
         </form>
@@ -496,37 +442,12 @@
         var formContainer = $('.form-container');
 
         $('.form-container input[type=text], .form-container input[type=email], .form-container textarea').each(function (index, input) {
-
-//            if(input.name === "Location") {
-//
-//                answers[input.name] = {};
-//                if(input.value) {
-//                    answers[input.name].text = input.value;
-//                } else {
-//                    answers[input.name].text = input.name;
-//                }
-//
-//            } else
-                if(input.value) {
+             if(input.value) {
                 answers[input.name] = input.value;
             } else {
                 answers[input.name] = input.name;
             }
-
-//            var answer = answers[input.name];
-//            if(input.name = 'Location' && input.value) {
-//                answer = {};
-//                answer.text = input.value;
-//            } else if (input.value) {
-//                answer = input.value;
-//            } else {
-//                answer = input.name;
-//            }
-
-            console.log(input.name);
         });
-
-//        console.log(answers);
 
         color = $('#icon-color-picker > div.selected').data('color') || '#783bd2';
 
@@ -545,7 +466,7 @@
         var embed = document.getElementById("embed");
 
 
-        embed.value = '<script data-align="right" data-overlay="false" id="anychat-script" src="https://rawgit.com/kachanovskyi/anychat.pro/master/js/widget.js" data-color="' + color + '" data-apps="' + payload + '" data-answers="' + encodedAnswers + '"><\/script>';
+        embed.value = '<script data-align="right" data-overlay="false" id="anychat-script" src="https://rawgit.com/chatbotstudios/anychat.pro/master/js/widget.js" data-color="' + color + '" data-apps="' + payload + '" data-answers="' + encodedAnswers + '"><\/script>';
 
         $('#anychat-script').data('apps', payload).data('color', color);
         $('#anychat-container').remove();
@@ -585,15 +506,6 @@
             }
         });
 
-//        $("#get-it").click(function() {
-//            $(".input-block-container").show();
-//            $(".ios").iosCheckbox();
-//
-//            $('html, body').animate({
-//                scrollTop: $(".input-block-container").offset().top
-//            }, 500);
-//        });
-
         $("#next").click(function() {
             $(".generate-code-container").show();
 
@@ -608,7 +520,6 @@
             if ($(event.target).is(':checked')) {
                 block.removeClass("inactive");
                 block.find('input').focus(function () {
-                    console.log('input focused!');
                 });
             } else if (!$(event.target).is(':checked') && !block.hasClass('inactive')) {
                 block.addClass("inactive");
@@ -626,7 +537,6 @@
 
             if (block.hasClass('input-block') && block.is('.inactive')) {
                 block.find('.ios-ui-select').click();
-                console.log(block.hasClass('input-block'));
             }
         });
 
@@ -642,7 +552,6 @@
         });
     });
     </script>
-    <!--<script id="anychat-script" src="./js/widget.js" data-color="#783bd2" data-answers="eyJCdXNpbmVzc05hbWUiOiJBbnlDSEFUIiwiTG9jYXRpb24iOnsidGV4dCI6IndlJ3JlIGxvY2F0ZWQgb24gdGhlIDNyZCBmbG9vciBvZiB0aGUgd2V3b3JrIG9mZmljZXMgYWNyb3NzIHRoZSBzdHJlZXQgZnJvbSB0aGUgaXJ2aW5lIHNwZWN0cnVtLiIsInVybCI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jb20vbWFwcy9wbGFjZS8yMDArU3BlY3RydW0rQ2VudGVyK0RyLCtJcnZpbmUsK0NBKzkyNjE4L0AzMy42NTI3NDExLC0xMTcuNzUwMTM1NywxN3ovZGF0YT0hM20xITRiMSE0bTUhM200ITFzMHg4MGRjZTdmODJlMGJhYmFkOjB4ZThmMzZhZjA2NWNiYmI0ZCE4bTIhM2QzMy42NTI3MzY3ITRkLTExNy43NDc5NDcifSwiSG91cnMiOiJvdXIgb2ZmaWNlcyBhcmUgb3BlbiBmcm9tIDEwIGFtIHRvIDQgcG0gbW9uZGF5IHRocm91Z2ggZnJpZGF5LiBidXQgb3VyIGNoYXRib3RzIGFyZSBhdmFpbGFibGUgMjQvNyIsIlBob25lIjoiMTk0OTIyODk0NzUiLCJFbWFpbCI6ImluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJBYm91dF8xIjoid2UncmUgYSByZW1vdGUgdGVhbSBvZiBjb252ZXJzYXRpb25hbCBleHBlcnRzIHdpdGggdG9ucyBvZiBleHBlcmllbmNlIGRlc2lnbmluZyBhbmQgZGV2ZWxvcGluZyB1c2VmdWwgY2hhdGJvdHMgYW5kIHZvaWNlYm90cyIsIkFib3V0XzIiOiJ3ZSdyZSBjcmVhdGluZyBhIG5ldHdvcmsgb2YgNCAmIDUgc3RhciBsb2NhbCBidXNpbmVzc2VzIHRoYXQgY2FuIGVhc2lseSBiZSByZWFjaGVkIG9uIHRoZSBjaGFubmVsIG9mIHlvdXIgY2hvaWNlLiBsZXNzIGhhc3NsZSwgbW9yZSBhY3Rpb24iLCJBYm91dF8zIjoib25lIG1vcmUgdGhpbmc6IGlmIHlvdSBzZW5kIG1lIGFuIGVtYWlsLCBJJ2xsIHNoYXJlIGEgcHJvbW8gY29kZSB3aXRoIHlvdSBmb3IgYSBwcmV0dHkgc3dlZXQgZGVhbCJ9" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImFsZXhhIjoiMjI2MzMyODI3ODAzNjAwIiwiYWxsbyI6IkNoYXRib3QgU3R1ZGlvcyIsIm1lc3NlbmdlciI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>-->
-    <script data-align="right" data-overlay="false" id="anychat-script" src="https://rawgit.com/kachanovskyi/anychat.pro/master/js/widget.js" data-color="#783bd2" data-apps="JTdCJTIyYW55Y2hhdCUyMjolMjJodHRwOi8vYW55Y2hhdC5wcm8vJTIyJTdE" data-answers="JTdCJTIyQnVzaW5lc3NOYW1lJTIyOiUyMkJ1c2luZXNzTmFtZSUyMiwlMjJMb2NhdGlvbiUyMjolMjJMb2NhdGlvbiUyMiwlMjJIb3VycyUyMjolMjJIb3VycyUyMiwlMjJQaG9uZSUyMjolMjJQaG9uZSUyMiwlMjJFbWFpbCUyMjolMjJFbWFpbCUyMiwlMjJBYm91dF8xJTIyOiUyMkFib3V0XzElMjIsJTIyQWJvdXRfMiUyMjolMjJBYm91dF8yJTIyLCUyMkFib3V0XzMlMjI6JTIyQWJvdXRfMyUyMiU3RA=="></script>
+    <script id="anychat-script" src="./js/widget.js" data-color="#783bd2" data-answers="eyJCdXNpbmVzc05hbWUiOiJBbnlDSEFUIiwiTG9jYXRpb24iOnsidGV4dCI6IndlJ3JlIGxvY2F0ZWQgb24gdGhlIDNyZCBmbG9vciBvZiB0aGUgd2V3b3JrIG9mZmljZXMgYWNyb3NzIHRoZSBzdHJlZXQgZnJvbSB0aGUgaXJ2aW5lIHNwZWN0cnVtLiIsInVybCI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jb20vbWFwcy9wbGFjZS8yMDArU3BlY3RydW0rQ2VudGVyK0RyLCtJcnZpbmUsK0NBKzkyNjE4L0AzMy42NTI3NDExLC0xMTcuNzUwMTM1NywxN3ovZGF0YT0hM20xITRiMSE0bTUhM200ITFzMHg4MGRjZTdmODJlMGJhYmFkOjB4ZThmMzZhZjA2NWNiYmI0ZCE4bTIhM2QzMy42NTI3MzY3ITRkLTExNy43NDc5NDcifSwiSG91cnMiOiJvdXIgb2ZmaWNlcyBhcmUgb3BlbiBmcm9tIDEwIGFtIHRvIDQgcG0gbW9uZGF5IHRocm91Z2ggZnJpZGF5LiBidXQgb3VyIGNoYXRib3RzIGFyZSBhdmFpbGFibGUgMjQvNyIsIlBob25lIjoiMTk0OTIyODk0NzUiLCJFbWFpbCI6ImluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJBYm91dF8xIjoid2UncmUgYSByZW1vdGUgdGVhbSBvZiBjb252ZXJzYXRpb25hbCBleHBlcnRzIHdpdGggdG9ucyBvZiBleHBlcmllbmNlIGRlc2lnbmluZyBhbmQgZGV2ZWxvcGluZyB1c2VmdWwgY2hhdGJvdHMgYW5kIHZvaWNlYm90cyIsIkFib3V0XzIiOiJ3ZSdyZSBjcmVhdGluZyBhIG5ldHdvcmsgb2YgNCAmIDUgc3RhciBsb2NhbCBidXNpbmVzc2VzIHRoYXQgY2FuIGVhc2lseSBiZSByZWFjaGVkIG9uIHRoZSBjaGFubmVsIG9mIHlvdXIgY2hvaWNlLiBsZXNzIGhhc3NsZSwgbW9yZSBhY3Rpb24iLCJBYm91dF8zIjoib25lIG1vcmUgdGhpbmc6IGlmIHlvdSBzZW5kIG1lIGFuIGVtYWlsLCBJJ2xsIHNoYXJlIGEgcHJvbW8gY29kZSB3aXRoIHlvdSBmb3IgYSBwcmV0dHkgc3dlZXQgZGVhbCJ9" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImFsZXhhIjoiMjI2MzMyODI3ODAzNjAwIiwiYWxsbyI6IkNoYXRib3QgU3R1ZGlvcyIsIm1lc3NlbmdlciI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>
 </body>
 </html>
