@@ -786,18 +786,17 @@
                     break;
                 case 'About':
                     botWrote = true;
-                    var messText;
 
-                    if (aboutOptions[0] !== "About_1" && aboutOptions[1] !== "About_2" && aboutOptions[2] !== "About_3") {
-                        while (aboutOptions[indexAboutUs] === "About_1" || aboutOptions[indexAboutUs] === "About_2" || aboutOptions[indexAboutUs] === "About_3") {
-                            indexAboutUs++;
-                            if (indexAboutUs > 2) {
-                                indexAboutUs = 0;
-                            }
-                        }
-                        messText = aboutOptions[indexAboutUs];
+                    if((aboutOptions[0] === "About_1") && (aboutOptions[1] === "About_2") && (aboutOptions[2] === "About_3")) {
+                        messText = "Sorry, but I don't know anything about that";
+                        correctAnswer = false;
                     } else {
-                        messText = "Sorry, but I don't know anything";
+                        messText = aboutOptions[indexAboutUs];
+                    }
+
+                    indexAboutUs++;
+                    if(indexAboutUs > 2) {
+                        indexAboutUs = 0;
                     }
 
                     $('<div class="message-outer bot">')

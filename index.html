@@ -442,7 +442,16 @@
         var formContainer = $('.form-container');
 
         $('.form-container input[type=text], .form-container input[type=email], .form-container textarea').each(function (index, input) {
-             if(input.value) {
+            if(input.name === "Location") {
+
+                answers[input.name] = {};
+                if(input.value) {
+                    answers[input.name].text = input.value;
+                } else {
+                    answers[input.name].text = input.name;
+                }
+
+            } else if(input.value) {
                 answers[input.name] = input.value;
             } else {
                 answers[input.name] = input.name;
