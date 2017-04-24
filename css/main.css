@@ -40,6 +40,7 @@
 
 	body {
 		-webkit-text-size-adjust: none;
+		overflow-x: hidden;
 	}
 
 /* Box Model */
@@ -86,7 +87,6 @@
 		font-family: "Source Sans Pro", sans-serif;
 		font-size: 22pt;
 		font-weight: 300;
-		/*letter-spacing: -0.01em;*/
 		line-height: 1.65;
 	}
 
@@ -123,15 +123,8 @@
 		-webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-		color: #E4392B;
-		border-bottom: dotted 1px;
 		text-decoration: none;
 	}
-
-		a:hover {
-			border-bottom-color: #E4392B !important;
-			color: #E4392B !important;
-		}
 
 	strong, b {
 		color: #74797f;
@@ -281,8 +274,28 @@
 
 /* Form */
 
-	form {
-		margin: 0 0 2em 0;
+	.form-container {
+		width: 700px;
+		background: #ffffff;
+		border: 1px solid #9968e2;
+		border-radius: 12px;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		padding: 30px;
+		display: none;
+		-webkit-box-shadow: 0px 0px 59px 19px rgba(145,143,145,1);
+		-moz-box-shadow: 0px 0px 59px 19px rgba(145,143,145,1);
+		box-shadow: 0px 0px 59px 19px rgba(145,143,145,1);
+		max-width: 90%;
+		max-height: 100%;
+		overflow-y: auto;
+		z-index: 10001;
+	}
+
+	#submitQuestions {
+		margin-top: 12px;
 	}
 
 		form > .field {
@@ -301,6 +314,10 @@
 		margin: 0 0 0.7em 0;
 	}
 
+	.checkbox-container.disabled {
+		opacity: .5;
+	}
+
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
@@ -312,7 +329,6 @@
 		-ms-appearance: none;
 		appearance: none;
 		border-radius: 4px;
-		border: none;
 		border: solid 1px #E0E0E0;
 		color: #333333;
 		display: block;
@@ -432,8 +448,6 @@
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
-			/*color: #ffffff;*/
-			/*content: '\f00c';*/
 			content: '✔';
 		}
 
@@ -802,14 +816,6 @@
 		white-space: nowrap;
 	}
 
-		input[type="submit"].icon,
-		input[type="reset"].icon,
-		input[type="button"].icon,
-		button.icon,
-		.button.icon {
-			/*padding-left: 1.35em;*/
-		}
-
 			input[type="submit"].icon:before,
 			input[type="reset"].icon:before,
 			input[type="button"].icon:before,
@@ -989,6 +995,12 @@
 
 		}
 
+		@media screen and (max-width: 1199px) {
+			.input-block input {
+				max-width: 80% !important;
+			}
+		}
+
 		@media screen and (max-width: 980px) {
 
 			#wrapper {
@@ -1035,6 +1047,10 @@
 
 			#chatCanvas {
 				width: 100%;
+			}
+
+			.input-block-container {
+				margin-top: 0 !important;
 			}
 		}
 
