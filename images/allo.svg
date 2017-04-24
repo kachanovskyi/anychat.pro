@@ -1,18 +1,16 @@
-<svg width="70" height="70" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
-<title>allo-yellow</title>
-<desc>Created using Figma</desc>
-<g id="Canvas" transform="translate(-920 148)" figma:type="canvas">
-<g id="allo-yellow" style="mix-blend-mode:normal;" figma:type="frame">
-<g id="Ellipse 3" style="mix-blend-mode:normal;" figma:type="ellipse">
-<use xlink:href="#path0_fill" transform="translate(920 -148)" fill="#F5B900" style="mix-blend-mode:normal;"/>
-</g>
-<g id="Union" style="mix-blend-mode:normal;" figma:type="vector">
-<use xlink:href="#path1_fill" transform="translate(941 -127)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
-</g>
-</g>
-</g>
-<defs>
-<path id="path0_fill" d="M 70 35C 70 54.33 54.33 70 35 70C 15.67 70 0 54.33 0 35C 0 15.67 15.67 0 35 0C 54.33 0 70 15.67 70 35Z"/>
-<path id="path1_fill" d="M 28 14C 28 6.26801 21.732 0 14 0C 6.26801 0 0 6.26801 0 14C 0 21.732 6.26801 28 14 28C 17.6813 28 21.0308 26.5791 23.5299 24.2559L 26.5284 27.7101C 27.0327 28.291 28 27.9404 28 27.1767L 28 14Z"/>
-</defs>
+<svg width="112" height="112" xmlns="http://www.w3.org/2000/svg">
+ <title>Artbox</title>
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="114" height="114" id="canvas_background" fill="none"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="google">
+   <circle fill="#F5B400" cx="56.497998" cy="55.333997" r="54.002014" id="svg_1"/>
+   <circle fill="#FFFFFF" cx="55.43004" cy="51.100997" r="21.32103" id="svg_2"/>
+   <path fill="#FFFFFF" d="m67.002419,81.602921c0,0 -31.161911,-13.222832 -31.689503,-23.45499l21.185001,1.408459l10.504501,8.691422l0,13.35511z" id="svg_3"/>
+  </g>
+ </g>
 </svg>

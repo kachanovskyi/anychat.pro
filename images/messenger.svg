@@ -1,18 +1,15 @@
-<svg width="70" height="70" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
-<title>messenger</title>
-<desc>Created using Figma</desc>
-<g id="Canvas" transform="translate(-3951 -311)" figma:type="canvas">
-<g id="messenger" style="mix-blend-mode:normal;" figma:type="frame">
-<g id="Vector" style="mix-blend-mode:normal;" figma:type="vector">
-<use xlink:href="#path0_fill" transform="translate(3951 311)" fill="#2D70E7" style="mix-blend-mode:normal;"/>
-</g>
-<g id="Vector" style="mix-blend-mode:normal;" figma:type="vector">
-<use xlink:href="#path1_fill" transform="translate(3970.25 330.25)" fill="#FFFFFF" style="mix-blend-mode:normal;"/>
-</g>
-</g>
-</g>
-<defs>
-<path id="path0_fill" d="M 35 70C 54.33 70 70 54.33 70 35C 70 15.67 54.33 0 35 0C 15.67 0 0 15.67 0 35C 0 54.33 15.67 70 35 70Z"/>
-<path id="path1_fill" fill-rule="evenodd" d="M 15.75 0C 7.0515 0 0 6.5295 0 14.58C 0 19.17 2.2905 23.265 5.8725 25.9425L 5.8725 31.5L 11.232 28.557C 12.663 28.953 14.1795 29.1645 15.75 29.1645C 24.4485 29.1645 31.5 22.6395 31.5 14.5845C 31.5 6.525 24.4485 0 15.75 0ZM 17.316 19.638L 13.3043 15.363L 5.47875 19.638L 14.0872 10.503L 18.198 14.778L 25.9268 10.503L 17.3182 19.638L 17.316 19.638Z"/>
-</defs>
+<svg width="112" height="112" xmlns="http://www.w3.org/2000/svg">
+ <title>Artbox</title>
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="114" height="114" id="canvas_background" fill="none"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="messenger">
+   <circle id="svg_1" r="53.916992" cy="56.617" cx="54.916989" fill="#0084FF"/>
+   <path id="svg_2" d="m54.917046,18.139008c-21.119995,0 -38.240967,15.950989 -38.240967,35.627991c0,11.213013 5.560913,21.21402 14.251953,27.744995l0,13.584015l13.02002,-7.190002c3.475952,0.96701 7.156982,1.489014 10.969971,1.489014c21.119995,0 38.240967,-15.951019 38.240967,-35.628021c-0.000977,-19.678009 -17.121948,-35.627991 -38.241943,-35.627991zm3.800903,47.979004l-9.738037,-10.450989l-19.001953,10.450989l20.901001,-22.326996l9.975952,10.450989l18.765991,-10.450989l-20.902954,22.326996z" fill="#FFFFFF"/>
+  </g>
+ </g>
 </svg>
