@@ -1,7 +1,7 @@
 (function () {
     //Load Stylesheet
-    var root = './';
-    // var root = 'https://rawgit.com/chatbotstudios/anychat.pro/master/';
+    // var root = './';
+    var root = 'https://rawgit.com/kachanovskyi/anychat.pro/master/';
     var accessToken = "afc2e32efdff44819a7cbc62e58009ca";
     var baseUrl = "https://api.api.ai/v1/";
 
@@ -836,69 +836,23 @@
             if (text.length && text !== " ") {
 
                 $("#chatInput").val('');
-
-                var sender = {
-                        "id": "1000000"
-                    },
-                    messageObj = {
-                        "text": "Hello"
-                    };
-
-                var entry = [];
-                var messaging = [];
-
-                messaging.push(sender);
-                messaging.push(messageObj);
-
-                var obj = {
-                    "id": "1000000",
-                    "messaging": messaging
-                };
-                entry.push(obj);
-                var mishaData = {
-                    "object": "page",
-                    "entry": entry
-                };
-
-                var mishaData2 = {
-                    "firstName": "dklms",
-                    "lastName": "ejkn"
-                };
-
                 $.ajax({
+                    type: "POST",
+                    url: baseUrl + "query?v=20150910",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    headers: {
+                        "Authorization": "Bearer " + accessToken
+                    },
+                    data: JSON.stringify({query: text, lang: "en", sessionId: "somerandomthing"}),
 
-                    type: 'POST',
-                    url: 'https://68537201.ngrok.io/id',
-                    // contentType: "application/json",
-                    data: JSON.stringify(mishaData2),
-                    success: function(data) { alert('data: ' + data); }
+                    success: function (data) {
+                        setResponse(JSON.stringify(data, undefined, 2));
+                    },
+                    error: function () {
+                        setResponse("Internal Server Error");
+                    }
                 });
-
-                // $.ajax({
-                //     type: "POST",
-                //     url: "https://68537201.ngrok.io/id",
-                //     // url: baseUrl + "query?v=20150910",
-                //     // contentType: "application/json; charset=utf-8",
-                //     // dataType: "json",
-                //     headers: {
-                //         // 'Accept': 'application/json',
-                //         // 'Content-Type': 'application/json'
-                //         // "Authorization": "Bearer " + accessToken
-                //         // "Access-Control-Allow-Origin": "*"
-                //     },
-                //     // data: JSON.stringify({query: text, lang: "en", sessionId: "somerandomthing"}),
-                //     data: mishaData2,
-                //     // data: mishaData,
-                //
-                //     success: function (data) {
-                //         // setResponse(JSON.stringify(data, undefined, 2));
-                //         console.log(mishaData2);
-                //         console.log(data);
-                //     },
-                //     error: function () {
-                //         setResponse("Internal Server Error");
-                //     }
-                // });
 
                 var message = $('<div class="chat-message user">');
 
