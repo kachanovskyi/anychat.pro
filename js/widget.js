@@ -2,6 +2,7 @@
     //Load Stylesheet
     // var root = './';
     var root = 'https://rawgit.com/chatbotstudios/anychat.pro/master/';
+
     var accessToken = "afc2e32efdff44819a7cbc62e58009ca";
     var baseUrl = "https://api.api.ai/v1/";
 
@@ -593,7 +594,7 @@
                                         .addClass('black-placeholder')
                                         .css('padding', '0 0.75em')
                                         .keypress(function (event) {
-                                            if (event.which == 13) {
+                                            if (event.which === 13) {
                                                 event.preventDefault();
                                                 send();
                                             }
