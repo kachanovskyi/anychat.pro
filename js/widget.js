@@ -122,7 +122,7 @@
         var botWrote = false,
             userWrote = false;
         for (var x in settings.answers) {
-            if (x.includes("About")) {
+            if (x.includes("Fact")) {
                 aboutOptions.push(settings.answers[x]);
             }
         }
@@ -701,9 +701,9 @@
                     }, 999);
 
                     for (var x in settings.answers) {
-                        if (x === "Location" || x === "Hours") {
+                        if (x === "Location" || x === "Hours" || x.includes("Fact")) {
                             var quickReply = $('<div class="quick-reply">')
-                                .text(x)
+                                .text(x.replace("_", " "))
                                 .on("click", function () {
                                     send("quick", $(this));
                                 });
@@ -711,13 +711,6 @@
                             quickReply.appendTo(quickInner);
                         }
                     }
-                    $('<div class="quick-reply">')
-                        .text("About")
-                        .prepend($('<div class="color-dot">'))
-                        .on("click", function () {
-                            send("quick", $(this));
-                        })
-                        .appendTo(quickInner);
 
                     var arrQuickWidth = 0;
                     $('.quick-reply').each(function () {
@@ -784,28 +777,52 @@
                         )
                         .prependTo($('#chat-window').find('.message-container'));
                     break;
-                case 'About':
+                case 'Fact_1':
                     botWrote = true;
-
-                    if((aboutOptions[0] === "About_1") && (aboutOptions[1] === "About_2") && (aboutOptions[2] === "About_3")) {
-                        messText = "Sorry, but I don't know anything about that";
-                        correctAnswer = false;
-                    } else {
-                        messText = aboutOptions[indexAboutUs];
-                    }
-
-                    indexAboutUs++;
-                    if(indexAboutUs > 2) {
-                        indexAboutUs = 0;
-                    }
-
                     $('<div class="message-outer bot">')
                         .append(
-                            message.text(messText)
+                            message.text(aboutOptions[0])
                         )
                         .prependTo($('#chat-window').find('.message-container'));
-
                     break;
+                case 'Fact_2':
+                    botWrote = true;
+                    $('<div class="message-outer bot">')
+                        .append(
+                            message.text(aboutOptions[1])
+                        )
+                        .prependTo($('#chat-window').find('.message-container'));
+                    break;
+                case 'Fact_3':
+                    botWrote = true;
+                    $('<div class="message-outer bot">')
+                        .append(
+                            message.text(aboutOptions[2])
+                        )
+                        .prependTo($('#chat-window').find('.message-container'));
+                    break;
+                // case 'About':
+                //     botWrote = true;
+                //
+                //     if((aboutOptions[0] === "About_1") && (aboutOptions[1] === "About_2") && (aboutOptions[2] === "About_3")) {
+                //         messText = "Sorry, but I don't know anything about that";
+                //         correctAnswer = false;
+                //     } else {
+                //         messText = aboutOptions[indexAboutUs];
+                //     }
+                //
+                //     indexAboutUs++;
+                //     if(indexAboutUs > 2) {
+                //         indexAboutUs = 0;
+                //     }
+                //
+                //     $('<div class="message-outer bot">')
+                //         .append(
+                //             message.text(messText)
+                //         )
+                //         .prependTo($('#chat-window').find('.message-container'));
+                //
+                //     break;
                 default:
                     botWrote = true;
                     if (response.result.fulfillment.speech !== "") {
@@ -830,7 +847,8 @@
         function send(param, elem) {
             var text = $("#chatInput").val();
             if (param === "quick") {
-                text = elem.text();
+                text = elem.text().replace(" ", "_");
+                // text = elem.text();
             }
 
             if (text.length && text !== " ") {
