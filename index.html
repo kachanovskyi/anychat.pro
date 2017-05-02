@@ -12,431 +12,431 @@
 </head>
 
 <body>
-    <!-- Page Wrapper -->
-    <div id="page-wrapper">
-        <!-- Wrapper -->
-        <section id="wrapper">
-            <canvas id="chatCanvas" style="position:absolute; left: 0; bottom: 0; top:0; z-index:-1;" width="707" height="633"></canvas>
-            <div class="container-inner">
-                    <style>
-                    .input-block {
-                        cursor: move;
-                        position: relative;
-                        height: 140px;
-                        padding: 18px 30px;
-                        margin: 20px 0;
-                        border: 1px solid #E0E0E0;
-                        border-radius: 4px;
-                        background: #FFFFFF;
-                    }
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+    <!-- Wrapper -->
+    <section id="wrapper">
+        <canvas id="chatCanvas" style="position:absolute; left: 0; bottom: 0; top:0; z-index:-1;" width="707" height="633"></canvas>
+        <div class="container-inner">
+            <style>
+                .input-block {
+                    cursor: move;
+                    position: relative;
+                    height: 140px;
+                    padding: 18px 30px;
+                    margin: 20px 0;
+                    border: 1px solid #E0E0E0;
+                    border-radius: 4px;
+                    background: #FFFFFF;
+                }
 
-                    .input-block img.app-icon {
-                        height: 44px;
-                        width: 44px;
-                    }
+                .input-block img.app-icon {
+                    height: 44px;
+                    width: 44px;
+                }
 
-                    .input-block .app-label {
-                        font-weight: 500;
-                        font-size: 20px;
-                        margin: -48px 0 0 52px;
-                    }
-                    .input-block .app-label > p {
-                        width: calc(100% - 60px);
-                        margin: 0;
-                        line-height: 100%;
-                        display: inline-block;
-                    }
+                .input-block .app-label {
+                    font-weight: 500;
+                    font-size: 20px;
+                    margin: -48px 0 0 52px;
+                }
+                .input-block .app-label > p {
+                    width: calc(100% - 60px);
+                    margin: 0;
+                    line-height: 100%;
+                    display: inline-block;
+                }
 
-                    #show-form {
-                        position: absolute;
-                        bottom: 10px;
-                        color: gray;
-                        font-size: 14pt;
-                    }
-                    #show-form:hover {
+                #show-form {
+                    position: absolute;
+                    bottom: 10px;
+                    color: gray;
+                    font-size: 14pt;
+                }
+                #show-form:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+
+                .input-block input {
+                    background: none;
+                    border-width: 0 0 1px 0;
+                    border-radius: 0;
+                    height: 46px;
+                    padding-left: 0;
+                    font-size: 20px;
+                    position: absolute;
+                    bottom: 10px;
+                    max-width: 88%;
+                }
+
+                .input-block.inactive .app-label {
+                    color: #999999 !important;
+                }
+
+                .input-block.inactive img {
+                    -webkit-filter: grayscale(100%);
+                }
+
+                .input-block.inverse .app-label {
+                    color: #3B1E1D;
+                }
+
+                .input-block.inverse input {
+                    border-color: #3B1E1D;
+                    color: #3B1E1D;
+                }
+
+                .input-block.inverse input:focus {
+                    border-color: #3B1E1D;
+                }
+
+                .input-block input:focus {
+                    border-color: #e6e8eb;
+                }
+
+                .input-block a.hint {
+                    color: white;
+                    float: right;
+                    font-size: 14px;
+                    position: absolute;
+                    bottom: 6px;
+                    right: 30px;
+                    font-weight: normal;
+                }
+
+                .input-block.inverse a.hint {
+                    color: black;
+                }
+
+                #embed {
+                    word-break: break-all;
+                }
+
+                .sortable-placeholder {
+                    position: relative;
+                    height: 120px;
+                    padding: 16px 30px;
+                    margin: 50px 30px;
+                    border-radius: 4px;
+                    border-style: dashed;
+                    border-width: 2px;
+                }
+
+                .checkbox-container {
+                    position: absolute;
+                    right: 30px;
+                    top: 24px;
+                    width: 60px;
+                    height: 36px;
+                    z-index: 999;
+                }
+
+                .ios-ui-select {
+                    height: 16px;
+                    width: 43px;
+                    background: #F2F2F2;
+                }
+                .ios-ui-select.checked {
+                    box-shadow: none ;
+                    background: #F2F2F2;
+                }
+
+                .ios-ui-select .inner {
+                    left: 0;
+                    margin-top: -5px;
+                    height: 20px;
+                    width: 20px;
+                    border: 1px solid #E5E5E5;
+                    box-shadow: none;
+                }
+                .ios-ui-select.checked .inner {
+                    left: 23px;
+                    border: none;
+                    background: #0AD02C;
+                }
+            </style>
+            <div class="input-block-container ui-sortable" style="margin-top: 2em;">
+                <p><b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 1: </span>Fill in the details for the channels you want to activate</b></p>
+                <p><b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 2: </span> Drag to re-arrange the order</b></p>
+                <p><b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 3: </span> Pick a color for your chat button</b></p>
+                <style>
+                    #icon-color-picker > div {
                         cursor: pointer;
-                        text-decoration: underline;
-                    }
-
-                    .input-block input {
-                        background: none;
-                        border-width: 0 0 1px 0;
-                        border-radius: 0;
-                        height: 46px;
-                        padding-left: 0;
-                        font-size: 20px;
-                        position: absolute;
-                        bottom: 10px;
-                        max-width: 88%;
-                    }
-
-                    .input-block.inactive .app-label {
-                        color: #999999 !important;
-                    }
-
-                    .input-block.inactive img {
-                        -webkit-filter: grayscale(100%);
-                    }
-
-                    .input-block.inverse .app-label {
-                        color: #3B1E1D;
-                    }
-
-                    .input-block.inverse input {
-                        border-color: #3B1E1D;
-                        color: #3B1E1D;
-                    }
-
-                    .input-block.inverse input:focus {
-                        border-color: #3B1E1D;
-                    }
-
-                    .input-block input:focus {
-                        border-color: #e6e8eb;
-                    }
-
-                    .input-block a.hint {
-                        color: white;
-                        float: right;
-                        font-size: 14px;
-                        position: absolute;
-                        bottom: 6px;
-                        right: 30px;
-                        font-weight: normal;
-                    }
-
-                    .input-block.inverse a.hint {
-                        color: black;
-                    }
-
-                    #embed {
-                        word-break: break-all;
-                    }
-
-                    .sortable-placeholder {
                         position: relative;
-                        height: 120px;
-                        padding: 16px 30px;
-                        margin: 50px 30px;
-                        border-radius: 4px;
+                        display: inline-block;
+                        height: 52px;
+                        width: 52px;
+                        border-radius: 27px;
+                        padding: 0;
                         border-style: dashed;
-                        border-width: 2px;
+                        border-width: 1px;
+                        border-color: white;
                     }
-
-                    .checkbox-container {
-                        position: absolute;
-                        right: 30px;
-                        top: 24px;
-                        width: 60px;
-                        height: 36px;
-                        z-index: 999;
-                    }
-
-                    .ios-ui-select {
-                        height: 16px;
-                        width: 43px;
-                        background: #F2F2F2;
-                    }
-                    .ios-ui-select.checked {
-                        box-shadow: none ;
-                        background: #F2F2F2;
-                    }
-
-                    .ios-ui-select .inner {
-                        left: 0;
-                        margin-top: -5px;
-                        height: 20px;
-                        width: 20px;
-                        border: 1px solid #E5E5E5;
-                        box-shadow: none;
-                    }
-                    .ios-ui-select.checked .inner {
-                        left: 23px;
-                        border: none;
-                        background: #0AD02C;
-                    }
-                    </style>
-                    <div class="input-block-container ui-sortable" style="margin-top: 2em;">
-                        <p><b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 1: </span>Fill in the details for the channels you want to activate</b></p>
-                        <p><b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 2: </span> Drag to re-arrange the order</b></p>
-                        <p><b style="color:#783bd2;"><span style="color:#828282;padding-right: 6px;">Step 3: </span> Pick a color for your chat button</b></p>
-                        <style>
-                            #icon-color-picker > div {
-                                cursor: pointer;
-                                position: relative;
-                                display: inline-block;
-                                height: 52px;
-                                width: 52px;
-                                border-radius: 27px;
-                                padding: 0;
-                                border-style: dashed;
-                                border-width: 1px;
-                                border-color: white;
-                            }
-                        </style>
-                        <div id="icon-color-picker" style="text-align:left; margin-top: 20px;">
-                            <div data-color="#783bd2">
-                                <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-                                    <g fill="none" fill-rule="evenodd">
-                                        <ellipse fill="#783bd2" cx="13" cy="13" rx="12" ry="12"></ellipse>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div data-color="#9770d3">
-                                <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-                                    <g fill="none" fill-rule="evenodd">
-                                        <ellipse fill="#9770d3" cx="13" cy="13" rx="12" ry="12"></ellipse>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div data-color="#d5d5d5">
-                                <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-                                    <g fill="none" fill-rule="evenodd">
-                                        <ellipse fill="#d5d5d5" cx="13" cy="13" rx="12" ry="12"></ellipse>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div data-color="#828282">
-                                <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-                                    <g fill="none" fill-rule="evenodd">
-                                        <ellipse fill="#828282" cx="13" cy="13" rx="12" ry="12"></ellipse>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div data-color="#454545">
-                                <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
-                                    <g fill="none" fill-rule="evenodd">
-                                        <ellipse fill="#454545" cx="13" cy="13" rx="12" ry="12"></ellipse>
-                                    </g>
-                                </svg>
-                            </div>
-                            <br>
-                        </div>
-                        <div class="input-block ui-sortable-handle">
-                            <div style="width: 44px; height: 44px;">
-                                <img style="width: 100%;height:100%" class="app-icon" src="./images/anychat.png" alt="email">
-                            </div>
-                            <div class="app-label" style="color:#783bd2;margin-top: -40px;">
-                                <p>our chatbot</p>
-                                <div class="checkbox-container disabled">
-                                    <input type="checkbox" checked="" class="ios toggle">
-                                    <label for="toggle"></label>
-                                </div>
-                            </div>
-                            <a id="show-form">chatbot form</a>
-                            <input style="display: none;" name="anychat" data-default="http://anychat.pro/" type="text" placeholder="Upgrade to activate. Request invite in next step.">
-                        </div>
-                        <div class="input-block inactive ui-sortable-handle">
-                            <img class="app-icon" src="./images/sms.png" alt="sms">
-                            <div class="app-label" style="color:#000000;">
-                                <p>sms/text</p>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" class="ios toggle">
-                                    <label for="toggle"></label>
-                                </div>
-                            </div>
-                            <input name="sms" data-default="+19492289475" type="text" placeholder="phone number">
-                        </div>
-                        <div class="input-block inactive ui-sortable-handle">
-                            <img class="app-icon" src="./images/email.png" alt="email">
-                            <div class="app-label" style="color:#000000;">
-                                <p>email</p>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" class="ios toggle">
-                                    <label for="toggle"></label>
-                                </div>
-                            </div>
-                            <input name="email" data-default="info@chatbotstudios.co" type="text" placeholder="contact@yourcompany.com">
-                        </div>
-                        <div class="input-block inactive ui-sortable-handle">
-                            <img class="app-icon" src="./images/phone.png" alt="phone">
-                            <div class="app-label" style="color:#000000;">
-                                <p>phone</p>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" class="ios toggle">
-                                    <label for="toggle"></label>
-                                </div>
-                            </div>
-                            <input name="phone" data-default="+19492289475" type="text" placeholder="phone number">
-                        </div>
-                        <div class="input-block inactive ui-sortable-handle">
-                            <img class="app-icon" src="./images/alexa.png" alt="phone">
-                            <div class="app-label" style="color:#0084FF;">
-                                <p>amazon echo</p>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" class="ios toggle">
-                                    <label for="toggle"></label>
-                                </div>
-                            </div>
-                            <input name="alexa" data-default="226332827803600" type="text" placeholder="alexa skill id">
-                        </div>
-                        <div class="input-block inactive ui-sortable-handle">
-                            <img class="app-icon" src="./images/allo.png" alt="phone">
-                            <div class="app-label" style="color:#F5B900;">
-                                <p>google home</p>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" class="ios toggle">
-                                    <label for="toggle"></label>
-                                </div>
-                            </div>
-                            <input name="allo" data-default="Chatbot Studios" type="text" placeholder="google action id">
-                        </div>
-                        <div class="input-block inactive ui-sortable-handle">
-                            <img class="app-icon" src="./images/messenger.png" alt="phone">
-                            <div class="app-label" style="color:#0084FF;">
-                                <p>messenger</p>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" class="ios toggle">
-                                    <label for="toggle"></label>
-                                </div>
-                            </div>
-                            <input name="messenger" data-default="226332827803600" type="text" placeholder="yourchatbotname">
-                        </div>
-
-                        <div class="input-block inactive ui-sortable-handle">
-                            <img class="app-icon" src="./images/kik.png" alt="kik">
-                            <div class="app-label" style="color:#82BC23;">
-                                <p>kik</p>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" class="ios toggle">
-                                    <label for="toggle"></label>
-                                </div>
-                            </div>
-                            <input name="kik" data-default="Chatbot Studios" type="text" placeholder="yourchatbotname">
-                        </div>
-
-                        <div class="input-block inactive ui-sortable-handle">
-                            <img class="app-icon" src="./images/whatsapp.png" alt="whatsapp">
-                            <div class="app-label" style="color:#30BE2D;">
-                                <p>whatsapp</p>
-                                <div class="checkbox-container">
-                                    <input type="checkbox" class="ios toggle">
-                                    <label for="toggle"></label>
-                                </div>
-                            </div>
-                            <input name="whatsapp" data-default="+19492289475" type="text" placeholder="phone number">
-                        </div>
-                        <div class="actions-block">
-                            <br>
-                            <div style="margin-bottom: 30px;">
-                                <a href="javascript:generate();" class="button special icon fa-magic">Generate code</a>
-                            </div>
-                              <textarea id="embed" onclick="this.focus();this.select();" cols="30" rows="3" spellcheck="false" style="color: #333333;resize:none;"></textarea>
-                              <br>
-                              <b style="color:#783bd2;"><span style="color:#828282;margin-right: 6px;display: inline-block; vertical-align: top;">Step 4: </span><div style="display: inline-block; width: 88%;margin-bottom: 20px;">
-                                  Copy and insert code near the end of your website's HTML source code.
-                                  <p style="color: #8b8f94; font-size: 13pt;">
-                                      (make sure to insert this html code on any page you want the anychat button to appear)
-                                  </p>
-                              </div></b>
-                            </div>
+                </style>
+                <div id="icon-color-picker" style="text-align:left; margin-top: 20px;">
+                    <div data-color="#783bd2">
+                        <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="none" fill-rule="evenodd">
+                                <ellipse fill="#783bd2" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                            </g>
+                        </svg>
+                    </div>
+                    <div data-color="#9770d3">
+                        <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="none" fill-rule="evenodd">
+                                <ellipse fill="#9770d3" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                            </g>
+                        </svg>
+                    </div>
+                    <div data-color="#d5d5d5">
+                        <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="none" fill-rule="evenodd">
+                                <ellipse fill="#d5d5d5" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                            </g>
+                        </svg>
+                    </div>
+                    <div data-color="#828282">
+                        <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="none" fill-rule="evenodd">
+                                <ellipse fill="#828282" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                            </g>
+                        </svg>
+                    </div>
+                    <div data-color="#454545">
+                        <svg width="50" height="50" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="none" fill-rule="evenodd">
+                                <ellipse fill="#454545" cx="13" cy="13" rx="12" ry="12"></ellipse>
+                            </g>
+                        </svg>
+                    </div>
+                    <br>
+                </div>
+                <div class="input-block ui-sortable-handle">
+                    <div style="width: 44px; height: 44px;">
+                        <img style="width: 100%;height:100%" class="app-icon" src="./images/anychat.png" alt="email">
+                    </div>
+                    <div class="app-label" style="color:#783bd2;margin-top: -40px;">
+                        <p>our chatbot</p>
+                        <div class="checkbox-container disabled">
+                            <input type="checkbox" checked="" class="ios toggle">
+                            <label for="toggle"></label>
                         </div>
                     </div>
+                    <a id="show-form">chatbot form</a>
+                    <input style="display: none;" name="anychat" data-default="http://anychat.pro/" type="text" placeholder="Upgrade to activate. Request invite in next step.">
+                </div>
+                <div class="input-block inactive ui-sortable-handle">
+                    <img class="app-icon" src="./images/sms.png" alt="sms">
+                    <div class="app-label" style="color:#000000;">
+                        <p>sms/text</p>
+                        <div class="checkbox-container">
+                            <input type="checkbox" class="ios toggle">
+                            <label for="toggle"></label>
+                        </div>
+                    </div>
+                    <input name="sms" data-default="+19492289475" type="text" placeholder="phone number">
+                </div>
+                <div class="input-block inactive ui-sortable-handle">
+                    <img class="app-icon" src="./images/email.png" alt="email">
+                    <div class="app-label" style="color:#000000;">
+                        <p>email</p>
+                        <div class="checkbox-container">
+                            <input type="checkbox" class="ios toggle">
+                            <label for="toggle"></label>
+                        </div>
+                    </div>
+                    <input name="email" data-default="info@chatbotstudios.co" type="text" placeholder="contact@yourcompany.com">
+                </div>
+                <div class="input-block inactive ui-sortable-handle">
+                    <img class="app-icon" src="./images/phone.png" alt="phone">
+                    <div class="app-label" style="color:#000000;">
+                        <p>phone</p>
+                        <div class="checkbox-container">
+                            <input type="checkbox" class="ios toggle">
+                            <label for="toggle"></label>
+                        </div>
+                    </div>
+                    <input name="phone" data-default="+19492289475" type="text" placeholder="phone number">
+                </div>
+                <div class="input-block inactive ui-sortable-handle">
+                    <img class="app-icon" src="./images/alexa.png" alt="phone">
+                    <div class="app-label" style="color:#0084FF;">
+                        <p>amazon echo</p>
+                        <div class="checkbox-container">
+                            <input type="checkbox" class="ios toggle">
+                            <label for="toggle"></label>
+                        </div>
+                    </div>
+                    <input name="alexa" data-default="226332827803600" type="text" placeholder="alexa skill id">
+                </div>
+                <div class="input-block inactive ui-sortable-handle">
+                    <img class="app-icon" src="./images/allo.png" alt="phone">
+                    <div class="app-label" style="color:#F5B900;">
+                        <p>google home</p>
+                        <div class="checkbox-container">
+                            <input type="checkbox" class="ios toggle">
+                            <label for="toggle"></label>
+                        </div>
+                    </div>
+                    <input name="allo" data-default="Chatbot Studios" type="text" placeholder="google action id">
+                </div>
+                <div class="input-block inactive ui-sortable-handle">
+                    <img class="app-icon" src="./images/messenger.png" alt="phone">
+                    <div class="app-label" style="color:#0084FF;">
+                        <p>messenger</p>
+                        <div class="checkbox-container">
+                            <input type="checkbox" class="ios toggle">
+                            <label for="toggle"></label>
+                        </div>
+                    </div>
+                    <input name="messenger" data-default="226332827803600" type="text" placeholder="yourchatbotname">
+                </div>
+
+                <div class="input-block inactive ui-sortable-handle">
+                    <img class="app-icon" src="./images/kik.png" alt="kik">
+                    <div class="app-label" style="color:#82BC23;">
+                        <p>kik</p>
+                        <div class="checkbox-container">
+                            <input type="checkbox" class="ios toggle">
+                            <label for="toggle"></label>
+                        </div>
+                    </div>
+                    <input name="kik" data-default="Chatbot Studios" type="text" placeholder="yourchatbotname">
+                </div>
+
+                <div class="input-block inactive ui-sortable-handle">
+                    <img class="app-icon" src="./images/whatsapp.png" alt="whatsapp">
+                    <div class="app-label" style="color:#30BE2D;">
+                        <p>whatsapp</p>
+                        <div class="checkbox-container">
+                            <input type="checkbox" class="ios toggle">
+                            <label for="toggle"></label>
+                        </div>
+                    </div>
+                    <input name="whatsapp" data-default="+19492289475" type="text" placeholder="phone number">
+                </div>
+                <div class="actions-block">
+                    <br>
+                    <div style="margin-bottom: 30px;">
+                        <a href="javascript:generate();" class="button special icon fa-magic">Generate code</a>
+                    </div>
+                    <textarea id="embed" onclick="this.focus();this.select();" cols="30" rows="3" spellcheck="false" style="color: #333333;resize:none;"></textarea>
+                    <br>
+                    <b style="color:#783bd2;"><span style="color:#828282;margin-right: 6px;display: inline-block; vertical-align: top;">Step 4: </span><div style="display: inline-block; width: 88%;margin-bottom: 20px;">
+                        Copy and insert code near the end of your website's HTML source code.
+                        <p style="color: #8b8f94; font-size: 13pt;">
+                            (make sure to insert this html code on any page you want the anychat button to appear)
+                        </p>
+                    </div></b>
+                </div>
             </div>
-            <div class="preview" style="position: fixed; bottom: 35px; right: 75px; display: none;">
-                <img src="./images/testitout.png" alt="">
-            </div>
-        </section>
-    </div>
+        </div>
+</div>
+<div class="preview" style="position: fixed; bottom: 35px; right: 75px; display: none;">
+    <img src="./images/testitout.png" alt="">
+</div>
+</section>
+</div>
 
-    <div class="form-container hidden">
-        <form role="form" name="questionsForm" id="questionsForm" autocomplete="off" action="" method="POST">
-            <input type="text" name="BusinessName" placeholder="Business name">
-            <input type="text" name="Location" placeholder="Location (address, city, state, zip)">
-            <input type="text" name="Hours" placeholder="Hours of operation">
-            <input type="text" name="Phone" placeholder="Phone number">
-            <input type="email" name="Email" placeholder="Email address">
-            <input type="text" name="Fact_1" placeholder="Fact about us">
-            <input type="text" name="Fact_2" placeholder="Fact about us">
-            <input type="text" name="Fact_3" placeholder="Fact about us">
+<div class="form-container hidden">
+    <form role="form" name="questionsForm" id="questionsForm" autocomplete="off" action="" method="POST">
+        <input type="text" name="BusinessName" placeholder="Business name">
+        <input type="text" name="Location" placeholder="Location (address, city, state, zip)">
+        <input type="text" name="Hours" placeholder="Hours of operation">
+        <input type="text" name="Phone" placeholder="Phone number">
+        <input type="email" name="Email" placeholder="Email address">
+        <input type="text" name="Fact_1" placeholder="About Us - Fact 1">
+        <input type="text" name="Fact_2" placeholder="About Us - Fact 2">
+        <input type="text" name="Fact_3" placeholder="About Us - Fact 3">
 
-            <input id="submitQuestions" type="button" value="Close form" class="button special">
-        </form>
-    </div>
+        <input id="submitQuestions" type="button" value="Close form" class="button special">
+    </form>
+</div>
 
-    <!-- Scripts -->
-    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="./js/jquery-2.1.4.min.js"></script>
-    <script src="./js/jquery-ui.min.js"></script>
-    <script defer>
-        /**
-         * iosCheckbox.js
-         * Version: 1.0.0
-         * Author: Ron Masas
-         * Added some changes
-         */
-        (function($) {
-            $.fn.extend({
-                iosCheckbox: function() {
-                    this.destroy = function(){
-                        $(this).each(function() {
-                            $(this).next('.ios-ui-select').remove();
-                        });
-                    };
-                    if ($(this).attr('data-ios-checkbox') === 'true') {
-                        return;
-                    }
-                    $(this).attr('data-ios-checkbox', 'true');
+<!-- Scripts -->
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="./js/jquery-2.1.4.min.js"></script>
+<script src="./js/jquery-ui.min.js"></script>
+<script defer>
+    /**
+     * iosCheckbox.js
+     * Version: 1.0.0
+     * Author: Ron Masas
+     * Added some changes
+     */
+    (function($) {
+        $.fn.extend({
+            iosCheckbox: function() {
+                this.destroy = function(){
                     $(this).each(function() {
-                        /**
-                         * Original checkbox element
-                         */
-                        var org_checkbox = $(this);
-                        /**
-                         * iOS checkbox div
-                         */
-                        var ios_checkbox = jQuery("<div>", {
-                            class: 'ios-ui-select'
-                        }).append(jQuery("<div>", {
-                            class: 'inner'
-                        }));
+                        $(this).next('.ios-ui-select').remove();
+                    });
+                };
+                if ($(this).attr('data-ios-checkbox') === 'true') {
+                    return;
+                }
+                $(this).attr('data-ios-checkbox', 'true');
+                $(this).each(function() {
+                    /**
+                     * Original checkbox element
+                     */
+                    var org_checkbox = $(this);
+                    /**
+                     * iOS checkbox div
+                     */
+                    var ios_checkbox = jQuery("<div>", {
+                        class: 'ios-ui-select'
+                    }).append(jQuery("<div>", {
+                        class: 'inner'
+                    }));
 
-                        // If the original checkbox is checked, add checked class to the ios checkbox.
-                        if (org_checkbox.is(":checked")) {
-                            ios_checkbox.addClass("checked");
-                        }
-                        // Hide the original checkbox and print the new one.
-                        org_checkbox.hide().after(ios_checkbox);
-                        // Add click event listener to the ios checkbox
-                        ios_checkbox.click(function() {
-                            if(!$(this).parent().hasClass('disabled')) {
-                                var block = $(this).parent().parent().parent();
-                                // Toggle the check state
-                                ios_checkbox.toggleClass("checked");
-                                // Check if the ios checkbox is checked
-                                if (ios_checkbox.hasClass("checked")) {
-                                    // Update state
-                                    org_checkbox.prop('checked', true);
-                                    block.removeClass('inactive');
+                    // If the original checkbox is checked, add checked class to the ios checkbox.
+                    if (org_checkbox.is(":checked")) {
+                        ios_checkbox.addClass("checked");
+                    }
+                    // Hide the original checkbox and print the new one.
+                    org_checkbox.hide().after(ios_checkbox);
+                    // Add click event listener to the ios checkbox
+                    ios_checkbox.click(function() {
+                        if(!$(this).parent().hasClass('disabled')) {
+                            var block = $(this).parent().parent().parent();
+                            // Toggle the check state
+                            ios_checkbox.toggleClass("checked");
+                            // Check if the ios checkbox is checked
+                            if (ios_checkbox.hasClass("checked")) {
+                                // Update state
+                                org_checkbox.prop('checked', true);
+                                block.removeClass('inactive');
 //                                    block.find('input[type="text"], input[type="email"]').get(0).focus();
 
-                                    if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
-                                        generate();
-                                    }
+                                if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+                                    generate();
+                                }
 
-                                } else {
-                                    // Update state
-                                    org_checkbox.prop('checked', false);
-                                    block.addClass('inactive');
-                                    block.find('input[type="text"], input[type="email"]').get(0).blur();
-                                    if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
-                                        generate();
-                                    }                                }
-                            }
-                        });
+                            } else {
+                                // Update state
+                                org_checkbox.prop('checked', false);
+                                block.addClass('inactive');
+                                block.find('input[type="text"], input[type="email"]').get(0).blur();
+                                if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+                                    generate();
+                                }                                }
+                        }
                     });
-                    return this;
-                }
-            });
-        })(jQuery);
-
-        $(document).ready(function () {
-            $(".input-block-container").show();
-            $(".ios").iosCheckbox();
+                });
+                return this;
+            }
         });
-    </script>
+    })(jQuery);
 
-    <script>
+    $(document).ready(function () {
+        $(".input-block-container").show();
+        $(".ios").iosCheckbox();
+    });
+</script>
+
+<script>
     function generate(param) {
         var color, apps = {}, answers = {};
         var formContainer = $('.form-container');
@@ -560,7 +560,7 @@
             }
         });
     });
-    </script>
-    <script id="anychat-script" src="./js/widget.js" data-color="#783bd2" data-answers="eyJCdXNpbmVzc05hbWUiOiJBbnlDSEFUIiwiTG9jYXRpb24iOnsidGV4dCI6IndlJ3JlIGxvY2F0ZWQgb24gdGhlIDNyZCBmbG9vciBvZiB0aGUgd2V3b3JrIG9mZmljZXMgYWNyb3NzIHRoZSBzdHJlZXQgZnJvbSB0aGUgaXJ2aW5lIHNwZWN0cnVtLiIsInVybCI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jb20vbWFwcy9wbGFjZS8yMDArU3BlY3RydW0rQ2VudGVyK0RyLCtJcnZpbmUsK0NBKzkyNjE4L0AzMy42NTI3NDExLC0xMTcuNzUwMTM1NywxN3ovZGF0YT0hM20xITRiMSE0bTUhM200ITFzMHg4MGRjZTdmODJlMGJhYmFkOjB4ZThmMzZhZjA2NWNiYmI0ZCE4bTIhM2QzMy42NTI3MzY3ITRkLTExNy43NDc5NDcifSwiSG91cnMiOiJvdXIgb2ZmaWNlcyBhcmUgb3BlbiBmcm9tIDEwIGFtIHRvIDQgcG0gbW9uZGF5IHRocm91Z2ggZnJpZGF5LiBidXQgb3VyIGNoYXRib3RzIGFyZSBhdmFpbGFibGUgMjQvNyIsIlBob25lIjoiMTk0OTIyODk0NzUiLCJFbWFpbCI6ImluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJGYWN0XzEiOiJ3ZSdyZSBhIHJlbW90ZSB0ZWFtIG9mIGNvbnZlcnNhdGlvbmFsIGV4cGVydHMgd2l0aCB0b25zIG9mIGV4cGVyaWVuY2UgZGVzaWduaW5nIGFuZCBkZXZlbG9waW5nIHVzZWZ1bCBjaGF0Ym90cyBhbmQgdm9pY2Vib3RzIiwiRmFjdF8yIjoid2UncmUgY3JlYXRpbmcgYSBuZXR3b3JrIG9mIDQgJiA1IHN0YXIgbG9jYWwgYnVzaW5lc3NlcyB0aGF0IGNhbiBlYXNpbHkgYmUgcmVhY2hlZCBvbiB0aGUgY2hhbm5lbCBvZiB5b3VyIGNob2ljZS4gbGVzcyBoYXNzbGUsIG1vcmUgYWN0aW9uIiwiRmFjdF8zIjoib25lIG1vcmUgdGhpbmc6IGlmIHlvdSBzZW5kIG1lIGFuIGVtYWlsLCBJJ2xsIHNoYXJlIGEgcHJvbW8gY29kZSB3aXRoIHlvdSBmb3IgYSBwcmV0dHkgc3dlZXQgZGVhbCJ9" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImFsZXhhIjoiMjI2MzMyODI3ODAzNjAwIiwiYWxsbyI6IkNoYXRib3QgU3R1ZGlvcyIsIm1lc3NlbmdlciI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>
+</script>
+<script id="anychat-script" src="./js/widget.js" data-color="#783bd2" data-answers="eyJCdXNpbmVzc05hbWUiOiJBbnlDSEFUIiwiTG9jYXRpb24iOnsidGV4dCI6IndlJ3JlIGxvY2F0ZWQgb24gdGhlIDNyZCBmbG9vciBvZiB0aGUgd2V3b3JrIG9mZmljZXMgYWNyb3NzIHRoZSBzdHJlZXQgZnJvbSB0aGUgaXJ2aW5lIHNwZWN0cnVtLiIsInVybCI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jb20vbWFwcy9wbGFjZS8yMDArU3BlY3RydW0rQ2VudGVyK0RyLCtJcnZpbmUsK0NBKzkyNjE4L0AzMy42NTI3NDExLC0xMTcuNzUwMTM1NywxN3ovZGF0YT0hM20xITRiMSE0bTUhM200ITFzMHg4MGRjZTdmODJlMGJhYmFkOjB4ZThmMzZhZjA2NWNiYmI0ZCE4bTIhM2QzMy42NTI3MzY3ITRkLTExNy43NDc5NDcifSwiSG91cnMiOiJvdXIgb2ZmaWNlcyBhcmUgb3BlbiBmcm9tIDEwIGFtIHRvIDQgcG0gbW9uZGF5IHRocm91Z2ggZnJpZGF5LiBidXQgb3VyIGNoYXRib3RzIGFyZSBhdmFpbGFibGUgMjQvNyIsIlBob25lIjoiMTk0OTIyODk0NzUiLCJFbWFpbCI6ImluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJGYWN0XzEiOiJ3ZSdyZSBhIHJlbW90ZSB0ZWFtIG9mIGNvbnZlcnNhdGlvbmFsIGV4cGVydHMgd2l0aCB0b25zIG9mIGV4cGVyaWVuY2UgZGVzaWduaW5nIGFuZCBkZXZlbG9waW5nIHVzZWZ1bCBjaGF0Ym90cyBhbmQgdm9pY2Vib3RzIiwiRmFjdF8yIjoid2UncmUgY3JlYXRpbmcgYSBuZXR3b3JrIG9mIDQgJiA1IHN0YXIgbG9jYWwgYnVzaW5lc3NlcyB0aGF0IGNhbiBlYXNpbHkgYmUgcmVhY2hlZCBvbiB0aGUgY2hhbm5lbCBvZiB5b3VyIGNob2ljZS4gbGVzcyBoYXNzbGUsIG1vcmUgYWN0aW9uIiwiRmFjdF8zIjoib25lIG1vcmUgdGhpbmc6IGlmIHlvdSBzZW5kIG1lIGFuIGVtYWlsLCBJJ2xsIHNoYXJlIGEgcHJvbW8gY29kZSB3aXRoIHlvdSBmb3IgYSBwcmV0dHkgc3dlZXQgZGVhbCJ9" data-apps="eyJhbnljaGF0IjoiaHR0cDovL2NoYXRib3RzdHVkaW9zLmNvLyIsInNtcyI6IisxOTQ5MjI4OTQ3NSIsImVtYWlsIjoiIGluZm9AY2hhdGJvdHN0dWRpb3MuY28iLCJwaG9uZSI6IisxOTQ5MjI4OTQ3NSIsImFsZXhhIjoiMjI2MzMyODI3ODAzNjAwIiwiYWxsbyI6IkNoYXRib3QgU3R1ZGlvcyIsIm1lc3NlbmdlciI6IjIyNjMzMjgyNzgwMzYwMCIsImtpayI6IkNoYXRib3QgU3R1ZGlvcyIsInZpYmVyIjoiKzE5NDkyMjg5NDc1Iiwid2hhdHNhcHAiOiIrMTk0OTIyODk0NzUifQ=="></script>
 </body>
 </html>
